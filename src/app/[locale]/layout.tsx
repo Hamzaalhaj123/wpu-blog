@@ -1,6 +1,6 @@
 import { NavBar, SideBar } from "@/app/_components/home";
 import type { Metadata } from "next";
-import { NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider, useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Inter } from "next/font/google";
 import React from "react";
