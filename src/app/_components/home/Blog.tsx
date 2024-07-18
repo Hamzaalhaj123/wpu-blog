@@ -3,7 +3,7 @@ import React from "react";
 import ThumbNail from "/public/imageThumbnail.webp";
 export default function Blog() {
   return (
-    <div className="bg-slate-900">
+    <div className="bg-primary">
       <Image src={ThumbNail} alt="PlaceHolder" />
       Blog
     </div>
