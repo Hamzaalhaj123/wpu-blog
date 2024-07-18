@@ -3,12 +3,12 @@ import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
-type MetaData = {
+type MetaDataProps = {
   params: { locale: string };
 };
 export async function generateMetadata({
   params: { locale },
-}: MetaData): Promise<Metadata> {
+}: MetaDataProps): Promise<Metadata> {
   const t = await getTranslations("METADATA.homepage");
   return { title: t("title"), description: t("description") };
 }
