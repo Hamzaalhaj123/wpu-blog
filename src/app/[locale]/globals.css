@@ -10,8 +10,6 @@
   --primary-lighter: 62, 107, 154;
   --primary: 37, 92, 153;
   --primary-darker: 29, 75, 122;
-  --grape: 62, 107, 154;
-
   /* Secondary */
   --secondary-lighter: 255, 218, 102;
   --secondary: 255, 208, 70;
@@ -46,6 +44,18 @@
     --foreground: 255, 255, 255;
     --background-start: 0, 0, 0;
     --background-end: 0, 0, 0;
+
+    --primary-darker: 29, 75, 122;
+    --secondary-darker: 196, 180, 0;
+    --success-darker: 0, 102, 0;
+    --error-darker: 204, 0, 0;
+    --warning-darker: 153, 102, 0;
+
+    --background-muted: 26, 26, 26;
+    --background: 15, 15, 15;
+
+    --foreground-muted: 179, 179, 179;
+    --foreground: 255, 255, 255;
   }
 }
 
