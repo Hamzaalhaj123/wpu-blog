@@ -3,27 +3,56 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground: 0, 0, 0;
+  --background-start: 214, 219, 220;
+  --background-end: 255, 255, 255;
+  /* Primary */
+  --primary-lighter: 62, 107, 154;
+  --primary: 37, 92, 153;
+  --primary-darker: 29, 75, 122;
+  --grape: 62, 107, 154;
+
+  /* Secondary */
+  --secondary-lighter: 255, 218, 102;
+  --secondary: 255, 208, 70;
+  --secondary-darker: 196, 180, 0;
+
+  /* Success */
+  --success-lighter: 0, 255, 0;
+  --success: 0, 178, 137;
+  --success-darker: 0, 102, 0;
+
+  /* Error */
+  --error-lighter: 255, 102, 102;
+  --error: 255, 51, 51;
+  --error-darker: 204, 0, 0;
+
+  /* Warning */
+  --warning-lighter: 255, 153, 0;
+  --warning: 245, 158, 11;
+  --warning-darker: 153, 102, 0;
+
+  /* Foreground */
+  --foreground-muted: 179, 179, 179;
+  --foreground: 255, 255, 255;
+
+  /* Background */
+  --background-muted: 26, 26, 26;
+  --background: 15, 15, 15;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground: 255, 255, 255;
+    --background-start: 0, 0, 0;
+    --background-end: 0, 0, 0;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: (var(--foreground));
+  background: linear-gradient(to bottom, transparent, (var(--background-end)))
+    (var(--background-start));
 }
 
 @layer utilities {

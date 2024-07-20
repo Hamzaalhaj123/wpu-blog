@@ -8,46 +8,31 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      primary: {
-        lighter: "#3e6b9a",
-        default: "#255c99",
-        darker: "#1d4b7a",
-      },
+      "primary-lighter": "rgba(var(--primary-lighter))",
+      primary: "rgba(var(--primary))",
+      "primary-darker": "rgba(var(--primary-darker))",
 
-      secondary: {
-        lighter: "#ffda66",
-        default: "#ffd046",
-        darker: "#c4b400",
-      },
+      "secondary-lighter": "rgba(var(--secondary-lighter))",
+      secondary: "rgba(var(--secondary))",
+      "secondary-darker": "rgba(var(--secondary-darker))",
 
-      success: {
-        lighter: "#00ff00",
-        default: "#00b289",
-        darker: "#006600",
-      },
+      "success-lighter": "rgba(var(--success-lighter))",
+      success: "rgba(var(--success))",
+      "success-darker": "rgba(var(--success-darker))",
 
-      error: {
-        lighter: "#ff6666",
-        default: "#ff3333",
-        darker: "#cc0000",
-      },
+      "error-lighter": "rgba(var(--error-lighter))",
+      error: "rgba(var(--error))",
+      "error-darker": "rgba(var(--error-darker))",
 
-      warning: {
-        lighter: "#ff9900",
-        default: "#f59e0b",
-        darker: "#996600",
-      },
+      "warning-lighter": "rgba(var(--warning-lighter))",
+      warning: "rgba(var(--warning))",
+      "warning-darker": "rgba(var(--warning-darker))",
 
-      forground: {
-        muted: "#b3b3b3",
-        default: "#ffffff",
-      },
+      "forgound-muted": "rgba(var(--forgound-muted))",
+      foreground: "rgba(var(--foreground))",
 
-      background: {
-        muted: "#1a1a1a",
-        default: "#0f0f0f",
-      },
-
+      "background-muted": "rgba(var(--background-muted))",
+      background: "rgba(var(--background))",
       blur: {
         default: "blur(10px)",
         sm: "blur(4px)",
