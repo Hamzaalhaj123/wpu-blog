@@ -8,31 +8,31 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      "primary-lighter": "rgba(var(--primary-lighter))",
-      primary: "rgba(var(--primary))",
-      "primary-darker": "rgba(var(--primary-darker))",
+      "primary-lighter": "rgba(var(--primary-lighter)/ <alpha-value>)",
+      primary: "rgba(var(--primary) / <alpha-value>)",
+      "primary-darker": "rgba(var(--primary-darker) / <alpha-value>)",
 
-      "secondary-lighter": "rgba(var(--secondary-lighter))",
-      secondary: "rgba(var(--secondary))",
-      "secondary-darker": "rgba(var(--secondary-darker))",
+      "secondary-lighter": "rgba(var(--secondary-lighter) / <alpha-value>)",
+      secondary: "rgba(var(--secondary) / <alpha-value> ) ",
+      "secondary-darker": "rgba(var(--secondary-darker)/ <alpha-value>)",
 
-      "success-lighter": "rgba(var(--success-lighter))",
-      success: "rgba(var(--success))",
-      "success-darker": "rgba(var(--success-darker))",
+      "success-lighter": "rgba(var(--success-lighter)/ <alpha-value>)",
+      success: "rgba(var(--success)/ <alpha-value>)",
+      "success-darker": "rgba(var(--success-darker)/ <alpha-value>)",
 
-      "error-lighter": "rgba(var(--error-lighter))",
-      error: "rgba(var(--error))",
-      "error-darker": "rgba(var(--error-darker))",
+      "error-lighter": "rgba(var(--error-lighter)/ <alpha-value>)",
+      error: "rgba(var(--error)/ <alpha-value>)",
+      "error-darker": "rgba(var(--error-darker)/ <alpha-value>)",
 
-      "warning-lighter": "rgba(var(--warning-lighter))",
-      warning: "rgba(var(--warning))",
-      "warning-darker": "rgba(var(--warning-darker))",
+      "warning-lighter": "rgba(var(--warning-lighter)/ <alpha-value>)",
+      warning: "rgba(var(--warning)/ <alpha-value>)",
+      "warning-darker": "rgba(var(--warning-darker)/ <alpha-value>)",
 
-      "forgound-muted": "rgba(var(--forgound-muted))",
-      foreground: "rgba(var(--foreground))",
+      "forgound-muted": "rgba(var(--forgound-muted)/ <alpha-value>)",
+      foreground: "rgba(var(--foreground)/ <alpha-value>)",
 
-      "background-muted": "rgba(var(--background-muted))",
-      background: "rgba(var(--background))",
+      "background-muted": "rgba(var(--background-muted)/ <alpha-value>)",
+      background: "rgba(var(--background)/ <alpha-value>)",
       blur: {
         default: "blur(10px)",
         sm: "blur(4px)",
