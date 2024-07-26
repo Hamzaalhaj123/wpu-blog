@@ -7,26 +7,26 @@
   --background-start: 214 219 220;
   --background-end: 255 255 255;
   /* Primary */
-  --primary-lighter: 62 107 154;
+  --primary-lighter: 151 188 230;
   --primary: 37 92 153;
   --primary-darker: 29 75 122;
   /* Secondary */
-  --secondary-lighter: 255 218 102;
+  --secondary-lighter: 255 236 180;
   --secondary: 255 208 70;
   --secondary-darker: 196 180 0;
 
   /* Success */
-  --success-lighter: 0 255 0;
+  --success-lighter: 122 255 224;
   --success: 0 178 137;
   --success-darker: 0 102 0;
 
   /* Error */
-  --error-lighter: 255 102 102;
+  --error-lighter: 254 173 173;
   --error: 255 51 51;
   --error-darker: 204 0 0;
 
   /* Warning */
-  --warning-lighter: 255 153 0;
+  --warning-lighter: 251 216 157;
   --warning: 245 158 11;
   --warning-darker: 153 102 0;
 

@@ -27,7 +27,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale}>
-      <body className="">
+      <body className="bg-background text-foreground">
         <NextIntlClientProvider messages={messages}>
           <main className="flex">
             <SideBar />
