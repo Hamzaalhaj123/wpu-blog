@@ -1,10 +1,12 @@
-import { NavBar, SideBar } from "@/app/_components/home";
+import { SideBar } from "@/app/_components/home";
+import { NavBar } from "@/app/_components/home";
 import type { Metadata } from "next";
 import { NextIntlClientProvider, useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Inter } from "next/font/google";
 import React from "react";
 import "./globals.css";
+import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +26,13 @@ export default async function RootLayout({
   children,
   params: { locale },
 }: RootLayoutProps) {
+  const theme = cookies().get("theme");
+
+  console.log(theme?.value);
+
   const messages = await getMessages();
   return (
-    <html lang={locale}>
+    <html lang={locale} className={theme?.value || "dark"}>
       <body className="bg-background text-foreground">
         <NextIntlClientProvider messages={messages}>
           <main className="flex">

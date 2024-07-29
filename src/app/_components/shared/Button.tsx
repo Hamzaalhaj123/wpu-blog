@@ -26,7 +26,7 @@ const buttonVariants = cva(
       variant: {
         default: "shadow-md",
         smooth: "",
-        ghost: "bg-transparent border border-current ",
+        outline: "bg-transparent border border-current ",
       },
       shape: SHAPE,
     },
@@ -60,34 +60,34 @@ const buttonVariants = cva(
         className:
           "bg-warning-lighter text-warning hover:bg-warning-lighter/95",
       },
-      //** GHOST BUTTON */
+      //** outline BUTTON */
       {
         colour: "primary",
-        variant: "ghost",
+        variant: "outline",
         className:
           "text-primary hover:bg-primary-lighter/40 active:bg-primary-lighter/75",
       },
       {
         colour: "secondary",
-        variant: "ghost",
+        variant: "outline",
         className:
           "text-secondary hover:bg-secondary-lighter/40 active:bg-secondary-lighter/75",
       },
       {
         colour: "success",
-        variant: "ghost",
+        variant: "outline",
         className:
           " text-success hover:bg-success-lighter/40 active:bg-success-lighter/75",
       },
       {
         colour: "error",
-        variant: "ghost",
+        variant: "outline",
         className:
           "text-error hover:bg-error-lighter/40 active:bg-error-lighter/75",
       },
       {
         colour: "warning",
-        variant: "ghost",
+        variant: "outline",
         className:
           "text-warning hover:bg-warning-lighter/40 active:bg-warning-lighter/75",
       },
