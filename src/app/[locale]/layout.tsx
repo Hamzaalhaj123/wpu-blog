@@ -1,11 +1,11 @@
-import { SideBar } from "@/app/_components/home";
-import { NavBar } from "@/app/_components/home";
+import { NavBar, SideBar } from "@/app/_components/home";
 import type { Metadata } from "next";
+import { CookiesProvider } from "next-client-cookies/server";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { cookies } from "next/headers";
 import React from "react";
 import "./globals.css";
-import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,21 +25,21 @@ export default async function RootLayout({
 }: RootLayoutProps) {
   const theme = cookies().get("theme");
 
-  console.log(theme?.value);
-
   const messages = await getMessages();
 
   return (
     <html lang={locale} className={theme?.value || "dark"}>
       <body className="bg-background-darker text-foreground">
         <NextIntlClientProvider messages={messages}>
-          <main className="flex">
-            <SideBar />
-            <div className="flex-1">
-              <NavBar />
-              {children}
-            </div>
-          </main>
+          <CookiesProvider>
+            <main className="flex">
+              <SideBar />
+              <div className="flex-1">
+                <NavBar />
+                {children}
+              </div>
+            </main>
+          </CookiesProvider>
         </NextIntlClientProvider>
       </body>
     </html>
