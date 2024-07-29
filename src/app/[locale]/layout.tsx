@@ -1,12 +1,9 @@
 import { NavBar, SideBar } from "@/app/_components/home";
 import type { Metadata } from "next";
-import { NextIntlClientProvider, useTranslations } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Inter } from "next/font/google";
 import React from "react";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,9 +22,10 @@ export default async function RootLayout({
   params: { locale },
 }: RootLayoutProps) {
   const messages = await getMessages();
+
   return (
     <html lang={locale}>
-      <body className="bg-background text-foreground">
+      <body className="bg-background-darker text-foreground">
         <NextIntlClientProvider messages={messages}>
           <main className="flex">
             <SideBar />

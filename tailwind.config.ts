@@ -31,8 +31,9 @@ const config: Config = {
       "forgound-muted": "rgba(var(--forgound-muted)/ <alpha-value>)",
       foreground: "rgba(var(--foreground)/ <alpha-value>)",
 
-      "background-muted": "rgba(var(--background-muted)/ <alpha-value>)",
+      "background-lighter": "rgba(var(--background-lighter)/ <alpha-value>)",
       background: "rgba(var(--background)/ <alpha-value>)",
+      "background-darker": "rgba(var(--background-darker)/ <alpha-value>)",
       blur: {
         default: "blur(10px)",
         sm: "blur(4px)",

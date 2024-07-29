@@ -35,8 +35,9 @@
   --foreground: 255 255 255;
 
   /* Background */
-  --background-muted: 26 26 26;
-  --background: 15 15 15;
+  --background-lighter: 248 248 248;
+  --background: 242 242 242;
+  --background-darker: 217 217 217;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,8 +52,9 @@
     --error-darker: 204 0 0;
     --warning-darker: 153 102 0;
 
-    --background-muted: 26 26 26;
-    --background: 15 15 15;
+    --background-lighter: 15 15 15;
+    --background: 10 10 10;
+    --background-darker: 5 5 5;
 
     --foreground-muted: 179 179 179;
     --foreground: 255 255 255;
