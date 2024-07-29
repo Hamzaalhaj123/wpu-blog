@@ -8,7 +8,7 @@ export default function Blog() {
     <div className="bg-[#ffff]">
       <Image src={ThumbNail} alt="PlaceHolder" />
       <div className="flex justify-center">
-        <Button variant="ghost" shape={"circle"} colour={"warning"}>
+        <Button>
           <CameraIcon size={24} />
         </Button>
       </div>
