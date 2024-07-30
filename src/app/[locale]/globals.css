@@ -33,7 +33,9 @@
     --foreground: 255 255 255;
 
     /* Background */
+    --background-lighter: 245 245 245;
     --background: 229 229 229;
+    --background-darker: 200 200 200;
   }
 
   .dark {
