@@ -6,6 +6,7 @@ import { getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
 import React from "react";
 import "./globals.css";
+import { Theme } from "@/types/theme";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,12 +24,12 @@ export default async function RootLayout({
   children,
   params: { locale },
 }: RootLayoutProps) {
-  const theme = cookies().get("theme");
+  const theme = cookies().get("theme")?.value as Theme;
 
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={theme?.value || "dark"}>
+    <html lang={locale} className={theme}>
       <body className="bg-background-darker text-foreground">
         <NextIntlClientProvider messages={messages}>
           <CookiesProvider>
