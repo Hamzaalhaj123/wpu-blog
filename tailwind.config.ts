@@ -28,7 +28,7 @@ const config: Config = {
       warning: "rgba(var(--warning)/ <alpha-value>)",
       "warning-darker": "rgba(var(--warning-darker)/ <alpha-value>)",
 
-      "forgound-muted": "rgba(var(--forgound-muted)/ <alpha-value>)",
+      "foreground-muted": "rgba(var(--foreground-muted)/ <alpha-value>)",
       foreground: "rgba(var(--foreground)/ <alpha-value>)",
 
       "background-lighter": "rgba(var(--background-lighter)/ <alpha-value>)",
@@ -116,7 +116,7 @@ const config: Config = {
       // warning: "#f59e0b",
       // "warning-darker": "#996600",
 
-      // "forgound-muted": "#b3b3b3",
+      // "foreground-muted": "#b3b3b3",
       // foreground: "#ffffff",
 
       // "background-muted": "#1a1a1a",
