@@ -1,17 +1,21 @@
+"use client";
+
 import { Theme } from "@/types/theme";
 import { useCookies } from "next-client-cookies";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useTheme() {
-  const prefferedTheme =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
   const cookies = useCookies();
-  const [theme, setTheme] = useState<Theme>(
-    (cookies.get("theme") || prefferedTheme) as Theme,
-  );
+  const [theme, setTheme] = useState<Theme>();
+  useEffect(() => {
+    const prefferedTheme =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    setTheme((cookies.get("theme") || prefferedTheme) as Theme);
+  }, []);
+
   const handleSwitch = () => {
     if (theme === "light") {
       document.documentElement.classList.add("dark");

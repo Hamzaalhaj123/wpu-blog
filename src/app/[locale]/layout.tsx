@@ -1,4 +1,6 @@
-import { NavBar, SideBar } from "@/app/_components/home";
+import { NavBar } from "@/app/_components/home/NavBar";
+import { SideBar } from "@/app/_components/home/SideBar";
+import { Theme } from "@/types/theme";
 import type { Metadata } from "next";
 import { CookiesProvider } from "next-client-cookies/server";
 import { NextIntlClientProvider } from "next-intl";
@@ -6,7 +8,6 @@ import { getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
 import React from "react";
 import "./globals.css";
-import { Theme } from "@/types/theme";
 
 export const metadata: Metadata = {
   title: "Create Next App",
