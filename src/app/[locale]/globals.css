@@ -7,11 +7,11 @@
     :root {
       /* Primary */
       --primary-lighter: 151 188 230;
-      --primary: 37 92 153;
+      --primary: 30 100 255;
       --primary-darker: 29 75 122;
       /* Secondary */
       --secondary-lighter: 255 236 180;
-      --secondary: 255 208 70;
+      --secondary: 244 194 68;
       --secondary-darker: 196 180 0;
 
       /* Success */
@@ -31,12 +31,12 @@
 
       /* Foreground */
       --foreground-muted: 179 179 179;
-      --foreground: 255 255 255;
+      --foreground: 15 30 38;
 
       /* Background */
-      --background-lighter: 245 245 245;
-      --background: 229 229 229;
-      --background-darker: 200 200 200;
+      --background-lighter: 255 255 255;
+      --background: 247 248 252;
+      --background-darker: 237 239 248;
     }
   }
 
@@ -44,12 +44,12 @@
     :root {
       /* Primary */
       --primary-lighter: 151 188 230;
-      --primary: 37 92 153;
+      --primary: 30 100 255;
       --primary-darker: 29 75 122;
 
       /* Secondary */
       --secondary-lighter: 255 236 180;
-      --secondary: 255 208 70;
+      --secondary: 244 194 68;
       --secondary-darker: 196 180 0;
 
       /* Success */
@@ -67,9 +67,9 @@
       --warning: 245 158 11;
       --warning-darker: 153 102 0;
 
-      --background-lighter: 15 15 15;
+      --background-lighter: 26 26 26;
       --background: 10 10 10;
-      --background-darker: 5 5 5;
+      --background-darker: 0 0 0;
 
       --foreground-muted: 179 179 179;
       --foreground: 255 255 255;
@@ -79,12 +79,12 @@
   .dark {
     /* Primary */
     --primary-lighter: 151 188 230;
-    --primary: 37 92 153;
+    --primary: 30 100 255;
     --primary-darker: 29 75 122;
 
     /* Secondary */
     --secondary-lighter: 255 236 180;
-    --secondary: 255 208 70;
+    --secondary: 244 194 68;
     --secondary-darker: 196 180 0;
 
     /* Success */
@@ -102,9 +102,9 @@
     --warning: 245 158 11;
     --warning-darker: 153 102 0;
 
-    --background-lighter: 15 15 15;
+    --background-lighter: 26 26 26;
     --background: 10 10 10;
-    --background-darker: 5 5 5;
+    --background-darker: 0 0 0;
 
     --foreground-muted: 179 179 179;
     --foreground: 255 255 255;
@@ -113,11 +113,11 @@
   .light {
     /* Primary */
     --primary-lighter: 151 188 230;
-    --primary: 37 92 153;
+    --primary: 30 100 255;
     --primary-darker: 29 75 122;
     /* Secondary */
     --secondary-lighter: 255 236 180;
-    --secondary: 255 208 70;
+    --secondary: 244 194 68;
     --secondary-darker: 196 180 0;
 
     /* Success */
@@ -137,12 +137,12 @@
 
     /* Foreground */
     --foreground-muted: 179 179 179;
-    --foreground: 255 255 255;
+    --foreground: 15 30 38;
 
     /* Background */
-    --background-lighter: 245 245 245;
-    --background: 229 229 229;
-    --background-darker: 200 200 200;
+    --background-lighter: 255 255 255;
+    --background: 247 248 252;
+    --background-darker: 237 239 248;
   }
 }
 

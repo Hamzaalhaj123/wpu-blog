@@ -1,8 +1,7 @@
-import Image from "next/image";
-import React from "react";
-import ThumbNail from "/public/imageThumbnail.webp";
 import { Button } from "@/app/_components/shared/Button";
 import { CameraIcon } from "lucide-react";
+import Image from "next/image";
+import ThumbNail from "/public/imageThumbnail.webp";
 export default function Blog() {
   return (
     <div className="bg-[#ffff]">
