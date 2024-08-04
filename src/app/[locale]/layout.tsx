@@ -6,6 +6,9 @@ import { getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
 import React from "react";
 import "./globals.css";
+import NavBar from "@/app/_components/home/NavBar/NavBar";
+import RadixDirectionProvider from "@/app/_components/shared/RadixDirectionProvider";
+import { getLangDir } from "rtl-detect";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,12 +30,18 @@ export default async function RootLayout({
 
   const messages = await getMessages();
 
+  const dir = getLangDir(locale);
+
   return (
-    <html lang={locale} className={theme}>
+    <html dir={dir} lang={locale} className={theme ?? ""}>
       <body className="bg-background-darker text-foreground">
-        <NextIntlClientProvider messages={messages}>
-          <CookiesProvider>Hello world</CookiesProvider>
-        </NextIntlClientProvider>
+        <RadixDirectionProvider dir={dir}>
+          <NextIntlClientProvider messages={messages}>
+            <CookiesProvider>
+              <NavBar />
+            </CookiesProvider>
+          </NextIntlClientProvider>
+        </RadixDirectionProvider>
       </body>
     </html>
   );

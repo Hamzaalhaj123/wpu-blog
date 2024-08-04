@@ -10,5 +10,10 @@
   },
   "HOMEPAGE": {
     "title": "Homepage"
+  },
+  "THEMESWITCHER": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
   }
 }

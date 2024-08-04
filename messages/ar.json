@@ -11,5 +11,10 @@
 
   "HOMEPAGE": {
     "title": "الصفحة الرئيسية"
+  },
+  "THEMESWITCHER": {
+    "dark": "داكن",
+    "light": "فاتح",
+    "system": "النظام"
   }
 }
