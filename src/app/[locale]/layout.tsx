@@ -1,4 +1,4 @@
-import { NavBar, SideBar } from "@/app/_components/home";
+import { Theme } from "@/types/theme";
 import type { Metadata } from "next";
 import { CookiesProvider } from "next-client-cookies/server";
 import { NextIntlClientProvider } from "next-intl";
@@ -6,7 +6,6 @@ import { getMessages } from "next-intl/server";
 import { cookies } from "next/headers";
 import React from "react";
 import "./globals.css";
-import { Theme } from "@/types/theme";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,15 +31,7 @@ export default async function RootLayout({
     <html lang={locale} className={theme}>
       <body className="bg-background-darker text-foreground">
         <NextIntlClientProvider messages={messages}>
-          <CookiesProvider>
-            <main className="flex">
-              <SideBar />
-              <div className="flex-1">
-                <NavBar />
-                {children}
-              </div>
-            </main>
-          </CookiesProvider>
+          <CookiesProvider>Hello world</CookiesProvider>
         </NextIntlClientProvider>
       </body>
     </html>
