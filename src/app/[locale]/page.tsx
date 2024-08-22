@@ -16,7 +16,7 @@ export async function generateMetadata({
 export default function Home() {
   const t = useTranslations("HOMEPAGE");
   return (
-    <div className="p-8">
+    <div>
       <BlogsFeed />
     </div>
   );

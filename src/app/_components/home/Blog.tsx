@@ -16,13 +16,13 @@ export default function Blog({
   readingTime,
 }: BlogProps) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl bg-background-lighter">
+    <article className="flex flex-col overflow-hidden rounded-xl bg-background-lighter">
       <Link href={"#"}>
         <Image src={image} alt={title} width={600} height={400} />
       </Link>
 
       <div className="flex flex-1 flex-col p-4">
-        <p className="mb-3 text-2xl font-bold">{title}</p>
+        <h2 className="mb-3 text-2xl font-bold">{title}</h2>
         {/* <div className="flex gap-2">
           <StarIcon /> <StarIcon />
           <StarIcon />
@@ -46,15 +46,17 @@ export default function Blog({
             <div className="font-medium text-foreground">{user.name}</div>
             <time className="text-muted-foreground"> {createdAt}</time>
           </div>
-          <Button className="ms-auto gap-2">
-            <p>Read</p>
-            <NextArrow
-              size={20}
-              className="transition-transform group-hover:translate-x-2"
-            />
+          <Button className="ms-auto gap-2" asChild>
+            <Link href={"#"}>
+              <p>Read</p>
+              <NextArrow
+                size={20}
+                className="transition-transform group-hover:translate-x-2"
+              />
+            </Link>
           </Button>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
