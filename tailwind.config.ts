@@ -87,16 +87,7 @@ const config: Config = {
         lg: "4px",
         xl: "6px",
       },
-      screens: {
-        xs: "480px",
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1536px",
-        "3xl": "1920px",
-        "4xl": "2560px",
-      },
+
       // "primary-lighter": "#3e6b9a",
       // primary: "#255c99",
       // "primary-darker": "#1d4b7a",
@@ -129,8 +120,12 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
+      screens: {
+        "3xl": "1920px",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-rtl"), require("tailwindcss-animate")],
 };
 export default config;

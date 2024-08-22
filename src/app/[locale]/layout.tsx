@@ -38,6 +38,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <CookiesProvider>
               <NavBar />
+              {children}
             </CookiesProvider>
           </NextIntlClientProvider>
         </RadixDirectionProvider>

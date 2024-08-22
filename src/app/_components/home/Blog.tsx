@@ -1,15 +1,59 @@
 import { Button } from "@/app/_components/shared/Button";
-import { CameraIcon } from "lucide-react";
+import { CameraIcon, ChevronRightIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import ThumbNail from "/public/imageThumbnail.webp";
-export default function Blog() {
+import { BlogProps } from "@/mockData/blogs";
+import { Link } from "@/navigation";
+import NextArrow from "../shared/NextArrow";
+
+export default function Blog({
+  user,
+  title,
+  image,
+  description,
+  createdAt,
+  rating,
+  readingTime,
+}: BlogProps) {
   return (
-    <div className="bg-[#ffff]">
-      <Image src={ThumbNail} alt="PlaceHolder" />
-      <div className="flex justify-center">
-        <Button>
-          <CameraIcon size={24} />
-        </Button>
+    <div className="flex flex-col overflow-hidden rounded-xl bg-background-lighter">
+      <Link href={"#"}>
+        <Image src={image} alt={title} width={600} height={400} />
+      </Link>
+
+      <div className="flex flex-1 flex-col p-4">
+        <p className="mb-3 text-2xl font-bold">{title}</p>
+        {/* <div className="flex gap-2">
+          <StarIcon /> <StarIcon />
+          <StarIcon />
+          <StarIcon />
+          <StarIcon />
+        </div>  TODO: Add star rating */}
+        <p className="text-muted-foreground mb-3">{description}</p>
+        <div className="mt-auto flex justify-between pt-3 text-lg">
+          <p>{readingTime}</p>
+          <p className="text-secondary">{rating}</p>
+        </div>
+        <div className="flex items-center gap-2 pt-2">
+          <Image
+            src={user.image}
+            alt={user.name}
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <div>
+            <div className="font-medium text-foreground">{user.name}</div>
+            <time className="text-muted-foreground"> {createdAt}</time>
+          </div>
+          <Button className="ms-auto gap-2">
+            <p>Read</p>
+            <NextArrow
+              size={20}
+              className="transition-transform group-hover:translate-x-2"
+            />
+          </Button>
+        </div>
       </div>
     </div>
   );
