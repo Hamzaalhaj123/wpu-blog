@@ -15,6 +15,7 @@
   "THEMESWITCHER": {
     "dark": "داكن",
     "light": "فاتح",
-    "system": "النظام"
+    "system": "النظام",
+    "select_preffered_theme": "اختر الثيم المفضل"
   }
 }

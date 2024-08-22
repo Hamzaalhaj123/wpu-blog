@@ -1,14 +1,13 @@
-import { Theme } from "@/types/theme";
+import NavBar from "@/app/_components/home/NavBar/NavBar";
+import RadixDirectionProvider from "@/app/_components/shared/RadixDirectionProvider";
+import getTheme from "@/lib/getTheme";
 import type { Metadata } from "next";
 import { CookiesProvider } from "next-client-cookies/server";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { cookies } from "next/headers";
 import React from "react";
-import "./globals.css";
-import NavBar from "@/app/_components/home/NavBar/NavBar";
-import RadixDirectionProvider from "@/app/_components/shared/RadixDirectionProvider";
 import { getLangDir } from "rtl-detect";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +25,7 @@ export default async function RootLayout({
   children,
   params: { locale },
 }: RootLayoutProps) {
-  const theme = cookies().get("theme")?.value as Theme;
+  const theme = getTheme();
 
   const messages = await getMessages();
 

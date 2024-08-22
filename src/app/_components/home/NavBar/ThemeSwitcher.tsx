@@ -1,36 +1,35 @@
 "use client";
 
-import { Button } from "@/app/_components/shared/Button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/app/_components/shared/Dropdown";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/app/_components/shared/Select";
 import useTheme from "@/app/_hooks/shared/useTheme";
+import { Theme } from "@/types/theme";
 import { useTranslations } from "next-intl";
 
 export default function ThemeSwitcher() {
   const t = useTranslations("THEMESWITCHER");
-
   const [theme, handleSwitch] = useTheme();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button>{t(theme ?? "system")}</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem onSelect={() => handleSwitch("dark")}>
-          {t("dark")}
-        </DropdownMenuItem>
-        <DropdownMenuItem onSelect={() => handleSwitch("light")}>
-          {t("light")}
-        </DropdownMenuItem>
-        <DropdownMenuItem onSelect={() => handleSwitch(null)}>
-          {t("system")}
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <>
+      <Select
+        value={theme}
+        onValueChange={(theme) => handleSwitch((theme ?? undefined) as Theme)}
+      >
+        <SelectTrigger>
+          <SelectValue placeholder="placeholder" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="dark">{t("dark")}</SelectItem>
+          <SelectItem value="light">{t("light")}</SelectItem>
+          <SelectItem value="system">{t("system")}</SelectItem>
+        </SelectContent>
+      </Select>
+    </>
   );
 }

@@ -30,7 +30,7 @@
       --warning-darker: 153 102 0;
 
       /* Foreground */
-      --foreground-muted: 179 179 179;
+      --muted-foreground: 179 179 179;
       --foreground: 15 30 38;
 
       /* Background */
@@ -71,7 +71,7 @@
       --background: 10 10 10;
       --background-darker: 0 0 0;
 
-      --foreground-muted: 179 179 179;
+      --muted-foreground: 179 179 179;
       --foreground: 255 255 255;
     }
   }
@@ -106,7 +106,7 @@
     --background: 10 10 10;
     --background-darker: 0 0 0;
 
-    --foreground-muted: 179 179 179;
+    --muted-foreground: 179 179 179;
     --foreground: 255 255 255;
   }
 
@@ -136,7 +136,7 @@
     --warning-darker: 153 102 0;
 
     /* Foreground */
-    --foreground-muted: 179 179 179;
+    --muted-foreground: 179 179 179;
     --foreground: 15 30 38;
 
     /* Background */

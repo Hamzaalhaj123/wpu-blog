@@ -1,3 +1,5 @@
+"use client"
+
 import { Theme } from "@/types/theme";
 import { useCookies } from "next-client-cookies";
 import { useState } from "react";

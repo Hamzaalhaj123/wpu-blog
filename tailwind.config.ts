@@ -28,12 +28,13 @@ const config: Config = {
       warning: "rgba(var(--warning)/ <alpha-value>)",
       "warning-darker": "rgba(var(--warning-darker)/ <alpha-value>)",
 
-      "foreground-muted": "rgba(var(--foreground-muted)/ <alpha-value>)",
+      "muted-foreground": "rgba(var(--muted-foreground)/ <alpha-value>)",
       foreground: "rgba(var(--foreground)/ <alpha-value>)",
 
       "background-lighter": "rgba(var(--background-lighter)/ <alpha-value>)",
       background: "rgba(var(--background)/ <alpha-value>)",
       "background-darker": "rgba(var(--background-darker)/ <alpha-value>)",
+      transparent: "transparent",
       blur: {
         default: "blur(10px)",
         sm: "blur(4px)",
@@ -116,7 +117,7 @@ const config: Config = {
       // warning: "#f59e0b",
       // "warning-darker": "#996600",
 
-      // "foreground-muted": "#b3b3b3",
+      // "muted-foreground": "#b3b3b3",
       // foreground: "#ffffff",
 
       // "background-muted": "#1a1a1a",
