@@ -22,7 +22,7 @@ export default function ThemeSwitcher() {
         onValueChange={(theme) => handleSwitch((theme ?? undefined) as Theme)}
       >
         <SelectTrigger>
-          <SelectValue>{t(theme || "system")}</SelectValue>
+          <SelectValue placeholder={t("system")}>{t(theme || "system")}</SelectValue>
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="dark">{t("dark")}</SelectItem>
