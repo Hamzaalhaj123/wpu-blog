@@ -49,7 +49,7 @@ export default function Blog({
               <p>Read</p>
               <DirectionRespectedArrow
                 size={20}
-                className="transition-transform group-hover:translate-x-2"
+                className="group-hover:translate-s-2 transition-transform"
               />
             </Link>
           </Button>

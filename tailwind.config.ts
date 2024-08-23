@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import translateUtilities from "./tailwindPlugins/translateUtilities";
 
 const config: Config = {
   content: [
@@ -126,6 +127,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-rtl"), require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-rtl"),
+    require("tailwindcss-animate"),
+    translateUtilities,
+  ],
 };
 export default config;
