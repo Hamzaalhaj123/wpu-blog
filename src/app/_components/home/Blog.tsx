@@ -27,7 +27,7 @@ export default function Blog({
           <StarIcon />
           <StarIcon />
         </div>  TODO: Add star rating */}
-        <p className="mb-3 text-muted-foreground">{description}</p>
+        <p className="text-muted-foreground mb-3">{description}</p>
         <div className="mt-auto flex justify-between pt-3 text-lg">
           <p>{readingTime}</p>
           <p className="text-secondary">{rating}</p>
