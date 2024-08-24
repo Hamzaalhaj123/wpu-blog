@@ -36,6 +36,8 @@ const config: Config = {
       background: "rgba(var(--background)/ <alpha-value>)",
       "background-darker": "rgba(var(--background-darker)/ <alpha-value>)",
       transparent: "transparent",
+      black: "#000000",
+      white: "#ffffff",
       blur: {
         default: "blur(10px)",
         sm: "blur(4px)",

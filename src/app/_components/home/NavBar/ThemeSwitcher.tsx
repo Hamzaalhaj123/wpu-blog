@@ -16,7 +16,7 @@ export default function ThemeSwitcher() {
   const [theme, handleSwitch] = useTheme();
 
   return (
-    <>
+    <div>
       <Select
         value={theme}
         onValueChange={(theme) => handleSwitch((theme ?? undefined) as Theme)}
@@ -32,6 +32,6 @@ export default function ThemeSwitcher() {
           <SelectItem value="system">{t("system")}</SelectItem>
         </SelectContent>
       </Select>
-    </>
+    </div>
   );
 }
