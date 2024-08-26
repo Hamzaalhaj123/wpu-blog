@@ -1,7 +1,7 @@
 "use client";
-import Button from "@/app/_components/shared/Button";
-import { Checkbox } from "@/app/_components/shared/CheckBox";
-import { Input } from "@/app/_components/shared/Input";
+import Button from "@/app/shared/ui/Button";
+import { Checkbox } from "@/app/shared/ui/CheckBox";
+import { Input } from "@/app/shared/ui/Input";
 
 export default function SignInPage() {
   return (

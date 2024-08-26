@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import cn from "@/lib/cn";
 import { ChevronLeftIcon, ChevronRightIcon, LucideProps } from "lucide-react";
 
 type DirectionRespectedArrowProps = LucideProps & {

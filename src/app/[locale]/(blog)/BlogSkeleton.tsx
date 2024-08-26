@@ -1,4 +1,4 @@
-import { Skeleton } from "../shared/Skeleton";
+import { Skeleton } from "@/app/shared/ui/Skeleton";
 
 export default function BlogSkeleton() {
   return (

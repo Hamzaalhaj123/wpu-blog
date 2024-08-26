@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import cn from "@/lib/cn";
 
 function Skeleton({
   className,
@@ -6,7 +6,10 @@ function Skeleton({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("bg-muted-foreground/70 animate-pulse rounded-md ", className)}
+      className={cn(
+        "animate-pulse rounded-md bg-muted-foreground/70",
+        className,
+      )}
       {...props}
     />
   );

@@ -1,7 +1,4 @@
-import React, { Suspense } from "react";
-import { Blog, BlogSkeleton } from "../_components/home";
-import { blogs } from "@/mockData/blogs";
-import { Skeleton } from "../_components/shared/Skeleton";
+import BlogSkeleton from "@/app/[locale]/(blog)/BlogSkeleton";
 
 export default function loading() {
   return (

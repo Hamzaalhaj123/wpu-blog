@@ -1,5 +1,4 @@
-import NavBar from "@/app/_components/home/NavBar/NavBar";
-import RadixDirectionProvider from "@/app/_components/shared/RadixDirectionProvider";
+import RadixDirectionProvider from "@/app/[locale]/_wrappers/RadixDirectionProvider";
 import getTheme from "@/lib/getTheme";
 import type { Metadata } from "next";
 import { CookiesProvider } from "next-client-cookies/server";
@@ -7,6 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import React from "react";
 import { getLangDir } from "rtl-detect";
+import NavBar from "./_components/NavBar";
 import "./globals.css";
 
 export const metadata: Metadata = {

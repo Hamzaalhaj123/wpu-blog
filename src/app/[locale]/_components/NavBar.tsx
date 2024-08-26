@@ -1,7 +1,7 @@
-import ThemeSwitcher from "@/app/_components/home/NavBar/ThemeSwitcher";
+import ThemeSwitcher from "@/app/[locale]/_components/ThemeSwitcher";
+import ActiveLink from "@/app/shared/ui/ActiveLink";
 import routes from "@/config/routes";
-import { Link } from "@/navigation";
-import ActiveLink from "../../shared/ActiveLink";
+import { Link } from "@/lib/next-intl/navigation";
 
 export default function NavBar() {
   return (

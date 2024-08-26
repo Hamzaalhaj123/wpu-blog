@@ -1,7 +1,7 @@
-import Button from "@/app/_components/shared/Button";
-import DirectionRespectedArrow from "@/app/_components/shared/DirectionRespectedArrow";
-import { BlogProps } from "@/mockData/blogs";
-import { Link } from "@/navigation";
+import { BlogProps } from "@/app/[locale]/(blog)/mock/blogs";
+import Button from "@/app/shared/ui/Button";
+import DirectionRespectedArrow from "@/app/shared/ui/DirectionRespectedArrow";
+import { Link } from "@/lib/next-intl/navigation";
 import Image from "next/image";
 
 export default function Blog({
@@ -27,7 +27,7 @@ export default function Blog({
           <StarIcon />
           <StarIcon />
         </div>  TODO: Add star rating */}
-        <p className="text-muted-foreground mb-3">{description}</p>
+        <p className="mb-3 text-muted-foreground">{description}</p>
         <div className="mt-auto flex justify-between pt-3 text-lg">
           <p>{readingTime}</p>
           <p className="text-secondary">{rating}</p>
@@ -49,7 +49,7 @@ export default function Blog({
               <p>Read</p>
               <DirectionRespectedArrow
                 size={20}
-                className="group-hover:translate-s-2 transition-transform"
+                className="transition-transform group-hover:translate-s-2"
               />
             </Link>
           </Button>
