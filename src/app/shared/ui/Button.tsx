@@ -6,7 +6,7 @@ import cn from "@/lib/cn";
 
 const createShape = (base: string) => ({
   default: base,
-  circle: "p-3.5 rounded-full",
+  circle: "p-2 rounded-full",
   pill: `${base} rounded-full`,
 });
 

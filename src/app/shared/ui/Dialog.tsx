@@ -1,12 +1,67 @@
 "use client";
 
+import cn from "@/lib/cn";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
+import { usePathname, useSearchParams } from "next/navigation";
 import * as React from "react";
 
-import cn from "@/lib/cn";
+const Dialog = ({
+  param,
+  open: openProp,
+  onOpenChange: onOpenChangeProp,
+  defaultOpen,
+  children,
+  ...props
+}: DialogPrimitive.DialogProps & { param?: string }) => {
+  const [open, setOpen] = React.useState(openProp || defaultOpen);
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
 
-const Dialog = DialogPrimitive.Root;
+  React.useEffect(() => {
+    if (!param) return;
+    if (searchParams.get(param) === "open") {
+      setOpen(true);
+      onOpenChangeProp?.(true);
+    } else {
+      setOpen(false);
+      onOpenChangeProp?.(false);
+    }
+  }, [searchParams, param, defaultOpen]);
+
+  React.useEffect(() => {
+    if (param && defaultOpen)
+      history.replaceState(null, "", `${pathname}?${param}=open`);
+  }, [defaultOpen, param]);
+
+  const handleOpenChange = React.useCallback((open: boolean) => {
+    if (param) {
+      if (open) {
+        history.pushState({ [param]: "open" }, "", `${pathname}?${param}=open`);
+      } else {
+        if (history.state[param] === "open") {
+          history.go(-1);
+        } else {
+          const historyState = { [param]: "closed" };
+          history.replaceState(historyState, "", pathname);
+        }
+      }
+    } else {
+      setOpen(open);
+      onOpenChangeProp?.(open);
+    }
+  }, []);
+
+  return (
+    <DialogPrimitive.Root
+      open={open}
+      onOpenChange={handleOpenChange}
+      {...props}
+    >
+      {children}
+    </DialogPrimitive.Root>
+  );
+};
 
 const DialogTrigger = DialogPrimitive.Trigger;
 
@@ -21,7 +76,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 grid place-items-center bg-black/80 pt-12 duration-1000 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 md:py-10",
       className,
     )}
     {...props}
@@ -31,24 +86,31 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    overlayProps?: DialogPrimitive.DialogOverlayProps;
+    header?: React.ReactNode;
+    footer?: React.ReactNode;
+  }
+>(({ className, header, footer, children, overlayProps, ...props }, ref) => (
   <DialogPortal>
-    <DialogOverlay />
-    <DialogPrimitive.Content
-      ref={ref}
-      className={cn(
-        "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
-        className,
-      )}
-      {...props}
-    >
-      {children}
-      <DialogPrimitive.Close className="focus:ring-ring data-[state=open]:bg-accent absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:text-muted-foreground">
-        <X className="h-4 w-4" />
-        <span className="sr-only">Close</span>
-      </DialogPrimitive.Close>
-    </DialogPrimitive.Content>
+    <DialogOverlay {...overlayProps}>
+      <DialogPrimitive.Content
+        ref={ref}
+        className={cn(
+          "relative flex h-full w-full flex-col rounded-t-lg border border-muted-foreground/25 bg-background shadow-lg duration-1000 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-bottom-[40%] data-[state=open]:slide-in-from-bottom-[40%] sm:rounded-lg md:h-auto md:max-w-lg",
+          className,
+        )}
+        {...props}
+      >
+        {header}
+        <div className="flex-1 overflow-y-auto p-6">{children}</div>
+        {footer}
+        <DialogPrimitive.Close className="focus:ring-ring absolute end-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:text-muted-foreground">
+          <X className="h-4 w-4" />
+          <span className="sr-only">Close</span>
+        </DialogPrimitive.Close>
+      </DialogPrimitive.Content>
+    </DialogOverlay>
   </DialogPortal>
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
@@ -59,7 +121,7 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col space-y-1.5 text-center sm:text-left",
+      "flex flex-col space-y-1.5 border-b border-b-foreground/25 p-6 pb-3 text-center sm:text-start",
       className,
     )}
     {...props}
@@ -73,7 +135,7 @@ const DialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      "flex flex-col-reverse p-6 sm:flex-row sm:justify-end sm:gap-2",
       className,
     )}
     {...props}
