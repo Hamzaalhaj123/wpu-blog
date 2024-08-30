@@ -1,21 +1,8 @@
-"use client";
-
 import { BlogProps } from "@/app/[locale]/(blog)/mock/blogs";
 import Button from "@/app/shared/ui/Button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/app/shared/ui/Dialog";
 import DirectionRespectedArrow from "@/app/shared/ui/DirectionRespectedArrow";
 import { Link } from "@/lib/next-intl/navigation";
-import { ShareIcon } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function Blog({
   user,
@@ -26,38 +13,12 @@ export default function Blog({
   rating,
   readingTime,
 }: BlogProps) {
-  const [open, setOpen] = useState(false);
   return (
     <article className="relative flex flex-col overflow-hidden rounded-xl bg-background-lighter">
       <Link href={"#"}>
         <Image src={image} alt={title} width={600} height={400} />
       </Link>
-      <Dialog param={title}>
-        <DialogTrigger asChild>
-          <Button
-            variant="outline"
-            shape="circle"
-            colour="transparent"
-            className="absolute start-4 top-4"
-          >
-            <ShareIcon size={16} />
-          </Button>
-        </DialogTrigger>
-        <DialogContent
-          header={
-            <DialogHeader>
-              <DialogTitle>Title</DialogTitle>
-              <DialogDescription>Description</DialogDescription>
-            </DialogHeader>
-          }
-          footer={<DialogFooter>Footer</DialogFooter>}
-        >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita
-          enim tempora praesentium veritatis asperiores in aut, voluptas laborum
-          nobis officiis magni repudiandae reiciendis dolor ex nostrum maiores
-          ullam? Error, voluptates.
-        </DialogContent>
-      </Dialog>
+
       <div className="flex flex-1 flex-col p-4">
         <h2 className="mb-3 text-2xl font-bold">{title}</h2>
         {/* TODO: Add star rating */}

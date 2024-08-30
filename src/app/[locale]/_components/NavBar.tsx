@@ -10,12 +10,12 @@ export default function NavBar() {
         <Link href={routes.index} className="text-xl font-bold text-primary">
           Wpu Blog
         </Link>
-        {/* <div className="mx-auto flex items-center gap-4 ps-28">
+        <div className="mx-auto flex items-center gap-4 ps-28">
           <ActiveLink href={routes.index}>Home</ActiveLink>
           <Link href={routes.index}>Home</Link>
           <Link href={routes.about}>About Us</Link>
           <Link href={routes.contact}>Contact Us</Link>
-        </div> */}
+        </div>
         <div>Language Switcher</div>
         <ThemeSwitcher />
       </nav>
