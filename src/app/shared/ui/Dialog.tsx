@@ -27,12 +27,12 @@ const Dialog = ({
       setOpen(false);
       onOpenChangeProp?.(false);
     }
-  }, [searchParams, param, defaultOpen]);
+  }, [searchParams, param, defaultOpen, onOpenChangeProp]);
 
   React.useEffect(() => {
     if (param && defaultOpen)
       history.replaceState(null, "", `${pathname}?${param}=open`);
-  }, [defaultOpen, param]);
+  }, [defaultOpen, param, pathname]);
 
   const handleOpenChange = React.useCallback((open: boolean) => {
     if (param) {
@@ -50,7 +50,7 @@ const Dialog = ({
       setOpen(open);
       onOpenChangeProp?.(open);
     }
-  }, []);
+  }, [param, onOpenChangeProp, pathname]);
 
   return (
     <DialogPrimitive.Root
