@@ -4,8 +4,11 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
 import * as React from "react";
 
-import cn from "@/lib/cn";
-import { ButtonVariants, buttonVariants } from "./Button";
+import cn from "@/utils/cn";
+import {
+  ButtonVariants,
+  buttonVariants,
+} from "../../../components/shared/Button";
 
 const Select = SelectPrimitive.Root;
 

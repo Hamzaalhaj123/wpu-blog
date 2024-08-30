@@ -1,7 +1,7 @@
-import { BlogProps } from "@/app/[locale]/(blog)/mock/blogs";
-import Button from "@/app/shared/ui/Button";
-import DirectionRespectedArrow from "@/app/shared/ui/DirectionRespectedArrow";
+import DirectionRespectedArrow from "@/components/shared/DirectionRespectedArrow";
+import Button from "@/components/shared/Button";
 import { Link } from "@/lib/next-intl/navigation";
+import { BlogProps } from "@/mock/blogs";
 import Image from "next/image";
 
 export default function Blog({

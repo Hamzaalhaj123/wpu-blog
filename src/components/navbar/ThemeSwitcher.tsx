@@ -1,6 +1,6 @@
 "use client";
 
-import useTheme from "@/app/shared/hooks/useTheme";
+import useTheme from "@/app/hooks/shared/useTheme";
 import {
   Select,
   SelectContent,

@@ -1,6 +1,6 @@
 "use client";
 
-import cn from "@/lib/cn";
+import cn from "@/utils/cn";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";

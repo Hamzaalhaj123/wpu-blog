@@ -1,5 +1,5 @@
-import getBlogs from "@/app/[locale]/(blog)/actions/getBlogs";
-import Blog from "@/app/[locale]/(blog)/Blog";
+import getBlogs from "@/actions/blogs/getBlogs";
+import Blog from "@/components/blogs/Blog";
 
 export default async function BlogsFeed() {
   const blogs = await getBlogs();

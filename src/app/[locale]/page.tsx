@@ -1,4 +1,4 @@
-import BlogsFeed from "@/app/[locale]/(blog)/BlogsFeed";
+import BlogsFeed from "@/components/blogs/BlogsFeed";
 import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";

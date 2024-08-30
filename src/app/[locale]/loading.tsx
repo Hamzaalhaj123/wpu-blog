@@ -1,4 +1,4 @@
-import BlogSkeleton from "@/app/[locale]/(blog)/BlogSkeleton";
+import BlogSkeleton from "@/components/blogs/BlogSkeleton";
 
 export default function loading() {
   return (
