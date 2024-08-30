@@ -6,6 +6,9 @@
     },
     "blog": {
       "title": "Blog"
+    },
+    "not_found": {
+      "title": "Page not found"
     }
   },
   "HOMEPAGE": {
@@ -16,5 +19,8 @@
     "light": "Light",
     "system": "System",
     "select_preffered_theme": "Select preffered theme"
+  },
+  "NOT_FOUND": {
+    "title": "Page not found"
   }
 }
