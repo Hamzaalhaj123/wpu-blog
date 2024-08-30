@@ -32,7 +32,7 @@ export default function Blog({
       <Link href={"#"}>
         <Image src={image} alt={title} width={600} height={400} />
       </Link>
-      <Dialog param="share-blog" defaultOpen>
+      <Dialog param={title}>
         <DialogTrigger asChild>
           <Button
             variant="outline"

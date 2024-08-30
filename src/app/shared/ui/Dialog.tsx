@@ -2,7 +2,7 @@
 
 import cn from "@/lib/cn";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import * as React from "react";
 
@@ -34,23 +34,30 @@ const Dialog = ({
       history.replaceState(null, "", `${pathname}?${param}=open`);
   }, [defaultOpen, param, pathname]);
 
-  const handleOpenChange = React.useCallback((open: boolean) => {
-    if (param) {
-      if (open) {
-        history.pushState({ [param]: "open" }, "", `${pathname}?${param}=open`);
-      } else {
-        if (history.state[param] === "open") {
-          history.go(-1);
+  const handleOpenChange = React.useCallback(
+    (open: boolean) => {
+      if (param) {
+        if (open) {
+          history.pushState(
+            { [param]: "open" },
+            "",
+            `${pathname}?${param}=open`,
+          );
         } else {
-          const historyState = { [param]: "closed" };
-          history.replaceState(historyState, "", pathname);
+          if (history.state[param] === "open") {
+            history.go(-1);
+          } else {
+            const historyState = { [param]: "closed" };
+            history.replaceState(historyState, "", pathname);
+          }
         }
+      } else {
+        setOpen(open);
+        onOpenChangeProp?.(open);
       }
-    } else {
-      setOpen(open);
-      onOpenChangeProp?.(open);
-    }
-  }, [param, onOpenChangeProp, pathname]);
+    },
+    [param, onOpenChangeProp, pathname],
+  );
 
   return (
     <DialogPrimitive.Root
@@ -106,7 +113,7 @@ const DialogContent = React.forwardRef<
         <div className="flex-1 overflow-y-auto p-6">{children}</div>
         {footer}
         <DialogPrimitive.Close className="focus:ring-ring absolute end-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:text-muted-foreground">
-          <X className="h-4 w-4" />
+          <XIcon className="size-6 md:size-4" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
