@@ -1,17 +1,16 @@
 "use server";
 import { hash } from "@node-rs/argon2";
-import {
-  signUpSchema,
-  SignUpValues,
-} from "../../../../lib/validations/authValidations";
+
 import { generateId, generateIdFromEntropySize } from "lucia";
-import { db } from "../../../../../db";
-import { users } from "../../../../../db/schema";
-import { lucia } from "@/lib/auth";
+
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { eq, or } from "drizzle-orm";
+import { signUpSchema, SignUpValues } from "@/validators/authvalidator";
+import { db } from "@/db/db";
+import { users } from "@/db/schema";
+import { lucia } from "@/lib/auth";
 
 export async function signUp(credentials: SignUpValues) {
   let isError = false;

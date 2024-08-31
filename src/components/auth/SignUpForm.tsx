@@ -1,8 +1,7 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { signUp } from "@/actions/auth/signup";
+import Button from "@/components/shared/Button";
 import {
   Form,
   FormControl,
@@ -10,11 +9,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/app/_components/shared/Form";
-import { Input } from "@/app/_components/shared/Input";
-import { SignUpValues, signUpSchema } from "@/lib/validations/authValidations";
-import { Button } from "@/app/_components/shared/Button";
-import { signUp } from "@/app/_actions/users/signup/actions";
+} from "@/components/shared/form";
+import { Input } from "@/components/shared/Input";
+import { signUpSchema, SignUpValues } from "@/validators/authvalidator";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useTransition } from "react";
+import { useForm } from "react-hook-form";
 
 export default function SignUpForm() {
   const form = useForm<SignUpValues>({

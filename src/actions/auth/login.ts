@@ -1,16 +1,14 @@
 "use server";
-import { lucia } from "@/lib/auth";
-import { db } from "../../../../../db";
-import {
-  loginSchema,
-  LoginValues,
-} from "../../../../lib/validations/authValidations";
+
 import { verify } from "@node-rs/argon2";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { users } from "../../../../../db/schema";
 import { eq, or } from "drizzle-orm";
+import { loginSchema, LoginValues } from "@/validators/authvalidator";
+import { db } from "@/db/db";
+import { users } from "@/db/schema";
+import { lucia } from "@/lib/auth";
 
 export async function login(credentials: LoginValues) {
   let isError = false;

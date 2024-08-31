@@ -6,18 +6,24 @@ const usernameValidator = requiredInput.regex(
   /^[a-zA-Z0-9_]+$/,
   "Only letters, numbers, and underscores",
 );
+const passwordValidator = requiredInput.min(
+  8,
+  "Password must be at least 8 characters",
+);
+
+const usernameOrEmailValidator = z.union([emailValidator, usernameValidator]);
 
 export const signUpSchema = z.object({
   email: emailValidator,
   username: usernameValidator,
-  password: requiredInput.min(8, "Password must be at least 8 characters"),
+  password: passwordValidator,
 });
 
 export type SignUpValues = z.infer<typeof signUpSchema>;
 
 export const loginSchema = z.object({
-  usernameOrEmail: z.union([emailValidator, usernameValidator]),
-  password: requiredInput.min(8, "Password must be at least 8 characters"),
+  usernameOrEmail: usernameOrEmailValidator,
+  password: passwordValidator,
 });
 
 export type LoginValues = z.infer<typeof loginSchema>;

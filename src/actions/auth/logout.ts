@@ -1,8 +1,9 @@
 "use server";
 
-import { validateRequest, lucia } from "@/lib/auth";
+import routes from "@/config/routes";
+import { lucia, validateRequest } from "@/lib/auth";
+import { redirect } from "@/lib/next-intl/navigation";
 import { cookies } from "next/headers";
-import { redirect } from "@/navigation";
 
 export async function logout() {
   const { session } = await validateRequest();
@@ -16,5 +17,5 @@ export async function logout() {
     sessionCookie.value,
     sessionCookie.attributes,
   );
-  return redirect("/login");
+  return redirect(routes.index);
 }

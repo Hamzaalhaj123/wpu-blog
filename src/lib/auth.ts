@@ -1,17 +1,17 @@
 import { Lucia, RegisteredDatabaseUserAttributes, Session } from "lucia";
 import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
-import { db } from "../../db";
-import { sessionTable, users } from "../../db/schema";
 import { cache } from "react";
 import { User } from "lucia";
 import { cookies } from "next/headers";
-const adapter = new DrizzlePostgreSQLAdapter(db, sessionTable, users);
+import { sessions, users } from "@/db/schema";
+import { db } from "@/db/db";
+const adapter = new DrizzlePostgreSQLAdapter(db, sessions, users);
 
 export const lucia = new Lucia(adapter, {
   sessionCookie: {
     expires: false,
     attributes: {
-      secure: process.env.NODE_ENV === "production",
+      secure: process.env.NODE_ENV === "development",
     },
   },
   getUserAttributes: (attributes) => {

@@ -7,7 +7,7 @@ export const users = pgTable("users", {
   password: text("password").notNull(),
 });
 
-export const sessionTable = pgTable("session", {
+export const sessions = pgTable("sessions", {
   id: text("id").primaryKey(),
   userId: integer("user_id")
     .notNull()

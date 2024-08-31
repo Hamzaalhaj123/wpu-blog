@@ -1,9 +1,11 @@
 "use client ";
-import { login } from "@/app/_actions/users/login/actions";
-import { loginSchema, LoginValues } from "@/lib/validations/authValidations";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
+
+import { Input } from "../shared/Input";
+import { loginSchema, LoginValues } from "@/validators/authvalidator";
+import { login } from "@/actions/auth/login";
 import {
   Form,
   FormControl,
@@ -11,9 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/app/_components/shared/Form";
-import { Button } from "../shared/Button";
-import { Input } from "../shared/Input";
+} from "@/components/shared/form";
+import Button from "@/components/shared/Button";
 
 export default function LoginForm() {
   const form = useForm<LoginValues>({
