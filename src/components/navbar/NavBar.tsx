@@ -1,4 +1,4 @@
-import ThemeSwitcher from "@/app/[locale]/_components/ThemeSwitcher";
+import ThemeSwitcher from "@/components/navbar/ThemeSwitcher";
 import ActiveLink from "@/components/shared/ActiveLink";
 import routes from "@/config/routes";
 import { Link } from "@/lib/next-intl/navigation";

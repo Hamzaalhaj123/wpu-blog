@@ -1,13 +1,13 @@
 "use client";
 
-import useTheme from "@/app/hooks/shared/useTheme";
+import useTheme from "@/hooks/shared/useTheme";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/app/shared/ui/Select";
+} from "@/components/shared/Select";
 import { Theme } from "@/types/theme";
 import { useTranslations } from "next-intl";
 
