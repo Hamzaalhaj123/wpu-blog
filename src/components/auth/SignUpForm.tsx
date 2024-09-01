@@ -13,10 +13,12 @@ import {
 import { Input } from "@/components/shared/Input";
 import { signUpSchema, SignUpValues } from "@/validators/authvalidator";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 
 export default function SignUpForm() {
+  const [error, setError] = useState<string | null>(null);
+
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -29,10 +31,12 @@ export default function SignUpForm() {
   const [isLoading, startTransition] = useTransition();
   async function onSubmit(values: SignUpValues) {
     startTransition(async () => {
+      setError(null);
       try {
         console.log("values", values);
         await signUp(values);
       } catch (error) {
+        setError((error as Error).message || "An unexpected error occurred");
         console.error(error);
       }
     });
@@ -80,6 +84,8 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
+        {error && <p className="text-error">{error}</p>}
+
         <Button
           variant={"default"}
           colour={"secondary"}

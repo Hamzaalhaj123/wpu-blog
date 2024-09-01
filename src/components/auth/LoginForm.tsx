@@ -17,6 +17,7 @@ import {
 import Button from "@/components/shared/Button";
 
 export default function LoginForm() {
+  const [error, setError] = useState<string | null>(null);
   const form = useForm<LoginValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -27,10 +28,12 @@ export default function LoginForm() {
   const [isLoading, startTransition] = useTransition();
   async function onSubmit(values: LoginValues) {
     startTransition(async () => {
+      setError(null);
       try {
         await login(values);
         console.log(values);
       } catch (error) {
+        setError((error as Error).message || "An unexpected error occurred");
         console.error(error);
       }
     });
@@ -63,6 +66,7 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
+        {error && <p className="text-error">{error}</p>}
         <Button
           variant={"default"}
           colour={"secondary"}

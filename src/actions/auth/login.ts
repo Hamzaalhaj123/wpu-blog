@@ -35,7 +35,7 @@ export async function login(credentials: LoginValues) {
       parallelism: 1,
     });
     if (!validPassword)
-      return { error: "Incorrect username or email or password" };
+      throw new Error("Incorrect username or email or password");
     const session = await lucia.createSession(existingUser[0].id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
