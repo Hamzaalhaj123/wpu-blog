@@ -12,21 +12,21 @@ export default function useSetSearchParams() {
     (
       params:
         | Record<string, string>
-        | ((prevSearchParams: URLSearchParams) => Record<string, string>),
+        | ((prevSearchParams: Record<string, string>) => Record<string, string>),
       method: "replace" | "push" = "replace",
       useHistoryObject: boolean = false,
       state: any = null,
     ) => {
-      const currentSearchParams = new URLSearchParams(searchParams);
 
       let newSearchParams: URLSearchParams;
       if (typeof params === "function") {
-        newSearchParams = new URLSearchParams(params(currentSearchParams));
+        const prevSearchParams = Object.fromEntries(searchParams);
+        newSearchParams = new URLSearchParams(params(prevSearchParams));
       } else {
         newSearchParams = new URLSearchParams(params);
       }
 
-      let newSearchParamsString = currentSearchParams.toString();
+      let newSearchParamsString = newSearchParams.toString();
 
       if (newSearchParamsString)
         newSearchParamsString = `?${newSearchParamsString}`;

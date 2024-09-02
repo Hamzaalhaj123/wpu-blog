@@ -33,25 +33,32 @@ const Dialog = ({
 
   React.useEffect(() => {
     if (param && defaultOpen)
-      setSearchParams({ param: "open" }, "replace", true);
+      setSearchParams((prev) => ({ ...prev, param: "open" }), "replace", true);
   }, [defaultOpen, param, pathname]);
 
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       if (param) {
         if (open) {
-          setSearchParams({ param: "open" }, "push", true, { [param]: "open" });
-          // history.pushState(
-          //   { [param]: "open" },
-          //   "",
-          //   `${pathname}?${param}=open`,
-          // );
+          setSearchParams(
+            (prev) => ({ ...prev, param: "open" }),
+            "push",
+            true,
+            { [param]: "open" },
+          );
         } else {
           if (history.state[param] === "open") {
             history.go(-1);
           } else {
-            const historyState = { [param]: "closed" };
-            history.replaceState(historyState, "", pathname);
+            setSearchParams(
+              (prev) => {
+                delete prev[param];
+                return prev;
+              },
+              "replace",
+              true,
+              { [param]: "closed" },
+            );
           }
         }
       } else {

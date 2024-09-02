@@ -21,8 +21,10 @@ export default function ActiveLink({
       className={cn(className, "group relative")}
     >
       {children}
-
-      <div className="absolute bottom-0 start-0 h-0.5 w-full bg-primary opacity-0 transition -translate-s-full group-hover:translate-s-0 group-data-[active=true]:opacity-100 group-data-[active=true]:translate-s-0"></div>
+      <div
+        aria-hidden
+        className="absolute bottom-0 start-0 h-0.5 w-full scale-x-0 bg-primary transition-transform origin-end group-hover:scale-x-100 group-hover:origin-start group-data-[active=true]:scale-x-100"
+      ></div>
     </Link>
   );
 }
