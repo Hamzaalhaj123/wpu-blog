@@ -1,5 +1,5 @@
-import DirectionRespectedArrow from "@/components/shared/DirectionRespectedArrow";
 import Button from "@/components/shared/Button";
+import DirectionRespectedArrow from "@/components/shared/DirectionRespectedArrow";
 import { Link } from "@/lib/next-intl/navigation";
 import { BlogProps } from "@/mock/blogs";
 import Image from "next/image";

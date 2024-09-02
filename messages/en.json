@@ -2,10 +2,14 @@
   "METADATA": {
     "homepage": {
       "title": "Homepage - WPU blog",
-      "description": "Homepage of the WPU blog website "
+      "description": "Homepage of the WPU blog website"
     },
     "blog": {
       "title": "Blog"
+    },
+    "about": {
+      "title": "About",
+      "description": "Homepage of the WPU blog website"
     }
   },
   "HOMEPAGE": {
