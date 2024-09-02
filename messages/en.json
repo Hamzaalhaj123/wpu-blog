@@ -16,5 +16,9 @@
     "light": "Light",
     "system": "System",
     "select_preffered_theme": "Select preffered theme"
+  },
+  "LANGUAGE_SWITCHER": {
+    "ar": "Arabic",
+    "en": "English"
   }
 }

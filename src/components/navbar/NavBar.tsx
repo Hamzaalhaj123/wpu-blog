@@ -1,3 +1,4 @@
+import LanguageSwitcher from "@/components/navbar/LanguageSwitcher";
 import ThemeSwitcher from "@/components/navbar/ThemeSwitcher";
 import ActiveLink from "@/components/shared/ActiveLink";
 import routes from "@/config/routes";
@@ -16,7 +17,7 @@ export default function NavBar() {
           <Link href={routes.about}>About Us</Link>
           <Link href={routes.contact}>Contact Us</Link>
         </div>
-        <div>Language Switcher</div>
+        <LanguageSwitcher />
         <ThemeSwitcher />
       </nav>
     </header>
