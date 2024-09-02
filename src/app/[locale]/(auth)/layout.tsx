@@ -1,3 +1,4 @@
+import routes from "@/config/routes";
 import { validateRequest } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
 
@@ -9,8 +10,8 @@ export default async function Layout({
   const { user } = await validateRequest();
 
   if (user) {
-    redirect("/");
+    redirect(routes.index);
   }
 
-  return <>{children}</>;
+  return <div className="h-full">{children}</div>;
 }

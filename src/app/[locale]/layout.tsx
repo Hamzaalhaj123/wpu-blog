@@ -33,14 +33,16 @@ export default async function RootLayout({
 
   return (
     <html dir={dir} lang={locale} className={theme ?? ""}>
-      <body className="bg-background-darker text-foreground">
+      <body className="grid grid-rows-[auto,1fr] bg-background-darker text-foreground">
         <RadixDirectionProvider dir={dir}>
           <NextIntlClientProvider messages={messages}>
             <CookiesProvider>
               <NavBar />
-              <main className="container mx-auto px-4 lg:px-10">
-                {children}
-              </main>
+              <div className="h-[calc(100vh-72px)] overflow-auto scrollbar-thin scrollbar-thumb-primary scrollbar-thumb-rounded-md">
+                <main className="container mx-auto px-4 py-10 lg:px-10">
+                  {children}
+                </main>
+              </div>
             </CookiesProvider>
           </NextIntlClientProvider>
         </RadixDirectionProvider>

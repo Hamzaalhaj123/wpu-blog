@@ -45,7 +45,10 @@ export default function SignUpForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="mx-auto flex max-w-xl flex-col gap-6 rounded-xl bg-background-lighter p-6 "
+      >
         <FormField
           control={form.control}
           name="username"
@@ -89,9 +92,9 @@ export default function SignUpForm() {
 
         <Button
           variant={"default"}
-          colour={"secondary"}
+          colour={"primary"}
           type="submit"
-          className="w-full"
+          className="w-fit"
           disabled={isLoading}
         >
           Create account

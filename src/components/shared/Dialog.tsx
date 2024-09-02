@@ -1,5 +1,6 @@
 "use client";
 
+import useSetSearchParams from "@/hooks/shared/useSetSearchParams";
 import cn from "@/utils/cn";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { XIcon } from "lucide-react";
@@ -16,6 +17,7 @@ const Dialog = ({
 }: DialogPrimitive.DialogProps & { param?: string }) => {
   const [open, setOpen] = React.useState(openProp || defaultOpen);
   const searchParams = useSearchParams();
+  const { setSearchParams } = useSetSearchParams();
   const pathname = usePathname();
 
   React.useEffect(() => {
@@ -31,24 +33,32 @@ const Dialog = ({
 
   React.useEffect(() => {
     if (param && defaultOpen)
-      history.replaceState(null, "", `${pathname}?${param}=open`);
+      setSearchParams((prev) => ({ ...prev, param: "open" }), "replace", true);
   }, [defaultOpen, param, pathname]);
 
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       if (param) {
         if (open) {
-          history.pushState(
+          setSearchParams(
+            (prev) => ({ ...prev, param: "open" }),
+            "push",
+            true,
             { [param]: "open" },
-            "",
-            `${pathname}?${param}=open`,
           );
         } else {
           if (history.state[param] === "open") {
             history.go(-1);
           } else {
-            const historyState = { [param]: "closed" };
-            history.replaceState(historyState, "", pathname);
+            setSearchParams(
+              (prev) => {
+                delete prev[param];
+                return prev;
+              },
+              "replace",
+              true,
+              { [param]: "closed" },
+            );
           }
         }
       } else {

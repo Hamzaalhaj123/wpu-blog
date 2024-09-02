@@ -132,6 +132,7 @@ const config: Config = {
   plugins: [
     require("tailwindcss-rtl"),
     require("tailwindcss-animate"),
+    require("tailwind-scrollbar")({ nocompatible: true }),
     translateUtilities,
   ],
 };
