@@ -11,6 +11,7 @@ import {
   FormMessage,
 } from "@/components/shared/form";
 import { Input } from "@/components/shared/Input";
+import { PasswordInput } from "@/components/shared/PasswordInput";
 import { signUpSchema, SignUpValues } from "@/validators/authvalidator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
@@ -78,7 +79,7 @@ export default function SignUpForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="password" type="password" {...field} />
+                <PasswordInput placeholder="password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

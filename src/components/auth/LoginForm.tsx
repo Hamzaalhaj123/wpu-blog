@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 
-import { Input } from "../shared/Input";
 import { loginSchema, LoginValues } from "@/validators/authvalidator";
 import { login } from "@/actions/auth/login";
 import {
@@ -15,6 +14,8 @@ import {
   FormMessage,
 } from "@/components/shared/form";
 import Button from "@/components/shared/Button";
+import { Input } from "@/components/shared/Input";
+import { PasswordInput } from "@/components/shared/PasswordInput";
 
 export default function LoginForm() {
   const [error, setError] = useState<string | null>(null);
@@ -60,7 +61,7 @@ export default function LoginForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Password" type="password" {...field} />
+                <PasswordInput placeholder="Password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
