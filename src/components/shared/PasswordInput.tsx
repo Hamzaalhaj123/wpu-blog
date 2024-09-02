@@ -1,3 +1,4 @@
+import Button from "@/components/shared/Button";
 import { Input, InputProps } from "@/components/shared/Input";
 import cn from "@/utils/cn";
 import { Eye, EyeIcon, EyeOff, EyeOffIcon } from "lucide-react";
@@ -15,18 +16,19 @@ const PasswordInput = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        <button
+        <Button
           type="button"
+          colour={"transparent"}
           onClick={() => setShowPassword(!showPassword)}
           title={showPassword ? "Hide password" : "Show password"}
-          className="text-foreground-muted absolute right-3 top-1/2 -translate-y-1/2 transform"
+          className="text-foreground-muted absolute end-0 top-1/2 -translate-y-1/2 transform"
         >
           {showPassword ? (
             <EyeIcon className="size-5" />
           ) : (
             <EyeOffIcon className="size-5" />
           )}
-        </button>
+        </Button>
       </div>
     );
   },
