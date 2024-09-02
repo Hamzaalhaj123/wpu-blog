@@ -1,5 +1,6 @@
-import DirectionRespectedArrow from "@/components/shared/DirectionRespectedArrow";
 import Button from "@/components/shared/Button";
+import DirectionRespectedArrow from "@/components/shared/DirectionRespectedArrow";
+import StarsRating from "@/components/shared/StarsRating";
 import { Link } from "@/lib/next-intl/navigation";
 import { BlogProps } from "@/mock/blogs";
 import Image from "next/image";
@@ -18,15 +19,16 @@ export default function Blog({
       <Link href={"#"}>
         <Image src={image} alt={title} width={600} height={400} />
       </Link>
-
       <div className="flex flex-1 flex-col p-4">
         <h2 className="mb-3 text-2xl font-bold">{title}</h2>
-        {/* TODO: Add star rating */}
-        <p className="mb-3 text-muted-foreground">{description}</p>
-        <div className="mt-auto flex justify-between pt-3 text-lg">
-          <p>{readingTime}</p>
+        <div className="flex items-center justify-between">
+          <StarsRating rating={rating} />
           <p className="text-secondary">{rating}</p>
         </div>
+        <p className="mb-3 text-muted-foreground">{description}</p>
+        <p className="mt-auto flex justify-between pt-3 text-lg">
+          {readingTime}
+        </p>
         <div className="flex items-center gap-2 pt-2">
           <Image
             src={user.image}
