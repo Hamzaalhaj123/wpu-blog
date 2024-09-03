@@ -21,5 +21,9 @@
     "light": "فاتح",
     "system": "النظام",
     "select_preffered_theme": "اختر الثيم المفضل"
+  },
+  "AUTH": {
+    "username_or_email_already_exists": "اسم المستخدم أو البريد الإلكتروني مسجل بالفعل",
+    "invalid_credentials": "البيانات المدخلة غير صحيحة"
   }
 }

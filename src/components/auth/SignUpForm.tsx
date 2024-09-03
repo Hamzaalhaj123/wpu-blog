@@ -34,7 +34,6 @@ export default function SignUpForm() {
     startTransition(async () => {
       setError(null);
       try {
-        console.log("values", values);
         await signUp(values);
       } catch (error) {
         setError((error as Error).message || "An unexpected error occurred");
@@ -47,7 +46,7 @@ export default function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mx-auto flex max-w-xl flex-col gap-6 rounded-xl bg-background-lighter p-6 "
+        className="mx-auto flex w-full max-w-xl flex-col gap-6 rounded-xl bg-background-lighter p-6"
       >
         <FormField
           control={form.control}

@@ -28,7 +28,7 @@ export const lucia = new Lucia(adapter, {
 export const validateRequest = cache(
   async (): Promise<
     | {
-        user: User;
+        user: User ;
         session: Session;
       }
     | {
@@ -69,6 +69,7 @@ export const validateRequest = cache(
 declare module "lucia" {
   interface Register {
     Lucia: typeof Lucia;
+
     UserId: number;
     DatabaseUserAttributes: DatabaseUserAttributes;
   }

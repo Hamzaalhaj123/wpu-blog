@@ -13,5 +13,7 @@ export default async function Layout({
     redirect(routes.index);
   }
 
-  return <div className="h-full">{children}</div>;
+  return (
+    <div className="flex h-full items-center justify-center">{children}</div>
+  );
 }
