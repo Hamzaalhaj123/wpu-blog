@@ -1,14 +1,10 @@
 "use client";
 
+import { buttonVariants, ButtonVariants } from "@/components/shared/Button";
+import cn from "@/utils/cn";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { Check, ChevronRight, Circle } from "lucide-react";
 import * as React from "react";
-
-import cn from "@/utils/cn";
-import {
-  ButtonVariants,
-  buttonVariants,
-} from "../../../components/shared/Button";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -93,7 +89,7 @@ const DropdownMenuItem = React.forwardRef<
       ref={ref}
       className={cn(
         buttonVariants({ className, colour, variant, shape }),
-        "flex select-none rounded-sm shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "flex select-none rounded-sm shadow-none outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus-visible:ring-0 focus-visible:ring-offset-0",
         inset && "pl-8",
         className,
       )}
