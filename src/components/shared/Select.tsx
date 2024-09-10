@@ -26,7 +26,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50 transition-transform group-data-[state=open]:rotate-180" />
+      <ChevronDown className="size-4 opacity-50 transition-transform group-data-[state=open]:rotate-180" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ));
@@ -123,7 +123,7 @@ const SelectItem = React.forwardRef<
       ref={ref}
       className={cn(
         buttonVariants({ className, colour, variant, shape }),
-        "flex select-none rounded-sm shadow-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        "flex select-none rounded-sm shadow-none outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus-visible:ring-0 focus-visible:ring-offset-0",
         className,
       )}
       {...props}
