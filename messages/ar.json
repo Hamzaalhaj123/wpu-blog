@@ -12,7 +12,6 @@
       "description": "الصفحة الرئيسية لمدونة الموقع الخاص بالجامعة الوطنية الخاصة"
     }
   },
-
   "HOMEPAGE": {
     "title": "الصفحة الرئيسية"
   },
@@ -22,8 +21,14 @@
     "system": "النظام",
     "select_preffered_theme": "اختر الثيم المفضل"
   },
+
   "AUTH": {
     "username_or_email_already_exists": "اسم المستخدم أو البريد الإلكتروني مسجل بالفعل",
     "invalid_credentials": "البيانات المدخلة غير صحيحة"
+
+  "LANGUAGE_SWITCHER": {
+    "ar": "العربية",
+    "en": "الانكليزية"
+
   }
 }
