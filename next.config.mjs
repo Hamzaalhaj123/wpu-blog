@@ -7,6 +7,9 @@ const nextConfig = {
   images: {
     remotePatterns: [{ hostname: "via.placeholder.com" }],
   },
+  experimental: {
+    serverComponentsExternalPackages: ["@node-rs/argon2"],
+  },
 };
 
 export default withNextIntl(nextConfig);
