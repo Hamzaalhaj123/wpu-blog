@@ -1,11 +1,15 @@
 {
   "METADATA": {
     "homepage": {
-      "title": "الصفحة الرئيسية- WPU blog",
+      "title": "الصفحة الرئيسية - WPU blog",
       "description": "الصفحة الرئيسية لمدونة الموقع الخاص بالجامعة الوطنية الخاصة"
     },
     "blog": {
       "title": "المدونة"
+    },
+    "about": {
+      "title": "حول",
+      "description": "الصفحة الرئيسية لمدونة الموقع الخاص بالجامعة الوطنية الخاصة"
     }
   },
 
@@ -17,5 +21,9 @@
     "light": "فاتح",
     "system": "النظام",
     "select_preffered_theme": "اختر الثيم المفضل"
+  },
+  "AUTH": {
+    "username_or_email_already_exists": "اسم المستخدم أو البريد الإلكتروني مسجل بالفعل",
+    "invalid_credentials": "البيانات المدخلة غير صحيحة"
   }
 }
