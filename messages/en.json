@@ -24,6 +24,7 @@
   "AUTH": {
     "username_or_email_already_exists": "Username or email already exists",
     "invalid_credentials": "Invalid credentials"
+  },
   "LANGUAGE_SWITCHER": {
     "ar": "Arabic",
     "en": "English"

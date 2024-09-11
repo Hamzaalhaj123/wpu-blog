@@ -9,7 +9,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shared/form";
+} from "@/components/shared/Form";
 import { Input } from "@/components/shared/Input";
 import { PasswordInput } from "@/components/shared/PasswordInput";
 import { signUpSchema, SignUpValues } from "@/validators/authvalidator";

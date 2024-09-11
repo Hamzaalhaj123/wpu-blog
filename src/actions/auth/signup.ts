@@ -1,16 +1,17 @@
 "use server";
 import { hash } from "@node-rs/argon2";
 
+import sendEmail from "@/actions/auth/sendEmail";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
-import { users } from "@/db/schema";
+import { users, verificationCodes } from "@/db/schema";
 import { lucia } from "@/lib/auth";
+import { redirect } from "@/lib/next-intl/navigation";
 import { signUpSchema, SignUpValues } from "@/validators/authvalidator";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export async function signUp(credentials: SignUpValues) {
   let isError = false;
@@ -35,19 +36,24 @@ export async function signUp(credentials: SignUpValues) {
 
     if (existingUser.length)
       throw new Error(t("username_or_email_already_exists"));
-    const insertedUserId = await db
+    const insertedUser = await db
       .insert(users)
       .values({
         email,
         name: username,
         password: passwordHash,
       })
-      .returning({ userId: users.id })
+      .returning()
       .then((res) => res[0]);
 
-    console.log("ID IS  ", insertedUserId);
+    console.log("ID IS  ", insertedUser.id);
 
-    const session = await lucia.createSession(insertedUserId.userId, {});
+    const verificationCode = await db.insert(verificationCodes).values({
+      id: insertedUser.id,
+    }).returning();
+    await sendEmail(insertedUser, verificationCode[0].code);
+
+    const session = await lucia.createSession(insertedUser.id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
       sessionCookie.name,

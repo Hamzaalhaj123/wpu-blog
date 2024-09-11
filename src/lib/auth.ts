@@ -1,10 +1,9 @@
-import { Lucia, RegisteredDatabaseUserAttributes, Session } from "lucia";
-import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
-import { cache } from "react";
-import { User } from "lucia";
-import { cookies } from "next/headers";
-import { sessions, users } from "@/db/schema";
 import { db } from "@/db/db";
+import { sessions, users } from "@/db/schema";
+import { DrizzlePostgreSQLAdapter } from "@lucia-auth/adapter-drizzle";
+import { Lucia, Session, User } from "lucia";
+import { cookies } from "next/headers";
+import { cache } from "react";
 const adapter = new DrizzlePostgreSQLAdapter(db, sessions, users);
 
 export const lucia = new Lucia(adapter, {
@@ -14,21 +13,13 @@ export const lucia = new Lucia(adapter, {
       secure: process.env.NODE_ENV === "development",
     },
   },
-  getUserAttributes: (attributes) => {
-    return {
-      id: attributes.id,
-      name: attributes.name,
-      description: attributes.description,
-      image: attributes.image,
-      createdAt: attributes.createdAt,
-    };
-  },
+  getUserAttributes: (attributes) => attributes,
 });
 
 export const validateRequest = cache(
   async (): Promise<
     | {
-        user: User ;
+        user: User;
         session: Session;
       }
     | {
@@ -61,6 +52,7 @@ export const validateRequest = cache(
           sessionCookie.attributes,
         );
       }
+      console.log();
     } catch (error) {}
     return result;
   },
@@ -68,17 +60,16 @@ export const validateRequest = cache(
 
 declare module "lucia" {
   interface Register {
-    Lucia: typeof Lucia;
-
+    Lucia: typeof lucia;
     UserId: number;
     DatabaseUserAttributes: DatabaseUserAttributes;
   }
 }
 
 interface DatabaseUserAttributes {
+  isVerified: boolean;
   id: number;
   name: string;
-  description: string | null;
   image: string | null;
   createdAt: Date;
 }

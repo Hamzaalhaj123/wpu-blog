@@ -1,6 +1,6 @@
 {
-  "id": "83a64345-2b4f-4065-b03b-a134891a7161",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "1797d7e0-947e-4a01-94ab-1531a2af6f08",
+  "prevId": "83a64345-2b4f-4065-b03b-a134891a7161",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -97,6 +97,50 @@
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.verification_codes": {
+      "name": "verification_codes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'7146581b-1057-43b6-84cf-6af409405ba9'"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'2024-09-10T20:50:42.025Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "verification_codes_id_users_id_fk": {
+          "name": "verification_codes_id_users_id_fk",
+          "tableFrom": "verification_codes",
+          "tableTo": "users",
+          "columnsFrom": [
+            "id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
