@@ -36,6 +36,7 @@ const config: Config = {
       background: "rgba(var(--background)/ <alpha-value>)",
       "background-darker": "rgba(var(--background-darker)/ <alpha-value>)",
       transparent: "transparent",
+      inherit: "inherit",
       black: "#000000",
       white: "#ffffff",
       blur: {
@@ -123,7 +124,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-
+      borderRadius: {
+        inherit: "inherit",
+      },
       screens: {
         "3xl": "1920px",
       },
