@@ -44,9 +44,9 @@ export default function Blog({
               {format(createdAt, "yyyy")}
             </time>
           </div>
-          <Button className="ms-auto gap-2" asChild>
+          <Button asChild className="ms-auto gap-2">
             <Link href={"#"}>
-              <p>Read</p>
+              Read
               <DirectionRespectedArrow
                 size={20}
                 className="transition-transform group-hover:translate-s-2"
