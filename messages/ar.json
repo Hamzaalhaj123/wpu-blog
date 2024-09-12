@@ -24,11 +24,11 @@
 
   "AUTH": {
     "username_or_email_already_exists": "اسم المستخدم أو البريد الإلكتروني مسجل بالفعل",
-    "invalid_credentials": "البيانات المدخلة غير صحيحة"
+    "invalid_credentials": "البيانات المدخلة غير صحيحة",
 
-  "LANGUAGE_SWITCHER": {
-    "ar": "العربية",
-    "en": "الانكليزية"
-
+    "LANGUAGE_SWITCHER": {
+      "ar": "العربية",
+      "en": "الانكليزية"
+    }
   }
 }
