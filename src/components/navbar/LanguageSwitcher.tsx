@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/shared/Select";
-import { locales } from "@/config";
+import { locales } from "@/config/locales";
 import { usePathname, useRouter } from "@/lib/next-intl/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { useTransition } from "react";

@@ -1,10 +1,11 @@
-"use client ";
+"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 
 import { login } from "@/actions/auth/login";
 import Button from "@/components/shared/Button";
+
 import {
   Form,
   FormControl,
