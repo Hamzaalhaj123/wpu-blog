@@ -4,13 +4,13 @@ import routes from "@/config/routes";
 import { db } from "@/db/db";
 import { users } from "@/db/schema";
 import { lucia } from "@/lib/auth";
+import { redirect } from "@/lib/next-intl/navigation";
 import { loginSchema, LoginValues } from "@/validators/authvalidator";
 import { verify } from "@node-rs/argon2";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export async function login(credentials: LoginValues) {
   const t = await getTranslations("AUTH");
@@ -24,6 +24,7 @@ export async function login(credentials: LoginValues) {
       .where(
         or(eq(users.name, usernameOrEmail), eq(users.email, usernameOrEmail)),
       );
+
     if (
       !existingUser.length ||
       !existingUser[0].password ||

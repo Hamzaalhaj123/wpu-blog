@@ -6,5 +6,5 @@ export async function generateMetadata() {
 }
 
 export default function AboutPage() {
-  return <div>AboutPage</div>;
+  return <div>About us</div>;
 }

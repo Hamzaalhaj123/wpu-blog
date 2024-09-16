@@ -3,6 +3,7 @@ import DirectionRespectedArrow from "@/components/shared/DirectionRespectedArrow
 import StarsRating from "@/components/shared/StarsRating";
 import { Link } from "@/lib/next-intl/navigation";
 import { BlogProps } from "@/mock/blogs";
+import { format } from "date-fns";
 import Image from "next/image";
 
 export default function Blog({
@@ -39,11 +40,13 @@ export default function Blog({
           />
           <div>
             <div className="font-medium text-foreground">{user.name}</div>
-            <time className="text-muted-foreground"> {createdAt}</time>
+            <time className="text-muted-foreground">
+              {format(createdAt, "yyyy")}
+            </time>
           </div>
-          <Button className="ms-auto gap-2" asChild>
+          <Button asChild className="ms-auto gap-2">
             <Link href={"#"}>
-              <p>Read</p>
+              Read
               <DirectionRespectedArrow
                 size={20}
                 className="transition-transform group-hover:translate-s-2"
