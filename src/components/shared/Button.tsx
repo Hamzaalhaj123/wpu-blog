@@ -9,6 +9,7 @@ const createShape = (base: string) => ({
   default: base,
   circle: "p-2 rounded-full",
   pill: `${base} rounded-full`,
+  link: "p-0 rounded-none",
 });
 
 const SHAPE = createShape("px-4 py-2");
@@ -34,6 +35,7 @@ const buttonVariants = cva(
         default: "shadow-md",
         smooth: "",
         outline: "border border-current",
+        link: "text-primary hover:text-primary/95 focus:text-primary/95 bg-transparent hover:bg-transparent focus:bg-transparent hover:underline underline-offset-4 focus:underline-offset-2",
       },
       shape: SHAPE,
     },
