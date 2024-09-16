@@ -7,6 +7,9 @@
     "blog": {
       "title": "المدونة"
     },
+    "not_found": {
+      "title": "الصفحة غير موجودة"
+    },
     "about": {
       "title": "حول",
       "description": "الصفحة الرئيسية لمدونة الموقع الخاص بالجامعة الوطنية الخاصة"
@@ -21,14 +24,15 @@
     "system": "النظام",
     "select_preffered_theme": "اختر الثيم المفضل"
   },
-
+  "NOT_FOUND": {
+    "title": "الصفحة غير موجودة"
+  },
   "AUTH": {
     "username_or_email_already_exists": "اسم المستخدم أو البريد الإلكتروني مسجل بالفعل",
-    "invalid_credentials": "البيانات المدخلة غير صحيحة",
-
-    "LANGUAGE_SWITCHER": {
-      "ar": "العربية",
-      "en": "الانكليزية"
-    }
+    "invalid_credentials": "البيانات المدخلة غير صحيحة"
+  },
+  "LANGUAGE_SWITCHER": {
+    "ar": "العربية",
+    "en": "الانكليزية"
   }
 }
