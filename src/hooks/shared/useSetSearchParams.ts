@@ -1,5 +1,5 @@
-import { usePathname, useRouter } from "@/lib/next-intl/navigation";
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "@/lib/next-intl/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useCallback, useTransition } from "react";
 
 export default function useSetSearchParams() {
@@ -12,12 +12,13 @@ export default function useSetSearchParams() {
     (
       params:
         | Record<string, string>
-        | ((prevSearchParams: Record<string, string>) => Record<string, string>),
+        | ((
+            prevSearchParams: Record<string, string>,
+          ) => Record<string, string>),
       method: "replace" | "push" = "replace",
       useHistoryObject: boolean = false,
       state: any = null,
     ) => {
-
       let newSearchParams: URLSearchParams;
       if (typeof params === "function") {
         const prevSearchParams = Object.fromEntries(searchParams);
