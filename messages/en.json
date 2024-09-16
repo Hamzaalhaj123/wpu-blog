@@ -7,6 +7,9 @@
     "blog": {
       "title": "Blog"
     },
+    "not_found": {
+      "title": "Page not found"
+    },
     "about": {
       "title": "About",
       "description": "Homepage of the WPU blog website"
@@ -20,6 +23,9 @@
     "light": "Light",
     "system": "System",
     "select_preffered_theme": "Select preffered theme"
+  },
+  "NOT_FOUND": {
+    "title": "Page not found"
   },
   "AUTH": {
     "username_or_email_already_exists": "Username or email already exists",
