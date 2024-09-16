@@ -4,71 +4,7 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-<<<<<<< Updated upstream
 importers:
-=======
-dependencies:
-  '@radix-ui/react-checkbox':
-    specifier: ^1.1.1
-    version: 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.4)(react-dom@18.3.1)(react@18.3.1)
-  '@radix-ui/react-direction':
-    specifier: ^1.1.0
-    version: 1.1.0(@types/react@18.3.4)(react@18.3.1)
-  '@radix-ui/react-dropdown-menu':
-    specifier: ^2.1.1
-    version: 2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.4)(react-dom@18.3.1)(react@18.3.1)
-  '@radix-ui/react-select':
-    specifier: ^2.1.1
-    version: 2.1.1(@types/react-dom@18.3.0)(@types/react@18.3.4)(react-dom@18.3.1)(react@18.3.1)
-  '@radix-ui/react-slot':
-    specifier: ^1.1.0
-    version: 1.1.0(@types/react@18.3.4)(react@18.3.1)
-  '@types/rtl-detect':
-    specifier: ^1.0.3
-    version: 1.0.3
-  class-variance-authority:
-    specifier: ^0.7.0
-    version: 0.7.0
-  clsx:
-    specifier: ^2.1.1
-    version: 2.1.1
-  date-fns:
-    specifier: ^3.6.0
-    version: 3.6.0
-  drizzle-orm:
-    specifier: ^0.32.2
-    version: 0.32.2(@types/react@18.3.4)(postgres@3.4.4)(react@18.3.1)
-  lucia:
-    specifier: ^3.2.0
-    version: 3.2.0
-  lucide-react:
-    specifier: ^0.412.0
-    version: 0.412.0(react@18.3.1)
-  next:
-    specifier: 14.2.5
-    version: 14.2.5(react-dom@18.3.1)(react@18.3.1)
-  next-client-cookies:
-    specifier: ^1.1.1
-    version: 1.1.1(next@14.2.5)(react@18.3.1)
-  next-intl:
-    specifier: ^3.17.4
-    version: 3.17.4(next@14.2.5)(react@18.3.1)
-  postgres:
-    specifier: ^3.4.4
-    version: 3.4.4
-  react:
-    specifier: ^18.3.1
-    version: 18.3.1
-  react-dom:
-    specifier: ^18.3.1
-    version: 18.3.1(react@18.3.1)
-  rtl-detect:
-    specifier: ^1.1.2
-    version: 1.1.2
-  tailwind-merge:
-    specifier: ^2.5.2
-    version: 2.5.2
->>>>>>> Stashed changes
 
   .:
     dependencies:
@@ -120,6 +56,9 @@ dependencies:
       drizzle-orm:
         specifier: ^0.32.2
         version: 0.32.2(@types/react@18.3.4)(postgres@3.4.4)(react@18.3.1)
+      framer-motion:
+        specifier: ^11.5.4
+        version: 11.5.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       lucia:
         specifier: ^3.2.0
         version: 3.2.0
@@ -2044,7 +1983,6 @@ packages:
     resolution: {integrity: sha512-t/Ygsytq+R995EJ5PZlD4Cu56sWa8InXySaViRzw9apusqsOO2bQP+SbYzAhR0pFKoB+43lYy8rWban9JSuXnA==}
     engines: {node: '>= 0.4'}
 
-<<<<<<< Updated upstream
   date-fns@3.6.0:
     resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
@@ -2053,13 +1991,6 @@ packages:
     engines: {node: '>=18'}
 
   debug@3.2.7:
-=======
-  /date-fns@3.6.0:
-    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
-    dev: false
-
-  /debug@3.2.7:
->>>>>>> Stashed changes
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
     peerDependencies:
       supports-color: '*'
@@ -2469,6 +2400,20 @@ packages:
   foreground-child@3.2.1:
     resolution: {integrity: sha512-PXUUyLqrR2XCWICfv6ukppP96sdFwWbNEnfEMt7jNsISjMsvaLNinAHNDYyvkyU+SZG2BTSbT5NjG+vZslfGTA==}
     engines: {node: '>=14'}
+
+  framer-motion@11.5.4:
+    resolution: {integrity: sha512-E+tb3/G6SO69POkdJT+3EpdMuhmtCh9EWuK4I1DnIC23L7tFPrl8vxP+LSovwaw6uUr73rUbpb4FgK011wbRJQ==}
+    peerDependencies:
+      '@emotion/is-prop-valid': '*'
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      '@emotion/is-prop-valid':
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
 
   fs-monkey@1.0.6:
     resolution: {integrity: sha512-b1FMfwetIKymC0eioW7mTywihSQE4oLzQn1dB6rZB5fx/3NpNEdAWeCSMB+60/AeT0TCXsxzAlcYVEFCTAksWg==}
@@ -5924,6 +5869,13 @@ snapshots:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
 
+  framer-motion@11.5.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      tslib: 2.6.3
+    optionalDependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   fs-monkey@1.0.6:
     optional: true
 
@@ -6443,7 +6395,7 @@ snapshots:
       '@next/env': 14.2.5
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001642
+      caniuse-lite: 1.0.30001658
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.3.1

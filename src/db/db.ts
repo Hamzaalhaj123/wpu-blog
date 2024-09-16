@@ -1,23 +1,28 @@
-import { drizzle, PostgresJsDatabase } from "drizzle-orm/postgres-js";
+import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import * as schema from "./schema";
-declare global {
-  var db: PostgresJsDatabase<typeof schema> | undefined;
-}
 
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL must exist");
 }
 
-let db: PostgresJsDatabase<typeof schema>;
-if (process.env.NODE_ENV === "development") {
-  db = drizzle(postgres(process.env.DATABASE_URL), { schema });
-} else {
-  if (!global.db) {
-    global.db = drizzle(postgres(process.env.DATABASE_URL), { schema });
-    db = global.db;
+// Singleton function to ensure only one db instance is created
+function singleton<Value>(name: string, value: () => Value): Value {
+  const globalAny: any = global;
+  globalAny.__singletons = globalAny.__singletons || {};
+
+  if (!globalAny.__singletons[name]) {
+    globalAny.__singletons[name] = value();
   }
+
+  return globalAny.__singletons[name];
 }
+
+// Function to create the database connection and apply migrations if needed
+function createDatabaseConnection() {
+  return drizzle(postgres(process.env.DATABASE_URL as string), { schema });
+}
+const db = singleton("db", createDatabaseConnection);
 
 export { db };
 // const sql = postgres(process.env.DATABASE_URL as string);

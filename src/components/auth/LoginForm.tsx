@@ -71,9 +71,8 @@ export default function LoginForm() {
         {error && <p className="text-error">{error}</p>}
         <Button
           variant={"default"}
-          colour={"secondary"}
+          colour={"primary"}
           type="submit"
-          className="w-full"
           disabled={isLoading}
         >
           Login
