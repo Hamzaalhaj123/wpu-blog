@@ -1,12 +1,14 @@
-import RadixDirectionProvider from "@/app/[locale]/_wrappers/RadixDirectionProvider";
-import getTheme from "@/lib/getTheme";
+import RadixDirectionProvider from "@/components/wrappers/RadixDirectionProvider";
+import SessionProvider from "@/components/wrappers/SessionProvider";
+import { validateRequest } from "@/lib/auth";
+import getTheme from "@/utils/getTheme";
 import type { Metadata } from "next";
 import { CookiesProvider } from "next-client-cookies/server";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import React from "react";
 import { getLangDir } from "rtl-detect";
-import NavBar from "./_components/NavBar";
+import NavBar from "../../components/navbar/NavBar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,17 +32,22 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   const dir = getLangDir(locale);
+  const session = await validateRequest();
 
   return (
     <html dir={dir} lang={locale} className={theme ?? ""}>
-      <body className="bg-background-darker text-foreground">
+      <body className="grid grid-rows-[auto,1fr] bg-background-darker text-foreground">
         <RadixDirectionProvider dir={dir}>
           <NextIntlClientProvider messages={messages}>
             <CookiesProvider>
-              <NavBar />
-              <main className="container mx-auto px-4 lg:px-10">
-                {children}
-              </main>
+              <SessionProvider value={session}>
+                <NavBar />
+                <div className="h-[calc(100vh-72px)] overflow-auto scrollbar-thin scrollbar-thumb-primary scrollbar-thumb-rounded-md">
+                  <main className="container mx-auto h-full px-4 py-10 lg:px-10">
+                    {children}
+                  </main>
+                </div>
+              </SessionProvider>
             </CookiesProvider>
           </NextIntlClientProvider>
         </RadixDirectionProvider>

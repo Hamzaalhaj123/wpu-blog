@@ -3,6 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  /* important to make the form auto complete not reset styles  */
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: all 5000s ease-in-out 0s;
+  }
+  /* end of important to make the form auto complete not reset styles  */
+
   @media (prefers-color-scheme: light) {
     :root {
       /* Primary */

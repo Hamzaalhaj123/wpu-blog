@@ -2,13 +2,17 @@
   "METADATA": {
     "homepage": {
       "title": "Homepage - WPU blog",
-      "description": "Homepage of the WPU blog website "
+      "description": "Homepage of the WPU blog website"
     },
     "blog": {
       "title": "Blog"
     },
     "not_found": {
       "title": "Page not found"
+    },
+    "about": {
+      "title": "About",
+      "description": "Homepage of the WPU blog website"
     }
   },
   "HOMEPAGE": {
@@ -22,5 +26,13 @@
   },
   "NOT_FOUND": {
     "title": "Page not found"
+  },
+  "AUTH": {
+    "username_or_email_already_exists": "Username or email already exists",
+    "invalid_credentials": "Invalid credentials"
+  },
+  "LANGUAGE_SWITCHER": {
+    "ar": "Arabic",
+    "en": "English"
   }
 }

@@ -1,4 +1,5 @@
-import BlogsFeed from "@/app/[locale]/(blog)/BlogsFeed";
+import BlogsFeed from "@/components/blogs/BlogsFeed";
+import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata() {
@@ -7,5 +8,10 @@ export async function generateMetadata() {
 }
 
 export default function Home() {
-  return <BlogsFeed />;
+  const t = useTranslations("HOMEPAGE");
+  return (
+    <div>
+      <BlogsFeed />
+    </div>
+  );
 }
