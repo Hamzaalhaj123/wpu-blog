@@ -2,18 +2,20 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
+import LoadingSpinner from "@/components/shared/LoadingSpinner";
 import cn from "@/utils/cn";
 
 const createShape = (base: string) => ({
   default: base,
   circle: "p-2 rounded-full",
   pill: `${base} rounded-full`,
+  link: "p-0 rounded-none",
 });
 
 const SHAPE = createShape("px-4 py-2");
 
 const buttonVariants = cva(
-  "inline-flex group cursor-pointer items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "relative inline-flex group disabled:cursor-not-allowed cursor-pointer items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50",
   {
     variants: {
       colour: {
@@ -33,6 +35,7 @@ const buttonVariants = cva(
         default: "shadow-md",
         smooth: "",
         outline: "border border-current",
+        link: "text-primary hover:text-primary/95 focus:text-primary/95 bg-transparent hover:bg-transparent focus:bg-transparent hover:underline underline-offset-4 focus:underline-offset-2",
       },
       shape: SHAPE,
     },
@@ -109,20 +112,51 @@ const buttonVariants = cva(
 
 export type ButtonVariants = VariantProps<typeof buttonVariants>;
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  };
+export type ButtonProps = {
+  asChild?: boolean;
+  isLoading?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonVariants>;
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, asChild = false, colour, variant, shape, ...props }, ref) => {
+  (
+    {
+      className,
+      asChild = false,
+      isLoading = false,
+      children,
+      colour,
+      variant,
+      disabled,
+      shape,
+      ...props
+    },
+    ref,
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ className, colour, variant, shape }))}
         ref={ref}
+        disabled={disabled || isLoading}
         {...props}
-      />
+      >
+        {asChild && React.isValidElement(children) ? (
+          React.cloneElement(
+            children,
+            {},
+            <>
+              {children.props.children}
+              <LoadingSpinner isLoading={isLoading} />
+            </>,
+          )
+        ) : (
+          <>
+            {children}
+            <LoadingSpinner isLoading={isLoading} />
+          </>
+        )}
+      </Comp>
     );
   },
 );

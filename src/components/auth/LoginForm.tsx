@@ -1,10 +1,11 @@
-"use client ";
+"use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 
-import { loginSchema, LoginValues } from "@/validators/authvalidator";
 import { login } from "@/actions/auth/login";
+import Button from "@/components/shared/Button";
+
 import {
   Form,
   FormControl,
@@ -12,10 +13,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/shared/form";
-import Button from "@/components/shared/Button";
+} from "@/components/shared/Form";
 import { Input } from "@/components/shared/Input";
 import { PasswordInput } from "@/components/shared/PasswordInput";
+import { loginSchema, LoginValues } from "@/validators/authvalidator";
 
 export default function LoginForm() {
   const [error, setError] = useState<string | null>(null);
@@ -70,9 +71,8 @@ export default function LoginForm() {
         {error && <p className="text-error">{error}</p>}
         <Button
           variant={"default"}
-          colour={"secondary"}
+          colour={"primary"}
           type="submit"
-          className="w-full"
           disabled={isLoading}
         >
           Login

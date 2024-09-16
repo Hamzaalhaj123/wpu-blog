@@ -33,15 +33,19 @@ const Dialog = ({
 
   React.useEffect(() => {
     if (param && defaultOpen)
-      setSearchParams((prev) => ({ ...prev, param: "open" }), "replace", true);
-  }, [defaultOpen, param, pathname]);
+      setSearchParams(
+        (prev) => ({ ...prev, [param]: "open" }),
+        "replace",
+        true,
+      );
+  }, [defaultOpen, param, pathname, setSearchParams]);
 
   const handleOpenChange = React.useCallback(
     (open: boolean) => {
       if (param) {
         if (open) {
           setSearchParams(
-            (prev) => ({ ...prev, param: "open" }),
+            (prev) => ({ ...prev, [param]: "open" }),
             "push",
             true,
             { [param]: "open" },
@@ -66,7 +70,8 @@ const Dialog = ({
         onOpenChangeProp?.(open);
       }
     },
-    [param, onOpenChangeProp, pathname],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [param, onOpenChangeProp, pathname, setSearchParams],
   );
 
   return (
@@ -122,7 +127,7 @@ const DialogContent = React.forwardRef<
         {header}
         <div className="flex-1 overflow-y-auto p-6">{children}</div>
         {footer}
-        <DialogPrimitive.Close className="focus:ring-ring absolute end-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:text-muted-foreground">
+        <DialogPrimitive.Close className="focus:ring-ring absolute end-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity data-[state=open]:text-muted-foreground hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none">
           <XIcon className="size-6 md:size-4" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
