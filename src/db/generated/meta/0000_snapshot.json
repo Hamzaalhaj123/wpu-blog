@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "id": "83a64345-2b4f-4065-b03b-a134891a7161",
+=======
+  "id": "c460128d-5dcf-4d57-a8ff-381ee54e5d8c",
+>>>>>>> dev
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -73,6 +77,7 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+<<<<<<< HEAD
         },
         "image": {
           "name": "image",
@@ -93,6 +98,8 @@
           "primaryKey": false,
           "notNull": true,
           "default": false
+=======
+>>>>>>> dev
         }
       },
       "indexes": {},
