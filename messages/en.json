@@ -25,7 +25,8 @@
     "select_preffered_theme": "Select preffered theme"
   },
   "NOT_FOUND": {
-    "title": "Page not found"
+    "title": "Page not found",
+    "return_to_homepage": "Return to home page"
   },
   "AUTH": {
     "username_or_email_already_exists": "Username or email already exists",
