@@ -19,8 +19,8 @@ export default function Page() {
           </p>
 
           <Button
-            variant={"link"}
-            shape={"link"}
+            // variant={"link"}
+            // shape={"link"}
             onClick={() => setMethod(method === "login" ? "signup" : "login")}
           >
             {method === "login" ? "Sign Up" : "Login"}

@@ -8,46 +8,53 @@ import LoadingSpinner from "@/components/shared/LoadingSpinner";
 import cn from "@/utils/cn";
 
 const buttonVariants = cva(
-  "relative inline-flex group disabled:cursor-not-allowed cursor-pointer items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 data-[isLoading=true]:invisible",
+  "relative inline-flex group disabled:cursor-not-allowed cursor-pointer items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 data-[isLoading=true]:invisible rounded-md",
   {
     variants: {
       variant: {
+        plain: "bg-opacity-0 text-foreground  ",
         primary:
-          "bg-primary hover:bg-opacity-80 active:bg-opacity-90  border-primary data-[outline=true]:text-primary data-[icon=true]:text-primary data-[smooth=true]:text-primary",
+          "bg-primary hover:bg-opacity-80 active:bg-opacity-90  border-primary data-[outline=true]:text-primary data-[icon=true]:text-primary data-[smooth=true]:text-primary data-[link=true]:text-primary",
         secondary:
-          "bg-secondary hover:bg-opacity-80 active:bg-opacity-90 border-secondary data-[outline=true]:text-secondary data-[icon=true]:text-secondary data-[smooth=true]:text-secondary",
+          "bg-secondary hover:bg-opacity-80 active:bg-opacity-90 border-secondary data-[outline=true]:text-secondary data-[icon=true]:text-secondary data-[smooth=true]:text-secondary data-[link=true]:text-secondary",
         error:
-          "bg-error hover:bg-opacity-80 active:bg-error-darker border-error data-[outline=true]:text-error data-[icon=true]:text-error data-[smooth=true]:text-error",
+          "bg-error hover:bg-opacity-80 active:bg-error-darker border-error data-[outline=true]:text-error data-[icon=true]:text-error data-[smooth=true]:text-error data-[link=true]:text-error",
         success:
-          "bg-success hover:bg-opacity-80 active:bg-success-darker border-success data-[outline=true]:text-success data-[icon=true]:text-success data-[smooth=true]:text-success",
+          "bg-success hover:bg-opacity-80 active:bg-success-darker border-success data-[outline=true]:text-success data-[icon=true]:text-success data-[smooth=true]:text-success data-[link=true]:text-success",
         warning:
-          "bg-warning hover:bg-opacity-80 active:bg-warning-darker border-warning data-[outline=true]:text-warning data-[icon=true]:text-warning data-[smooth=true]:text-warning",
+          "bg-warning hover:bg-opacity-80 active:bg-warning-darker border-warning data-[outline=true]:text-warning data-[icon=true]:text-warning data-[smooth=true]:text-warning data-[link=true]:text-warning",
       },
       size: {
+        none: "px-0 py-0 text-base",
         small: "px-3 py-1.5 text-xs",
         medium: "px-4 py-2 text-sm",
         large: "px-5 py-2.5 text-base",
       },
       icon: {
         true: "rounded-full px-2 py-2 bg-opacity-0 hover:bg-opacity-20 active:bg-opacity-40",
-        false: "rounded-md",
       },
       outline: {
         true: "border bg-opacity-0 hover:bg-opacity-20 active:bg-opacity-40",
-        false: "",
       },
       smooth: {
         true: "bg-opacity-30 hover:bg-opacity-40 active:bg-opacity-50 hover:text-foreground",
-        false: "",
+      },
+      link: {
+        true: "underline underline-offset-4 bg-opacity-0 hover:bg-opacity-0 active:bg-opacity-0",
+      },
+      pill: {
+        true: "rounded-full",
       },
     },
 
     defaultVariants: {
       variant: "primary",
       size: "medium",
+      link: false,
       icon: false,
       smooth: false,
       outline: false,
+      pill: false,
     },
   },
 );
@@ -70,6 +77,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       icon,
+      link,
+      pill,
       smooth,
       outline,
       disabled,
@@ -84,8 +93,18 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-icon={icon}
         data-smooth={smooth}
         data-isLoading={isLoading}
+        data-link={link}
         className={cn(
-          buttonVariants({ className, variant, size, icon, outline, smooth }),
+          buttonVariants({
+            className,
+            variant,
+            size,
+            icon,
+            outline,
+            smooth,
+            pill,
+            link,
+          }),
         )}
         ref={ref}
         disabled={disabled || isLoading}

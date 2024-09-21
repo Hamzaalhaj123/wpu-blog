@@ -1,6 +1,7 @@
 import LanguageSwitcher from "@/components/navbar/LanguageSwitcher";
 import ThemeSwitcher from "@/components/navbar/ThemeSwitcher";
 import ActiveLink from "@/components/shared/ActiveLink";
+import Button from "@/components/shared/Button";
 import routes from "@/config/routes";
 import { Link } from "@/lib/next-intl/navigation";
 
@@ -21,6 +22,10 @@ export default function NavBar() {
           <ActiveLink className="py-4" href={routes.contact}>
             Contact Us
           </ActiveLink>
+
+          <Button asChild smooth>
+            <Link href={routes.index}>Login</Link>
+          </Button>
         </div>
         <LanguageSwitcher />
         <ThemeSwitcher />
