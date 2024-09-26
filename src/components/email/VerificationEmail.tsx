@@ -16,7 +16,7 @@ export default function VerificationEmail({
       <h1>Welcome, {name}!</h1>
       <p>Please verify your email address by clicking the link below.</p>
       <Link
-        href={`${process.env.NEXT_PUBLIC_URL}/${routes.verify(id.toString(), code)}`}
+        href={`${process.env.NEXT_PUBLIC_URL}/en/${routes.verify(id.toString(), code)}`}
       >
         Verify Email
       </Link>

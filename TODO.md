@@ -12,3 +12,5 @@
 #TODO_MOHAMAD add database docker container
 #TODO_MOHAMAD change nav bar active links styling
 #TODO_MOHAMAD add link to button variants and remove shape variant
+#TODO make the email verification slug work whether it is arabic or english (dynamic)
+#TODO add a forgot password functionality
