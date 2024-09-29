@@ -116,13 +116,33 @@ const SelectItem = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & ButtonVariants
 >(
   (
-    { className, colour = "transparent", variant, shape, children, ...props },
+    {
+      className,
+      variant,
+      link,
+      pill,
+      size,
+      outline,
+      icon,
+      smooth,
+      children,
+      ...props
+    },
     ref,
   ) => (
     <SelectPrimitive.Item
       ref={ref}
       className={cn(
-        buttonVariants({ className, colour, variant, shape }),
+        buttonVariants({
+          className,
+          variant,
+          link,
+          pill,
+          size,
+          outline,
+          icon,
+          smooth,
+        }),
         "flex select-none rounded-sm shadow-none outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus-visible:ring-0 focus-visible:ring-offset-0",
         className,
       )}

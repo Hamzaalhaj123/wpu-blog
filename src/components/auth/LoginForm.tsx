@@ -69,12 +69,7 @@ export default function LoginForm() {
           )}
         />
         {error && <p className="text-error">{error}</p>}
-        <Button
-          variant={"default"}
-          colour={"primary"}
-          type="submit"
-          disabled={isLoading}
-        >
+        <Button type="submit" disabled={isLoading}>
           Login
         </Button>
       </form>

@@ -86,12 +86,7 @@ export default function SignUpForm() {
         />
         {error && <p className="text-error">{error}</p>}
 
-        <Button
-          variant={"default"}
-          colour={"primary"}
-          type="submit"
-          disabled={isLoading}
-        >
+        <Button type="submit" disabled={isLoading}>
           Create account
         </Button>
       </form>
