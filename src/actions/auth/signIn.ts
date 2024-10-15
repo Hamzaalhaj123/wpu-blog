@@ -1,5 +1,7 @@
 "use server";
 
+import { createSession } from "@/actions/auth/createSession";
+import { generateSessionToken } from "@/actions/auth/generateSessionToken";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
 import { users } from "@/db/schema";
@@ -39,7 +41,8 @@ export async function signIn(credentials: SignInValues) {
       parallelism: 1,
     });
     if (!validPassword) throw new Error(t("invalid_credentials"));
-    const session = await lucia.createSession(existingUser[0].id, {});
+    const sessionToken = generateSessionToken();
+    const session = await createSession(sessionToken, existingUser[0].id);
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
       sessionCookie.name,

@@ -1,6 +1,8 @@
 "use server";
 import { hash } from "@node-rs/argon2";
 
+import { createSession } from "@/actions/auth/createSession";
+import { generateSessionToken } from "@/actions/auth/generateSessionToken";
 import sendEmail from "@/actions/auth/sendEmail";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
@@ -55,8 +57,8 @@ export async function signUp(credentials: SignUpValues) {
       })
       .returning();
     await sendEmail(insertedUser, verificationCode[0].code);
-
-    const session = await lucia.createSession(insertedUser.id, {});
+    const sessionToken = generateSessionToken();
+    const session = await createSession(sessionToken, insertedUser.id);
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
       sessionCookie.name,

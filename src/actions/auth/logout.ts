@@ -1,5 +1,6 @@
 "use server";
 
+import { invalidateSession } from "@/actions/auth/invalidateSession";
 import routes from "@/config/routes";
 import { lucia, validateRequest } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
@@ -10,7 +11,7 @@ export async function logout() {
   if (!session) {
     throw new Error("No session found");
   }
-  await lucia.invalidateSession(session.id);
+  await invalidateSession(session.id);
   const sessionCookie = lucia.createBlankSessionCookie();
   cookies().set(
     sessionCookie.name,

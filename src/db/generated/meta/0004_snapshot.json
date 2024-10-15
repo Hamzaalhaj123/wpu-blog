@@ -1,6 +1,6 @@
 {
-  "id": "f0109f9a-38be-47fa-ba1d-a972c1392ba5",
-  "prevId": "75b25180-58dd-4aca-a1a7-a477b2c7f07f",
+  "id": "2df15fa3-d616-41bb-b43b-d9b9eb512cb3",
+  "prevId": "6c29bf65-3770-472c-8508-96a3875f8343",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -122,14 +122,14 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'6b5865e2-8770-4d44-9278-cfba3ad2221e'"
+          "default": "'bef6ebdb-0e88-41cc-bdcd-640a99308974'"
         },
         "expires_at": {
           "name": "expires_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true,
-          "default": "'2024-10-10T19:48:54.647Z'"
+          "default": "'2024-10-14T20:06:28.864Z'"
         }
       },
       "indexes": {},
@@ -152,7 +152,16 @@
       "uniqueConstraints": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "user",
+        "admin"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "_meta": {
