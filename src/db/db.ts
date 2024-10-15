@@ -1,6 +1,8 @@
+import { sessionTable } from "@/db/schemas/sessionTable";
+import { userTable } from "@/db/schemas/userTable";
+import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
-import * as schema from "./schema";
 
 if (!process.env.DATABASE_URL) {
   throw new Error("DATABASE_URL must exist");
@@ -20,7 +22,9 @@ function singleton<Value>(name: string, value: () => Value): Value {
 
 // Function to create the database connection and apply migrations if needed
 function createDatabaseConnection() {
-  return drizzle(postgres(process.env.DATABASE_URL as string), { schema });
+  return drizzle(postgres(process.env.DATABASE_URL as string), {
+    schema: { userTable, sessionTable, verificationCodeTable },
+  });
 }
 const db = singleton("db", createDatabaseConnection);
 

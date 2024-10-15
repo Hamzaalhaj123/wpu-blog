@@ -1,11 +1,11 @@
 import routes from "@/config/routes";
-import { verificationCodes } from "@/db/schema";
+import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
 import { Link } from "@react-email/components";
 import { InferSelectModel } from "drizzle-orm";
 import { User } from "lucia";
 
 type VerificationEmailProps = User &
-  Pick<InferSelectModel<typeof verificationCodes>, "code">;
+  Pick<InferSelectModel<typeof verificationCodeTable>, "code">; //TODO import the type from the table
 export default function VerificationEmail({
   id,
   name,

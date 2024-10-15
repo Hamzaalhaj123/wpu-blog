@@ -6,7 +6,8 @@ import { generateSessionToken } from "@/actions/auth/generateSessionToken";
 import sendEmail from "@/actions/auth/sendEmail";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
-import { users, verificationCodes } from "@/db/schema";
+import { userTable } from "@/db/schemas/userTable";
+import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
 import { lucia } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
 import { signUpSchema, SignUpValues } from "@/validators/authValidator";
@@ -31,15 +32,15 @@ export async function signUp(credentials: SignUpValues) {
 
     const existingUser = await db
       .select()
-      .from(users)
-      .where(or(eq(users.email, email), eq(users.name, username)));
+      .from(userTable)
+      .where(or(eq(userTable.email, email), eq(userTable.name, username)));
 
     console.log("existing user", existingUser);
 
     if (existingUser.length)
       throw new Error(t("username_or_email_already_exists"));
     const insertedUser = await db
-      .insert(users)
+      .insert(userTable)
       .values({
         email,
         name: username,
@@ -51,7 +52,7 @@ export async function signUp(credentials: SignUpValues) {
     console.log("ID IS  ", insertedUser.id);
 
     const verificationCode = await db
-      .insert(verificationCodes)
+      .insert(verificationCodeTable)
       .values({
         id: insertedUser.id,
       })

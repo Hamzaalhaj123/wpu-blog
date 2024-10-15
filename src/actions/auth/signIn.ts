@@ -4,7 +4,7 @@ import { createSession } from "@/actions/auth/createSession";
 import { generateSessionToken } from "@/actions/auth/generateSessionToken";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
-import { users } from "@/db/schema";
+import { userTable } from "@/db/schemas/userTable";
 import { lucia } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
 import { SignInValues, signInSchema } from "@/validators/authValidator";
@@ -22,9 +22,12 @@ export async function signIn(credentials: SignInValues) {
 
     const existingUser = await db
       .select()
-      .from(users)
+      .from(userTable)
       .where(
-        or(eq(users.name, usernameOrEmail), eq(users.email, usernameOrEmail)),
+        or(
+          eq(userTable.name, usernameOrEmail),
+          eq(userTable.email, usernameOrEmail),
+        ),
       );
 
     if (

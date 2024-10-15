@@ -1,6 +1,7 @@
 import routes from "@/config/routes";
 import { db } from "@/db/db";
-import { users, verificationCodes } from "@/db/schema";
+import { userTable } from "@/db/schemas/userTable";
+import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
 import { validateRequest } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
 import { and, eq } from "drizzle-orm";
@@ -24,19 +25,24 @@ export default async function page({ params }: { params: { slug: string[] } }) {
 
   const dbCode = await db
     .select()
-    .from(verificationCodes)
+    .from(verificationCodeTable)
     .where(
       and(
-        eq(verificationCodes.id, userId),
-        eq(verificationCodes.code, verificationCode),
+        eq(verificationCodeTable.id, userId),
+        eq(verificationCodeTable.code, verificationCode),
       ),
     );
 
   if (dbCode.length) {
     await db.transaction(async (trx) => {
       Promise.all([
-        trx.update(users).set({ isVerified: true }).where(eq(users.id, userId)),
-        trx.delete(verificationCodes).where(eq(verificationCodes.id, userId)),
+        trx
+          .update(userTable)
+          .set({ isVerified: true })
+          .where(eq(userTable.id, userId)),
+        trx
+          .delete(verificationCodeTable)
+          .where(eq(verificationCodeTable.id, userId)),
       ]);
     });
   }
