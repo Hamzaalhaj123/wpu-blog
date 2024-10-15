@@ -4,17 +4,16 @@ import { hash } from "@node-rs/argon2";
 import { createSession } from "@/actions/auth/createSession";
 import { generateSessionToken } from "@/actions/auth/generateSessionToken";
 import sendEmail from "@/actions/auth/sendEmail";
+import { setSessionTokenCookie } from "@/actions/auth/setSessionTokenCookie";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
 import { userTable } from "@/db/schemas/userTable";
 import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
-import { lucia } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
 import { signUpSchema, SignUpValues } from "@/validators/authValidator";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
-import { cookies } from "next/headers";
 
 export async function signUp(credentials: SignUpValues) {
   let isError = false;
@@ -60,12 +59,7 @@ export async function signUp(credentials: SignUpValues) {
     await sendEmail(insertedUser, verificationCode[0].code);
     const sessionToken = generateSessionToken();
     const session = await createSession(sessionToken, insertedUser.id);
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    cookies().set(
-      sessionCookie.name,
-      sessionCookie.value,
-      sessionCookie.attributes,
-    );
+    setSessionTokenCookie(sessionToken, session.expiresAt);
   } catch (error) {
     isError = true;
     if (isRedirectError(error)) throw new Error("redirect error");

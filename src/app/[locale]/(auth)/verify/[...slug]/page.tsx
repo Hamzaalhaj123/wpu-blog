@@ -1,14 +1,14 @@
+import { getCurrentSession } from "@/actions/auth/getCurrentSession";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
 import { userTable } from "@/db/schemas/userTable";
 import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
-import { validateRequest } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
 import { and, eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
 export default async function page({ params }: { params: { slug: string[] } }) {
-  const { user, session } = await validateRequest();
+  const { user, session } = await getCurrentSession();
   console.log(params);
   if (params.slug.length !== 2) {
     notFound();

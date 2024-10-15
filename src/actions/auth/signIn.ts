@@ -2,17 +2,17 @@
 
 import { createSession } from "@/actions/auth/createSession";
 import { generateSessionToken } from "@/actions/auth/generateSessionToken";
+import { setSessionTokenCookie } from "@/actions/auth/setSessionTokenCookie";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
 import { userTable } from "@/db/schemas/userTable";
-import { lucia } from "@/lib/auth";
+
 import { redirect } from "@/lib/next-intl/navigation";
 import { SignInValues, signInSchema } from "@/validators/authValidator";
 import { verify } from "@node-rs/argon2";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
-import { cookies } from "next/headers";
 
 export async function signIn(credentials: SignInValues) {
   const t = await getTranslations("AUTH");
@@ -46,12 +46,8 @@ export async function signIn(credentials: SignInValues) {
     if (!validPassword) throw new Error(t("invalid_credentials"));
     const sessionToken = generateSessionToken();
     const session = await createSession(sessionToken, existingUser[0].id);
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    cookies().set(
-      sessionCookie.name,
-      sessionCookie.value,
-      sessionCookie.attributes,
-    );
+
+    setSessionTokenCookie(sessionToken, session.expiresAt);
   } catch (error) {
     isError = true;
     if (isRedirectError(error)) throw new Error("redirect error");
