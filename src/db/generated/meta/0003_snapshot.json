@@ -1,6 +1,6 @@
 {
-  "id": "f0109f9a-38be-47fa-ba1d-a972c1392ba5",
-  "prevId": "75b25180-58dd-4aca-a1a7-a477b2c7f07f",
+  "id": "6c29bf65-3770-472c-8508-96a3875f8343",
+  "prevId": "e17f98c1-a214-4ae1-81ce-208a9711a9e6",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -28,7 +28,8 @@
         },
         "role": {
           "name": "role",
-          "type": "text",
+          "type": "role",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true,
           "default": "'user'"
@@ -122,14 +123,14 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'6b5865e2-8770-4d44-9278-cfba3ad2221e'"
+          "default": "'cd9f71be-735f-4c91-9ed7-40e1024c2006'"
         },
         "expires_at": {
           "name": "expires_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true,
-          "default": "'2024-10-10T19:48:54.647Z'"
+          "default": "'2024-10-14T20:03:00.434Z'"
         }
       },
       "indexes": {},
@@ -152,7 +153,16 @@
       "uniqueConstraints": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "user",
+        "admin"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "_meta": {

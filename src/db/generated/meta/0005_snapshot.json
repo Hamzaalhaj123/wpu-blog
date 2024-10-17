@@ -1,11 +1,11 @@
 {
-  "id": "f0109f9a-38be-47fa-ba1d-a972c1392ba5",
-  "prevId": "75b25180-58dd-4aca-a1a7-a477b2c7f07f",
+  "id": "e63261da-8bc5-4196-a97b-ae9f80df460e",
+  "prevId": "2df15fa3-d616-41bb-b43b-d9b9eb512cb3",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sessions": {
-      "name": "sessions",
+    "public.session": {
+      "name": "session",
       "schema": "",
       "columns": {
         "id": {
@@ -36,10 +36,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "sessions_user_id_users_id_fk": {
-          "name": "sessions_user_id_users_id_fk",
-          "tableFrom": "sessions",
-          "tableTo": "users",
+        "session_user_id_user_id_fk": {
+          "name": "session_user_id_user_id_fk",
+          "tableFrom": "session",
+          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
@@ -53,8 +53,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.users": {
-      "name": "users",
+    "public.user": {
+      "name": "user",
       "schema": "",
       "columns": {
         "id": {
@@ -107,8 +107,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.verification_codes": {
-      "name": "verification_codes",
+    "public.verification_code": {
+      "name": "verification_code",
       "schema": "",
       "columns": {
         "id": {
@@ -122,22 +122,22 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'6b5865e2-8770-4d44-9278-cfba3ad2221e'"
+          "default": "'d79878c6-b95e-4684-8bf7-04396beb21d9'"
         },
         "expires_at": {
           "name": "expires_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true,
-          "default": "'2024-10-10T19:48:54.647Z'"
+          "default": "'2024-10-15T19:44:17.685Z'"
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "verification_codes_id_users_id_fk": {
-          "name": "verification_codes_id_users_id_fk",
-          "tableFrom": "verification_codes",
-          "tableTo": "users",
+        "verification_code_id_user_id_fk": {
+          "name": "verification_code_id_user_id_fk",
+          "tableFrom": "verification_code",
+          "tableTo": "user",
           "columnsFrom": [
             "id"
           ],
@@ -152,7 +152,16 @@
       "uniqueConstraints": {}
     }
   },
-  "enums": {},
+  "enums": {
+    "public.role": {
+      "name": "role",
+      "schema": "public",
+      "values": [
+        "user",
+        "admin"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "_meta": {
