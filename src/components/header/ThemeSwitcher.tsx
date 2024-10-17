@@ -1,13 +1,7 @@
 "use client";
 
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/shared/Select";
 import useTheme from "@/hooks/shared/useTheme";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/shared/Select";
 import { Theme } from "@/types/theme";
 import { useTranslations } from "next-intl";
 
@@ -17,14 +11,9 @@ export default function ThemeSwitcher() {
 
   return (
     <div>
-      <Select
-        value={theme}
-        onValueChange={(theme) => handleSwitch((theme ?? undefined) as Theme)}
-      >
+      <Select value={theme} onValueChange={(theme) => handleSwitch((theme ?? undefined) as Theme)}>
         <SelectTrigger>
-          <SelectValue placeholder={t("system")}>
-            {t(theme || "system")}
-          </SelectValue>
+          <SelectValue placeholder={t("system")}>{t(theme || "system")}</SelectValue>
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="dark">{t("dark")}</SelectItem>

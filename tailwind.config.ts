@@ -2,131 +2,82 @@ import type { Config } from "tailwindcss";
 import translateUtilities from "./tailwindPlugins/translateUtilities";
 
 const config: Config = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      "primary-lighter": "rgba(var(--primary-lighter)/ <alpha-value>)",
-      primary: "rgba(var(--primary) / <alpha-value>)",
-      "primary-darker": "rgba(var(--primary-darker) / <alpha-value>)",
-
-      "secondary-lighter": "rgba(var(--secondary-lighter) / <alpha-value>)",
-      secondary: "rgba(var(--secondary) / <alpha-value> ) ",
-      "secondary-darker": "rgba(var(--secondary-darker)/ <alpha-value>)",
-
-      "success-lighter": "rgba(var(--success-lighter)/ <alpha-value>)",
-      success: "rgba(var(--success)/ <alpha-value>)",
-      "success-darker": "rgba(var(--success-darker)/ <alpha-value>)",
-
-      "error-lighter": "rgba(var(--error-lighter)/ <alpha-value>)",
-      error: "rgba(var(--error)/ <alpha-value>)",
-      "error-darker": "rgba(var(--error-darker)/ <alpha-value>)",
-
-      "warning-lighter": "rgba(var(--warning-lighter)/ <alpha-value>)",
-      warning: "rgba(var(--warning)/ <alpha-value>)",
-      "warning-darker": "rgba(var(--warning-darker)/ <alpha-value>)",
-
-      "muted-foreground": "rgba(var(--muted-foreground)/ <alpha-value>)",
-      foreground: "rgba(var(--foreground)/ <alpha-value>)",
-
-      "background-lighter": "rgba(var(--background-lighter)/ <alpha-value>)",
-      background: "rgba(var(--background)/ <alpha-value>)",
-      "background-darker": "rgba(var(--background-darker)/ <alpha-value>)",
-      transparent: "transparent",
-      inherit: "inherit",
-      black: "#000000",
-      white: "#ffffff",
-      blur: {
-        default: "blur(10px)",
-        sm: "blur(4px)",
-        md: "blur(8px)",
-        lg: "blur(16px)",
-        xl: "blur(24px)",
-      },
-
-      boxShadow: {
-        default: "0px 0px 10px rgba(0, 0, 0, 0.1)",
-        sm: "0px 0px 4px rgba(0, 0, 0, 0.1)",
-        md: "0px 0px 8px rgba(0, 0, 0, 0.1)",
-        lg: "0px 0px 16px rgba(0, 0, 0, 0.1)",
-        xl: "0px 0px 24px rgba(0, 0, 0, 0.1)",
-      },
-      fontWeight: {
-        light: "300",
-        normal: "400",
-        bold: "700",
-      },
-      outlineOffset: {
-        default: "0px",
-        sm: "-1px",
-        md: "-2px",
-        lg: "-4px",
-        xl: "-8px",
-      },
-      outlineWidth: {
-        default: "1px",
-        sm: "2px",
-        md: "3px",
-        lg: "4px",
-        xl: "6px",
-      },
-
-      ringOffsetWidth: {
-        default: "0px",
-        sm: "-1px",
-        md: "-2px",
-        lg: "-4px",
-        xl: "-8px",
-      },
-
-      ringWidth: {
-        default: "1px",
-        sm: "2px",
-        md: "3px",
-        lg: "4px",
-        xl: "6px",
-      },
-
-      // "primary-lighter": "#3e6b9a",
-      // primary: "#255c99",
-      // "primary-darker": "#1d4b7a",
-
-      // "secondary-lighter": "#ffda66",
-      // secondary: "#ffd046",
-      // "secondary-darker": "#c4b400",
-
-      // "success-lighter": "#00ff00",
-      // success: "#00b289",
-      // "success-darker": "#006600",
-
-      // "error-lighter": "#ff6666",
-      // error: "#ff3333",
-      // "error-darker": "#cc0000",
-
-      // "warning-lighter": "#ff9900",
-      // warning: "#f59e0b",
-      // "warning-darker": "#996600",
-
-      // "muted-foreground": "#b3b3b3",
-      // foreground: "#ffffff",
-
-      // "background-muted": "#1a1a1a",
-      // background: "#0f0f0f",
-    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       borderRadius: {
         inherit: "inherit",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       screens: {
-        "3xl": "1920px",
+        xs: "320px",
+        sm: "480px",
+        md: "768px",
+        lg: "992px",
+        xl: "1200px",
+      },
+      container: {
+        center: true,
+        padding: {
+          md: "1rem",
+        },
+      },
+      colors: {
+        background: "hsl(var(--background) / <alpha-value>)",
+        foreground: "hsl(var(--foreground) / <alpha-value>)",
+        card: {
+          DEFAULT: "hsl(var(--card) / <alpha-value>)",
+          foreground: "hsl(var(--card-foreground) / <alpha-value>)",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover) / <alpha-value>)",
+          foreground: "hsl(var(--popover-foreground) / <alpha-value>)",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+          foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
+          foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted) / <alpha-value>)",
+          foreground: "hsl(var(--muted-foreground) / <alpha-value>)",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent) / <alpha-value>)",
+          foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
+          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success) / <alpha-value>)",
+          foreground: "hsl(var(--success-foreground) / <alpha-value>)",
+        },
+        border: "hsl(var(--border) / <alpha-value>)",
+        input: "hsl(var(--input) / <alpha-value>)",
+        ring: "hsl(var(--ring) / <alpha-value>)",
+        chart: {
+          "1": "hsl(var(--chart-1) / <alpha-value>)",
+          "2": "hsl(var(--chart-2) / <alpha-value>)",
+          "3": "hsl(var(--chart-3) / <alpha-value>)",
+          "4": "hsl(var(--chart-4) / <alpha-value>)",
+          "5": "hsl(var(--chart-5) / <alpha-value>)",
+        },
       },
     },
   },

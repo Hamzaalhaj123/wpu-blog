@@ -11,7 +11,6 @@
 #TODO invalidate expired verification emails
 #TODO_MOHAMAD add database docker container
 #TODO_MOHAMAD change nav bar active links styling
-#TODO_MOHAMAD add link to button variants and remove shape variant
 #TODO_MOHAMAD test the button variants
-#TODO_HAMZA replace the button in all files
 #TODO merge and delete the buttonVariant branch
+z

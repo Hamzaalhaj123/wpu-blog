@@ -7,46 +7,45 @@ import * as React from "react";
 import LoadingSpinner from "@/components/shared/LoadingSpinner";
 import cn from "@/utils/cn";
 
-const buttonVariants = cva(
-  "relative inline-flex group disabled:cursor-not-allowed cursor-pointer items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 data-[isLoading=true]:invisible rounded-md",
-  {
-    variants: {
-      variant: {
-        plain: "bg-opacity-0 text-foreground  ",
-        primary:
-          "bg-primary hover:bg-opacity-80 active:bg-opacity-90  border-primary data-[outline=true]:text-primary data-[icon=true]:text-primary data-[smooth=true]:text-primary data-[link=true]:text-primary",
-        secondary:
-          "bg-secondary hover:bg-opacity-80 active:bg-opacity-90 border-secondary data-[outline=true]:text-secondary data-[icon=true]:text-secondary data-[smooth=true]:text-secondary data-[link=true]:text-secondary",
-        error:
-          "bg-error hover:bg-opacity-80 active:bg-error-darker border-error data-[outline=true]:text-error data-[icon=true]:text-error data-[smooth=true]:text-error data-[link=true]:text-error",
-        success:
-          "bg-success hover:bg-opacity-80 active:bg-success-darker border-success data-[outline=true]:text-success data-[icon=true]:text-success data-[smooth=true]:text-success data-[link=true]:text-success",
-        warning:
-          "bg-warning hover:bg-opacity-80 active:bg-warning-darker border-warning data-[outline=true]:text-warning data-[icon=true]:text-warning data-[smooth=true]:text-warning data-[link=true]:text-warning",
-      },
-      size: {
-        none: "px-0 py-0 text-base",
-        small: "px-3 py-1.5 text-xs",
-        medium: "px-4 py-2 text-sm",
-        large: "px-5 py-2.5 text-base",
-      },
-      icon: {
-        true: "rounded-full px-2 py-2 bg-opacity-0 hover:bg-opacity-20 active:bg-opacity-40",
-      },
-      outline: {
-        true: "border bg-opacity-0 hover:bg-opacity-20 active:bg-opacity-40",
-      },
-      smooth: {
-        true: "bg-opacity-30 hover:bg-opacity-40 active:bg-opacity-50 hover:text-foreground",
-      },
-      link: {
-        true: "underline underline-offset-4 bg-opacity-0 hover:bg-opacity-0 active:bg-opacity-0",
-      },
-      pill: {
-        true: "rounded-full",
-      },
-    },
+export const variants = {
+  variant: {
+    plain: "bg-opacity-0 text-foreground  ",
+    primary:
+      "bg-primary hover:bg-opacity-80 active:bg-opacity-90 border-primary data-[outline=true]:text-primary-foreground data-[icon=true]:text-primary-foreground data-[smooth=true]:text-primary-foreground data-[link=true]:text-primary-foreground",
+    secondary:
+      "bg-secondary hover:bg-opacity-80 active:bg-opacity-90 border-secondary data-[outline=true]:text-secondary-foreground data-[icon=true]:text-secondary-foreground data-[smooth=true]:text-secondary-foreground data-[link=true]:text-secondary-foreground",
+    error:
+      "bg-destructive hover:bg-opacity-80 active:bg-opacity-90 border-destructive data-[outline=true]:text-destructive-foreground data-[icon=true]:text-destructive-foreground data-[smooth=true]:text-destructive-foreground data-[link=true]:text-destructive-foreground",
+    success:
+      "bg-success hover:bg-opacity-80 active:bg-opacity-90 border-success data-[outline=true]:text-success-foreground data-[icon=true]:text-success-foreground data-[smooth=true]:text-success-foreground data-[link=true]:text-success-foreground",
+  },
+  size: {
+    none: "px-0 py-0 text-base",
+    small: "px-3 py-1.5 text-xs",
+    medium: "px-4 py-2 text-sm",
+    large: "px-5 py-2.5 text-base",
+  },
+  icon: {
+    true: "rounded-full px-2 py-2 bg-opacity-0 hover:bg-opacity-20 active:bg-opacity-40",
+  },
+  outline: {
+    true: "border bg-opacity-0 hover:bg-opacity-20 active:bg-opacity-40",
+  },
+  smooth: {
+    true: "bg-opacity-30 hover:bg-opacity-40 active:bg-opacity-50 hover:text-foreground",
+  },
+  link: {
+    true: "underline underline-offset-4 bg-opacity-0 hover:bg-opacity-0 active:bg-opacity-0",
+  },
+  pill: {
+    true: "rounded-full",
+  },
+};
 
+const buttonVariants = cva(
+  "relative inline-flex group disabled:cursor-not-allowed cursor-pointer items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 data-[isloading=true]:invisible",
+  {
+    variants,
     defaultVariants: {
       variant: "primary",
       size: "medium",
@@ -92,7 +91,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-outline={outline}
         data-icon={icon}
         data-smooth={smooth}
-        data-isLoading={isLoading}
+        data-isloading={isLoading}
         data-link={link}
         className={cn(
           buttonVariants({
