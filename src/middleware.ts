@@ -1,20 +1,18 @@
 import createMiddleware from "next-intl/middleware";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { locales } from "./config/locales";
 
-export default createMiddleware({
+const intlMiddleWare = createMiddleware({
   locales,
   defaultLocale: "en",
 });
-
 export const config = {
   matcher: ["/", "/(ar|en)/:path*"],
 };
 
 export async function middleware(request: NextRequest): Promise<NextResponse> {
   if (request.method === "GET") {
-    const response = NextResponse.next();
+    const response = intlMiddleWare(request);
     const token = request.cookies.get("session")?.value ?? null;
     if (token !== null) {
       // Only extend cookie expiration on GET requests since we can be sure
@@ -49,5 +47,6 @@ export async function middleware(request: NextRequest): Promise<NextResponse> {
       status: 403,
     });
   }
-  return NextResponse.next();
+
+  return intlMiddleWare(request);
 }

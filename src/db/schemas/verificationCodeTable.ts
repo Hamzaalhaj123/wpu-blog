@@ -1,6 +1,7 @@
 import { userTable } from "@/db/schemas/userTable";
 import { randomUUID } from "crypto";
 import { addMinutes } from "date-fns";
+import { InferSelectModel } from "drizzle-orm";
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const verificationCodeTable = pgTable("verification_code", {
@@ -16,3 +17,4 @@ export const verificationCodeTable = pgTable("verification_code", {
     .default(addMinutes(new Date(), 15))
     .notNull(),
 });
+export type VerificationCode = InferSelectModel<typeof verificationCodeTable>;

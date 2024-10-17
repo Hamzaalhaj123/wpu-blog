@@ -3,7 +3,6 @@ import { InferSelectModel } from "drizzle-orm";
 import { integer, pgEnum, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const roleEnum = pgEnum("role", ["user", "admin"]);
-console.log(roleEnum.enumValues);
 export const sessionTable = pgTable("session", {
   id: text("id").primaryKey(),
   userId: integer("user_id")
