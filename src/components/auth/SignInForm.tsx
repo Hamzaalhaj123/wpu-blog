@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 
-import { login } from "@/actions/auth/login";
+import { signIn } from "@/actions/auth/signIn";
 import Button from "@/components/shared/Button";
 
 import {
@@ -16,23 +16,25 @@ import {
 } from "@/components/shared/Form";
 import { Input } from "@/components/shared/Input";
 import { PasswordInput } from "@/components/shared/PasswordInput";
-import { loginSchema, LoginValues } from "@/validators/authvalidator";
+import routes from "@/config/routes";
+import { Link } from "@/lib/next-intl/navigation";
+import { signInSchema, SignInValues } from "@/validators/authValidator";
 
-export default function LoginForm() {
+export default function SignInForm() {
   const [error, setError] = useState<string | null>(null);
-  const form = useForm<LoginValues>({
-    resolver: zodResolver(loginSchema),
+  const form = useForm<SignInValues>({
+    resolver: zodResolver(signInSchema),
     defaultValues: {
       usernameOrEmail: "",
       password: "",
     },
   });
   const [isLoading, startTransition] = useTransition();
-  async function onSubmit(values: LoginValues) {
+  async function onSubmit(values: SignInValues) {
     startTransition(async () => {
       setError(null);
       try {
-        await login(values);
+        await signIn(values);
         console.log(values);
       } catch (error) {
         setError((error as Error).message || "An unexpected error occurred");
@@ -72,6 +74,10 @@ export default function LoginForm() {
         <Button type="submit" disabled={isLoading}>
           Login
         </Button>
+        <p>
+          Don't have an account?
+          <Link href={routes.signUp}> Sign up</Link>
+        </p>
       </form>
     </Form>
   );

@@ -13,4 +13,7 @@
 #TODO_MOHAMAD change nav bar active links styling
 #TODO_MOHAMAD test the button variants
 #TODO merge and delete the buttonVariant branch
-z
+#TODO_MOHAMAD add link to button variants and remove shape variant
+#TODO_MOHAMAD add a progress bar component
+#TODO make the email verification slug work whether it is arabic or english (dynamic)
+#TODO add a forgot password functionality

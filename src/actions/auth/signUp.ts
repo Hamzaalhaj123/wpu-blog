@@ -7,7 +7,7 @@ import { db } from "@/db/db";
 import { users, verificationCodes } from "@/db/schema";
 import { lucia } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
-import { signUpSchema, SignUpValues } from "@/validators/authvalidator";
+import { signUpSchema, SignUpValues } from "@/validators/authValidator";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
@@ -48,9 +48,12 @@ export async function signUp(credentials: SignUpValues) {
 
     console.log("ID IS  ", insertedUser.id);
 
-    const verificationCode = await db.insert(verificationCodes).values({
-      id: insertedUser.id,
-    }).returning();
+    const verificationCode = await db
+      .insert(verificationCodes)
+      .values({
+        id: insertedUser.id,
+      })
+      .returning();
     await sendEmail(insertedUser, verificationCode[0].code);
 
     const session = await lucia.createSession(insertedUser.id, {});

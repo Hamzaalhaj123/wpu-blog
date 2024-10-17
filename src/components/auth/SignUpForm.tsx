@@ -1,6 +1,6 @@
 "use client";
 
-import { signUp } from "@/actions/auth/signup";
+import { signUp } from "@/actions/auth/signUp";
 import Button from "@/components/shared/Button";
 import {
   Form,
@@ -12,7 +12,9 @@ import {
 } from "@/components/shared/Form";
 import { Input } from "@/components/shared/Input";
 import { PasswordInput } from "@/components/shared/PasswordInput";
-import { signUpSchema, SignUpValues } from "@/validators/authvalidator";
+import routes from "@/config/routes";
+import { Link } from "@/lib/next-intl/navigation";
+import { signUpSchema, SignUpValues } from "@/validators/authValidator";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
@@ -89,6 +91,9 @@ export default function SignUpForm() {
         <Button type="submit" disabled={isLoading}>
           Create account
         </Button>
+        <p>
+          Already have an account? <Link href={routes.signIn}>Sign in</Link>
+        </p>
       </form>
     </Form>
   );

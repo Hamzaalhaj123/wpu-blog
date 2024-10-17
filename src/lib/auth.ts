@@ -68,6 +68,7 @@ declare module "lucia" {
 
 interface DatabaseUserAttributes {
   isVerified: boolean;
+  email: string;
   id: number;
   name: string;
   image: string | null;

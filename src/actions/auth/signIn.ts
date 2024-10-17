@@ -5,18 +5,18 @@ import { db } from "@/db/db";
 import { users } from "@/db/schema";
 import { lucia } from "@/lib/auth";
 import { redirect } from "@/lib/next-intl/navigation";
-import { loginSchema, LoginValues } from "@/validators/authvalidator";
+import { SignInValues, signInSchema } from "@/validators/authValidator";
 import { verify } from "@node-rs/argon2";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { cookies } from "next/headers";
 
-export async function login(credentials: LoginValues) {
+export async function signIn(credentials: SignInValues) {
   const t = await getTranslations("AUTH");
   let isError = false;
   try {
-    const { usernameOrEmail, password } = loginSchema.parse(credentials);
+    const { usernameOrEmail, password } = signInSchema.parse(credentials);
 
     const existingUser = await db
       .select()
