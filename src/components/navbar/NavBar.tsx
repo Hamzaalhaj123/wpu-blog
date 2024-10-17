@@ -1,3 +1,4 @@
+import Logout from "@/components/auth/Logout";
 import LanguageSwitcher from "@/components/navbar/LanguageSwitcher";
 import ThemeSwitcher from "@/components/navbar/ThemeSwitcher";
 import ActiveLink from "@/components/shared/ActiveLink";
@@ -24,6 +25,7 @@ export default function NavBar() {
         </div>
         <LanguageSwitcher />
         <ThemeSwitcher />
+        <Logout/>
       </nav>
     </header>
   );

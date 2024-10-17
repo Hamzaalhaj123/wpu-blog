@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "id": "83a64345-2b4f-4065-b03b-a134891a7161",
-=======
-  "id": "c460128d-5dcf-4d57-a8ff-381ee54e5d8c",
->>>>>>> dev
+  "id": "75b25180-58dd-4aca-a1a7-a477b2c7f07f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -77,7 +73,6 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
-<<<<<<< HEAD
         },
         "image": {
           "name": "image",
@@ -98,12 +93,54 @@
           "primaryKey": false,
           "notNull": true,
           "default": false
-=======
->>>>>>> dev
         }
       },
       "indexes": {},
       "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.verification_codes": {
+      "name": "verification_codes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'f223780f-b067-4c1a-8107-5c8be8b8e46b'"
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'2024-10-10T19:48:09.102Z'"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "verification_codes_id_users_id_fk": {
+          "name": "verification_codes_id_users_id_fk",
+          "tableFrom": "verification_codes",
+          "tableTo": "users",
+          "columnsFrom": [
+            "id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     }
