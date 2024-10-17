@@ -1,4 +1,4 @@
-import BlogSkeleton from "@/components/blogs/BlogSkeleton";
+import BlogCardSkeleton from "@/components/blogs/BlogCardSkeleton";
 
 export default function loading() {
   return (
@@ -6,7 +6,7 @@ export default function loading() {
       {Array(8)
         .fill(0)
         .map((_, index) => (
-          <BlogSkeleton key={index} />
+          <BlogCardSkeleton key={index} />
         ))}
     </div>
   );
