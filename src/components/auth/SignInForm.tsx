@@ -71,13 +71,8 @@ export default function SignInForm() {
           )}
         />
         {error && <p className="text-error">{error}</p>}
-        <Button
-          variant={"default"}
-          colour={"primary"}
-          type="submit"
-          disabled={isLoading}
-        >
-          Sign in
+        <Button type="submit" disabled={isLoading}>
+          Login
         </Button>
         <p>
           Don't have an account?

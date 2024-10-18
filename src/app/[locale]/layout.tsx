@@ -1,3 +1,5 @@
+import Header from "@/components/header/Header";
+import { Toaster } from "@/components/shared/Toaster";
 import { getCurrentSession } from "@/actions/auth/getCurrentSession";
 import RadixDirectionProvider from "@/components/wrappers/RadixDirectionProvider";
 import SessionProvider from "@/components/wrappers/SessionProvider";
@@ -8,7 +10,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import React from "react";
 import { getLangDir } from "rtl-detect";
-import NavBar from "../../components/navbar/NavBar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,10 +24,7 @@ type RootLayoutProps = Readonly<{
   };
 }>;
 
-export default async function RootLayout({
-  children,
-  params: { locale },
-}: RootLayoutProps) {
+export default async function RootLayout({ children, params: { locale } }: RootLayoutProps) {
   const theme = getTheme();
 
   const messages = await getMessages();
@@ -36,17 +34,16 @@ export default async function RootLayout({
 
   return (
     <html dir={dir} lang={locale} className={theme ?? ""}>
-      <body className="grid grid-rows-[auto,1fr] bg-background-darker text-foreground">
+      <body className="grid h-screen grid-rows-[auto,1fr] bg-background text-foreground">
         <RadixDirectionProvider dir={dir}>
           <NextIntlClientProvider messages={messages}>
             <CookiesProvider>
               <SessionProvider value={session}>
-                <NavBar />
-                <div className="h-[calc(100vh-72px)] overflow-auto scrollbar-thin scrollbar-thumb-primary scrollbar-thumb-rounded-md">
-                  <main className="container mx-auto h-full px-4 py-10 lg:px-10">
-                    {children}
-                  </main>
+                <Header />
+                <div className="overflow-auto scrollbar-thin scrollbar-thumb-primary scrollbar-thumb-rounded-md">
+                  <main className="md:container mx-auto py-10 px-4">{children}</main>
                 </div>
+                <Toaster />
               </SessionProvider>
             </CookiesProvider>
           </NextIntlClientProvider>
