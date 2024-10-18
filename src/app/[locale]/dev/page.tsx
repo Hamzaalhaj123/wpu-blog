@@ -22,7 +22,7 @@ export default function DevelopmentPage() {
                   .filter((entry) => entry.variant !== variant)
                   .map(({ variant: otherVariant, options: otherOptions }) =>
                     otherOptions.map((otherOption) => (
-                      <Button {...{ [variant]: options[0], [otherVariant]: otherOption }}>
+                      <Button key={otherOption} {...{ [variant]: options[0], [otherVariant]: otherOption }}>
                         {variant === "icon" || otherVariant === "icon" ? (
                           <ThumbsUpIcon />
                         ) : (

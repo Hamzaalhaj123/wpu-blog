@@ -12,14 +12,6 @@ const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
 
-React.forwardRef<React.ElementRef<typeof SelectPrimitive.Value>, React.ComponentPropsWithoutRef<typeof SelectPrimitive.Value>>(
-  ({ placeholder, children, ...props }, ref) => (
-    <SelectValue ref={ref} {...props}>
-      {children ?? placeholder}
-    </SelectValue>
-  ),
-);
-
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & ButtonVariants
