@@ -1,17 +1,19 @@
 "use server";
 import { hash } from "@node-rs/argon2";
 
+import { createSession } from "@/actions/auth/createSession";
+import { generateSessionToken } from "@/actions/auth/generateSessionToken";
 import sendEmail from "@/actions/auth/sendEmail";
+import { setSessionTokenCookie } from "@/actions/auth/setSessionTokenCookie";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
-import { users, verificationCodes } from "@/db/schema";
-import { lucia } from "@/lib/auth";
+import { userTable } from "@/db/schemas/userTable";
+import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
 import { redirect } from "@/lib/next-intl/navigation";
 import { signUpSchema, SignUpValues } from "@/validators/authValidator";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
-import { cookies } from "next/headers";
 
 export async function signUp(credentials: SignUpValues) {
   let isError = false;
@@ -29,15 +31,15 @@ export async function signUp(credentials: SignUpValues) {
 
     const existingUser = await db
       .select()
-      .from(users)
-      .where(or(eq(users.email, email), eq(users.name, username)));
+      .from(userTable)
+      .where(or(eq(userTable.email, email), eq(userTable.name, username)));
 
     console.log("existing user", existingUser);
 
     if (existingUser.length)
       throw new Error(t("username_or_email_already_exists"));
     const insertedUser = await db
-      .insert(users)
+      .insert(userTable)
       .values({
         email,
         name: username,
@@ -49,20 +51,15 @@ export async function signUp(credentials: SignUpValues) {
     console.log("ID IS  ", insertedUser.id);
 
     const verificationCode = await db
-      .insert(verificationCodes)
+      .insert(verificationCodeTable)
       .values({
         id: insertedUser.id,
       })
       .returning();
     await sendEmail(insertedUser, verificationCode[0].code);
-
-    const session = await lucia.createSession(insertedUser.id, {});
-    const sessionCookie = lucia.createSessionCookie(session.id);
-    cookies().set(
-      sessionCookie.name,
-      sessionCookie.value,
-      sessionCookie.attributes,
-    );
+    const sessionToken = generateSessionToken();
+    const session = await createSession(sessionToken, insertedUser.id);
+    setSessionTokenCookie(sessionToken, session.expiresAt);
   } catch (error) {
     isError = true;
     if (isRedirectError(error)) throw new Error("redirect error");

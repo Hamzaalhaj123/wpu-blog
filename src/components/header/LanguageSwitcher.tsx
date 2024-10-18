@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/shared/Select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/shared/Select";
 import { locales } from "@/config/locales";
 import { usePathname, useRouter } from "@/lib/next-intl/navigation";
 import { useLocale, useTranslations } from "next-intl";
@@ -24,11 +18,7 @@ export default function LanguageSwitcher() {
 
   return (
     <div>
-      <Select
-        disabled={pending}
-        value={locale}
-        onValueChange={handleSelectLanguage}
-      >
+      <Select disabled={pending} value={locale} onValueChange={handleSelectLanguage}>
         <SelectTrigger>
           <SelectValue>{t(locale as any)}</SelectValue>
         </SelectTrigger>

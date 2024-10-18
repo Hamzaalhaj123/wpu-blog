@@ -1,6 +1,6 @@
 {
-  "id": "1797d7e0-947e-4a01-94ab-1531a2af6f08",
-  "prevId": "83a64345-2b4f-4065-b03b-a134891a7161",
+  "id": "f0109f9a-38be-47fa-ba1d-a972c1392ba5",
+  "prevId": "75b25180-58dd-4aca-a1a7-a477b2c7f07f",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -25,6 +25,13 @@
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'user'"
         }
       },
       "indexes": {},
@@ -115,14 +122,14 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'7146581b-1057-43b6-84cf-6af409405ba9'"
+          "default": "'6b5865e2-8770-4d44-9278-cfba3ad2221e'"
         },
         "expires_at": {
           "name": "expires_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true,
-          "default": "'2024-09-10T20:50:42.025Z'"
+          "default": "'2024-10-10T19:48:54.647Z'"
         }
       },
       "indexes": {},

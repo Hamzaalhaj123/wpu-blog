@@ -1,6 +1,6 @@
 import cn from "@/utils/cn";
 import { LoaderCircleIcon } from "lucide-react";
-import React, { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
 
 type LoadingSpinnerProps = {
   isLoading: boolean;
@@ -15,7 +15,7 @@ export default function LoadingSpinner({
     <div
       style={{ borderRadius: "inherit" }}
       className={cn(
-        "bg-inherit rounded-inherit pointer-events-none absolute inset-0 grid place-items-center opacity-0 transition-opacity",
+        "pointer-events-none visible absolute inset-0 grid place-items-center rounded-inherit bg-inherit opacity-0",
         { "opacity-100": isLoading },
         className,
       )}

@@ -1,5 +1,6 @@
-import LanguageSwitcher from "@/components/navbar/LanguageSwitcher";
-import ThemeSwitcher from "@/components/navbar/ThemeSwitcher";
+import Logout from "@/components/auth/Logout";
+import LanguageSwitcher from "@/components/header/LanguageSwitcher";
+import ThemeSwitcher from "@/components/header/ThemeSwitcher";
 import ActiveLink from "@/components/shared/ActiveLink";
 import routes from "@/config/routes";
 import { Link } from "@/lib/next-intl/navigation";
@@ -24,6 +25,7 @@ export default function NavBar() {
         </div>
         <LanguageSwitcher />
         <ThemeSwitcher />
+        <Logout />
       </nav>
     </header>
   );

@@ -1,13 +1,14 @@
+import { getCurrentSession } from "@/actions/auth/getCurrentSession";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
-import { users, verificationCodes } from "@/db/schema";
-import { validateRequest } from "@/lib/auth";
+import { userTable } from "@/db/schemas/userTable";
+import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
 import { redirect } from "@/lib/next-intl/navigation";
 import { and, eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 
 export default async function page({ params }: { params: { slug: string[] } }) {
-  const { user, session } = await validateRequest();
+  const { user, session } = await getCurrentSession();
   console.log(params);
   if (params.slug.length !== 2) {
     notFound();
@@ -24,19 +25,24 @@ export default async function page({ params }: { params: { slug: string[] } }) {
 
   const dbCode = await db
     .select()
-    .from(verificationCodes)
+    .from(verificationCodeTable)
     .where(
       and(
-        eq(verificationCodes.id, userId),
-        eq(verificationCodes.code, verificationCode),
+        eq(verificationCodeTable.id, userId),
+        eq(verificationCodeTable.code, verificationCode),
       ),
     );
 
   if (dbCode.length) {
     await db.transaction(async (trx) => {
       Promise.all([
-        trx.update(users).set({ isVerified: true }).where(eq(users.id, userId)),
-        trx.delete(verificationCodes).where(eq(verificationCodes.id, userId)),
+        trx
+          .update(userTable)
+          .set({ isVerified: true })
+          .where(eq(userTable.id, userId)),
+        trx
+          .delete(verificationCodeTable)
+          .where(eq(verificationCodeTable.id, userId)),
       ]);
     });
   }
