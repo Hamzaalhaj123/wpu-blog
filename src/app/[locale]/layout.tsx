@@ -1,8 +1,8 @@
 import Header from "@/components/header/Header";
 import { Toaster } from "@/components/shared/Toaster";
+import { getCurrentSession } from "@/actions/auth/getCurrentSession";
 import RadixDirectionProvider from "@/components/wrappers/RadixDirectionProvider";
 import SessionProvider from "@/components/wrappers/SessionProvider";
-import { validateRequest } from "@/lib/auth";
 import getTheme from "@/utils/getTheme";
 import type { Metadata } from "next";
 import { CookiesProvider } from "next-client-cookies/server";
@@ -30,7 +30,7 @@ export default async function RootLayout({ children, params: { locale } }: RootL
   const messages = await getMessages();
 
   const dir = getLangDir(locale);
-  const session = await validateRequest();
+  const session = await getCurrentSession();
 
   return (
     <html dir={dir} lang={locale} className={theme ?? ""}>
