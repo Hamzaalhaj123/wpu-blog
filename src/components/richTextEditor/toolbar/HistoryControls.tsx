@@ -1,3 +1,4 @@
+import ToolbarTooltip from "@/components/richTextEditor/toolbar/ToolbarTooltip";
 import Button from "@/components/shared/Button";
 import { Separator } from "@/components/shared/Separator";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
@@ -12,14 +13,18 @@ export default function HistoryControls() {
   const canUndo = editor.history.undos.length > 0;
   const canRedo = editor.history.redos.length > 0;
   return (
-    <div className="flex items-center gap-2">
-      <Button size="small" icon onClick={handleUndo} disabled={!canUndo}>
-        <ChevronLeftIcon size={16} />
-      </Button>
-      <Separator orientation="vertical" />
-      <Button size="small" icon onClick={handelRedo} disabled={!canRedo}>
-        <ChevronRightIcon size={16} />
-      </Button>
+    <div className="flex h-fit">
+      <ToolbarTooltip title="Undo" hotkey="Ctrl + Z">
+        <Button size="small" onClick={handleUndo} disabled={!canUndo} className="rounded-e-none">
+          <ChevronLeftIcon size={16} />
+        </Button>
+      </ToolbarTooltip>
+      <Separator orientation="vertical" className="bg-background" />
+      <ToolbarTooltip title="Redo" hotkey="Ctrl + Y">
+        <Button size="small" onClick={handelRedo} disabled={!canRedo} className="rounded-s-none">
+          <ChevronRightIcon size={16} />
+        </Button>
+      </ToolbarTooltip>
     </div>
   );
 }

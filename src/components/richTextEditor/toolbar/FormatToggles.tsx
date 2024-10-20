@@ -1,3 +1,4 @@
+import ToolbarTooltip from "@/components/richTextEditor/toolbar/ToolbarTooltip";
 import { ToggleGroup, ToggleGroupItem } from "@/components/shared/ToggleGroup";
 import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon } from "lucide-react";
 import { useCallback } from "react";
@@ -15,18 +16,26 @@ export default function FormatToggles() {
 
   return (
     <ToggleGroup type="multiple" value={activeMarks} onValueChange={handleChange}>
-      <ToggleGroupItem value="bold">
-        <BoldIcon />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="italic">
-        <ItalicIcon />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="underline">
-        <UnderlineIcon />
-      </ToggleGroupItem>
-      <ToggleGroupItem value="strikethrough">
-        <StrikethroughIcon />
-      </ToggleGroupItem>
+      <ToolbarTooltip title="toggle bold" hotkey="Ctrl + B">
+        <ToggleGroupItem value="bold">
+          <BoldIcon />
+        </ToggleGroupItem>
+      </ToolbarTooltip>
+      <ToolbarTooltip title="toggle italic" hotkey="Ctrl + I">
+        <ToggleGroupItem value="italic">
+          <ItalicIcon />
+        </ToggleGroupItem>
+      </ToolbarTooltip>
+      <ToolbarTooltip title="toggle underline" hotkey="Ctrl + U">
+        <ToggleGroupItem value="underline">
+          <UnderlineIcon />
+        </ToggleGroupItem>
+      </ToolbarTooltip>
+      <ToolbarTooltip title="toggle strikethrough" hotkey="Ctrl + Shift + S">
+        <ToggleGroupItem value="strikethrough">
+          <StrikethroughIcon />
+        </ToggleGroupItem>
+      </ToolbarTooltip>
     </ToggleGroup>
   );
 }

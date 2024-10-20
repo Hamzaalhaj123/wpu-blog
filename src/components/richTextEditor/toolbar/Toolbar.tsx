@@ -5,7 +5,7 @@ import HistoryControls from "@/components/richTextEditor/toolbar/HistoryControls
 
 export default function Toolbar() {
   return (
-    <div className="mb-6 flex justify-between gap-4 rounded-md border-border bg-card p-1">
+    <div className="mb-6 flex justify-between gap-4 items-center">
       <HistoryControls />
       <FormatToggles />
       <HeadingSelect className="ms-auto" />
