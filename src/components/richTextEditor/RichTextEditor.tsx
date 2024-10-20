@@ -1,52 +1,40 @@
 "use client";
 
-import CodeElement from "@/components/richTextEditor/CodeElement";
-import DefaultElement from "@/components/richTextEditor/DefaultElement";
+import BaseElement from "@/components/richTextEditor/elements/BaseElement";
 import Leaf from "@/components/richTextEditor/Leaf";
-import toggleBoldMark from "@/lib/textEditor/toggleBoldMark";
-import toggleCodeBlock from "@/lib/textEditor/toggleCodeBlock";
-import { KeyboardEvent, useCallback, useState } from "react";
+import Toolbar from "@/components/richTextEditor/toolbar/Toolbar";
+import useHandleSlateKeydown from "@/hooks/richTextEditor/useHandleSlateKeydown";
+import { useCallback, useMemo } from "react";
 import { createEditor, Descendant } from "slate";
 import { Editable, RenderElementProps, RenderLeafProps, Slate, withReact } from "slate-react";
 
-const initialValue: Descendant[] = [{ type: "paragraph", children: [{ text: "" }] }];
+const initialValue: Descendant[] = [
+  { type: "paragraph", fontSize: "sm", children: [{ text: "Hello world", formats: ["bold"] }] },
+  { type: "paragraph", fontSize: "md", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "paragraph", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "h1", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "h2", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "h3", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "h4", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "h5", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "h6", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+];
 
 export default function RichTextEditor() {
-  const [editor] = useState(() => withReact(createEditor()));
-
-  const renderHandler = useCallback((props: RenderElementProps) => {
-    switch (props.element.type) {
-      case "code":
-        return <CodeElement {...props} />;
-      default:
-        return <DefaultElement {...props} />;
-    }
-  }, []);
-
-  const renderLeaf = useCallback((props: RenderLeafProps) => {
-    return <Leaf {...props} />;
-  }, []);
-
-  const keydownHandler = useCallback((event: KeyboardEvent) => {
-    if (event.ctrlKey) {
-      switch (event.key) {
-        case "q": {
-          event.preventDefault();
-          toggleCodeBlock(editor);
-          break;
-        }
-        case "b": {
-          event.preventDefault();
-          toggleBoldMark(editor);
-          break;
-        }
-      }
-    }
-  }, []);
+  const editor = useMemo(() => withReact(createEditor()), []);
+  const handleRenderElement = useCallback((props: RenderElementProps) => <BaseElement {...props} />, []);
+  const handleRenderLeaf = useCallback((props: RenderLeafProps) => <Leaf {...props} />, []);
+  const handleKeydown = useHandleSlateKeydown(editor);
 
   return (
     <Slate editor={editor} initialValue={initialValue}>
-      <Editable renderElement={renderHandler} renderLeaf={renderLeaf} onKeyDown={keydownHandler} />
+      <Toolbar />
+      <Editable
+        renderElement={handleRenderElement}
+        renderLeaf={handleRenderLeaf}
+        onKeyDown={handleKeydown}
+        placeholder="Start typing here"
+      />
     </Slate>
   );
 }
