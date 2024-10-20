@@ -6,7 +6,13 @@ export default function useHandleSlateKeydown(editor: Editor) {
   return useCallback(
     (event: KeyboardEvent) => {
       if (event.ctrlKey) {
-        if (event.code === "KeyB") {
+        if (event.code === "KeyZ") {
+          event.preventDefault();
+          editor.undo();
+        } else if (event.code === "KeyY") {
+          event.preventDefault();
+          editor.redo();
+        } else if (event.code === "KeyB") {
           event.preventDefault();
           toggleFormat(editor, "bold");
         } else if (event.code === "KeyI") {

@@ -6,6 +6,7 @@ import Toolbar from "@/components/richTextEditor/toolbar/Toolbar";
 import useHandleSlateKeydown from "@/hooks/richTextEditor/useHandleSlateKeydown";
 import { useCallback, useMemo } from "react";
 import { createEditor, Descendant } from "slate";
+import { withHistory } from "slate-history";
 import { Editable, RenderElementProps, RenderLeafProps, Slate, withReact } from "slate-react";
 
 const initialValue: Descendant[] = [
@@ -21,7 +22,8 @@ const initialValue: Descendant[] = [
 ];
 
 export default function RichTextEditor() {
-  const editor = useMemo(() => withReact(createEditor()), []);
+  const editor = useMemo(() => withReact(withHistory(createEditor())), []);
+
   const handleRenderElement = useCallback((props: RenderElementProps) => <BaseElement {...props} />, []);
   const handleRenderLeaf = useCallback((props: RenderLeafProps) => <Leaf {...props} />, []);
   const handleKeydown = useHandleSlateKeydown(editor);
