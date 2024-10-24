@@ -18,6 +18,8 @@ export const variants = {
       "bg-destructive hover:bg-opacity-80 active:bg-opacity-90 border-destructive data-[outline=true]:text-destructive-foreground data-[icon=true]:text-destructive-foreground data-[smooth=true]:text-destructive-foreground data-[link=true]:text-destructive-foreground",
     success:
       "bg-success hover:bg-opacity-80 active:bg-opacity-90 border-success data-[outline=true]:text-success-foreground data-[icon=true]:text-success-foreground data-[smooth=true]:text-success-foreground data-[link=true]:text-success-foreground",
+    warning:
+      "bg-warning hover:bg-opacity-80 active:bg-opacity-90 border-warning data-[outline=true]:text-warning-foreground data-[icon=true]:text-warning-foreground data-[smooth=true]:text-warning-foreground data-[link=true]:text-warning-foreground",
   },
   size: {
     none: "px-0 py-0 text-base",

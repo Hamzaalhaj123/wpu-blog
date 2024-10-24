@@ -10,15 +10,15 @@ import { withHistory } from "slate-history";
 import { Editable, RenderElementProps, RenderLeafProps, Slate, withReact } from "slate-react";
 
 const initialValue: Descendant[] = [
-  { type: "paragraph", fontSize: "sm", children: [{ text: "Hello world", formats: ["bold"] }] },
-  { type: "paragraph", fontSize: "md", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
-  { type: "paragraph", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
-  { type: "h1", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
-  { type: "h2", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
-  { type: "h3", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
-  { type: "h4", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
-  { type: "h5", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
-  { type: "h6", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic", "underline"] }] },
+  { type: "paragraph", fontSize: "sm", children: [{ text: "Hello world", formats: ["bold"], color: "accent" }] },
+  { type: "paragraph", fontSize: "md", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  { type: "paragraph", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  { type: "h1", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  { type: "h2", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  { type: "h3", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  { type: "h4", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  { type: "h5", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  { type: "h6", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
 ];
 
 export default function RichTextEditor() {

@@ -11,9 +11,12 @@ export default function ToolbarTooltip({ children, title, hotkey }: ToolbarToolt
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipTrigger asChild>
+          <div>{children}</div>
+        </TooltipTrigger>
         <TooltipContent side="bottom" className="font-bold">
-          {title} <span className="font-semibold text-muted-foreground">({hotkey})</span>
+          <div>{title}</div>
+          <div className="font-semibold text-muted-foreground">({hotkey})</div>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

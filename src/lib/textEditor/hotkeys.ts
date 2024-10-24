@@ -1,5 +1,4 @@
-import toggleFormat from "@/lib/textEditor/toggleFormat";
-import { KeyboardEvent, useCallback } from "react";
+import { KeyboardEvent } from "react";
 import { Editor } from "slate";
 
 const hotKeys = {
@@ -33,7 +32,7 @@ const hotKeys = {
     callback: (event: KeyboardEvent, editor: Editor) => {
       if (event.ctrlKey && event.code === "KeyB") {
         event.preventDefault();
-        toggleFormat(editor, "bold");
+        editor.redo();
         return true;
       }
       return false;
@@ -45,7 +44,7 @@ const hotKeys = {
     callback: (event: KeyboardEvent, editor: Editor) => {
       if (event.ctrlKey && event.code === "KeyI") {
         event.preventDefault();
-        toggleFormat(editor, "italic");
+        editor.redo();
         return true;
       }
       return false;
@@ -57,7 +56,7 @@ const hotKeys = {
     callback: (event: KeyboardEvent, editor: Editor) => {
       if (event.ctrlKey && event.code === "KeyU") {
         event.preventDefault();
-        toggleFormat(editor, "underline");
+        editor.redo();
         return true;
       }
       return false;
@@ -67,9 +66,9 @@ const hotKeys = {
     title: "Toggle strikethrough",
     hotkey: "Ctrl + Shift + S",
     callback: (event: KeyboardEvent, editor: Editor) => {
-      if (event.ctrlKey && event.shiftKey && event.code === "KeyS") {
+      if (event.ctrlKey && event.code === "KeyU") {
         event.preventDefault();
-        toggleFormat(editor, "strikethrough");
+        editor.redo();
         return true;
       }
       return false;
@@ -77,14 +76,4 @@ const hotKeys = {
   },
 };
 
-export default function useHandleSlateKeydown(editor: Editor) {
-  const hotKeysArr = Object.keys(hotKeys).map((key) => hotKeys[key as keyof typeof hotKeys]);
-  return useCallback(
-    (event: KeyboardEvent) => {
-      for (let i = 0; i < hotKeysArr.length; i++) {
-        if (hotKeysArr[i].callback(event, editor)) return;
-      }
-    },
-    [editor],
-  );
-}
+export default hotKeys;
