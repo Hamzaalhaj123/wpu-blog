@@ -1,6 +1,6 @@
 export type FontSize = "xs" | "sm" | "md" | "lg" | "xl";
 
-export type TextColor = "default" | "primary" | "secondary" | "destructive" | "success" | "warning" | "accent";
+export type Color = "default" | "primary" | "secondary" | "destructive" | "success" | "warning" | "accent";
 
 export type Format = "bold" | "italic" | "underline" | "strikethrough";
 
@@ -10,4 +10,4 @@ export type ElementType = "paragraph" | "code" | Heading;
 
 export type CustomElement = { type: ElementType; children: CustomText[]; fontSize?: FontSize };
 
-export type CustomText = { text: string; formats?: Format[]; color?: TextColor };
+export type CustomText = { text: string; formats?: Format[]; textColor?: Color; highlightColor?: Color };

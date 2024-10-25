@@ -16,26 +16,26 @@ export default function FormatToggles() {
   }, []);
 
   return (
-    <ToggleGroup type="multiple" value={activeMarks} onValueChange={handleChange}>
+    <ToggleGroup size="sm" type="multiple" value={activeMarks} onValueChange={handleChange}>
       <ToolbarTooltip title={hotKeys.toggleBold.title} hotkey={hotKeys.toggleBold.hotkey}>
-          <ToggleGroupItem value="bold">
-            <BoldIcon />
-          </ToggleGroupItem>
+        <ToggleGroupItem className="p-0 aspect-square" value="bold">
+          <BoldIcon size={16} />
+        </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleItalic.title} hotkey={hotKeys.toggleItalic.hotkey}>
-          <ToggleGroupItem value="italic">
-            <ItalicIcon />
-          </ToggleGroupItem>
+        <ToggleGroupItem className="p-0 aspect-square" value="italic">
+          <ItalicIcon size={16} />
+        </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleUnderline.title} hotkey={hotKeys.toggleUnderline.hotkey}>
-          <ToggleGroupItem value="underline">
-            <UnderlineIcon />
-          </ToggleGroupItem>
+        <ToggleGroupItem className="p-0 aspect-square" value="underline">
+          <UnderlineIcon size={16} />
+        </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleStrikethrough.title} hotkey={hotKeys.toggleStrikethrough.hotkey}>
-      <ToggleGroupItem value="strikethrough">
-        <StrikethroughIcon />
-      </ToggleGroupItem>
+        <ToggleGroupItem className="p-0 aspect-square" value="strikethrough">
+          <StrikethroughIcon size={16} />
+        </ToggleGroupItem>
       </ToolbarTooltip>
     </ToggleGroup>
   );

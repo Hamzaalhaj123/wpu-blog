@@ -9,7 +9,8 @@ import cn from "@/utils/cn";
 
 export const variants = {
   variant: {
-    plain: "bg-opacity-0 text-foreground  ",
+    plain:
+      "bg-muted bg-opacity-0 hover:bg-opacity-80 active:bg-opacity-90 border-muted data-[outline=true]:text-muted-foreground data-[icon=true]:text-muted-foreground data-[smooth=true]:text-muted-foreground data-[link=true]:text-muted-foreground",
     primary:
       "bg-primary hover:bg-opacity-80 active:bg-opacity-90 border-primary data-[outline=true]:text-primary-foreground data-[icon=true]:text-primary-foreground data-[smooth=true]:text-primary-foreground data-[link=true]:text-primary-foreground",
     secondary:
@@ -45,7 +46,7 @@ export const variants = {
 };
 
 const buttonVariants = cva(
-  "relative inline-flex group disabled:cursor-not-allowed cursor-pointer items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 data-[isloading=true]:invisible",
+  "relative inline-flex group disabled:cursor-not-allowed cursor-pointer items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60 data-[isloading=true]:invisible",
   {
     variants,
     defaultVariants: {
