@@ -6,6 +6,10 @@ type RichTextEditorConfig = {
   highlightColors: Record<Color, string>;
   headings: Record<Heading, string>;
   fontSizes: Record<FontSize, string>;
+  lists: {
+    ul: string,
+    ol: string
+  }
 };
 
 const richTextEditor: RichTextEditorConfig = {
@@ -14,6 +18,10 @@ const richTextEditor: RichTextEditorConfig = {
     italic: "italic",
     underline: "underline",
     strikethrough: "line-through",
+  },
+  lists: {
+    ul: "list-disc ps-4",
+    ol: "list-decimal ps-4",
   },
   textColors: {
     default: "text-foreground",

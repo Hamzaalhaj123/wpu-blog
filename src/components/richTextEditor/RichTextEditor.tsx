@@ -23,6 +23,24 @@ const initialValue: Descendant[] = [
   { type: "h4", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
   { type: "h5", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
   { type: "h6", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  {
+    type: "ul",
+    fontSize: "lg",
+    children: [
+      { type: "li", children: [{ text: "list item 1" }] },
+      { type: "li", children: [{ text: "list item 2" }] },
+      { type: "li", children: [{ text: "list item 3" }] },
+    ],
+  },
+  {
+    type: "ol",
+    fontSize: "lg",
+    children: [
+      { type: "li", children: [{ text: "list item 1" }] },
+      { type: "li", children: [{ text: "list item 2" }] },
+      { type: "li", children: [{ text: "list item 3" }] },
+    ],
+  },
 ];
 
 export default function RichTextEditor() {

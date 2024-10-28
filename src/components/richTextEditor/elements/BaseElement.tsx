@@ -1,6 +1,8 @@
 import CodeElement from "@/components/richTextEditor/elements/CodeElement";
 import HeadingElement from "@/components/richTextEditor/elements/HeadingElement";
+import ListElement from "@/components/richTextEditor/elements/ListElement";
 import TextElement from "@/components/richTextEditor/elements/TextElement";
+import ListItemElement from "@/components/richTextEditor/elements/UnorderedListItemElement";
 import { RenderElementProps } from "slate-react";
 
 export default function BaseElement(props: RenderElementProps) {
@@ -14,6 +16,11 @@ export default function BaseElement(props: RenderElementProps) {
     case "h5":
     case "h6":
       return <HeadingElement {...props} />;
+    case "ul":
+    case "ol":
+      return <ListElement {...props} />;
+    case "li":
+      return <ListItemElement {...props} />;
     default:
       return <TextElement {...props} />;
   }
