@@ -1,6 +1,7 @@
 import CodeElement from "@/components/richTextEditor/elements/CodeElement";
 import HeadingElement from "@/components/richTextEditor/elements/HeadingElement";
 import ListElement from "@/components/richTextEditor/elements/ListElement";
+import ImageElement from "@/components/richTextEditor/elements/ImageElement";
 import TextElement from "@/components/richTextEditor/elements/TextElement";
 import ListItemElement from "@/components/richTextEditor/elements/UnorderedListItemElement";
 import { RenderElementProps } from "slate-react";
@@ -21,6 +22,8 @@ export default function BaseElement(props: RenderElementProps) {
       return <ListElement {...props} />;
     case "li":
       return <ListItemElement {...props} />;
+    case "image":
+      return <ImageElement {...props} />;
     default:
       return <TextElement {...props} />;
   }

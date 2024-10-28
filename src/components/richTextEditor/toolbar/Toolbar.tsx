@@ -3,6 +3,7 @@ import FontSizeSelect from "@/components/richTextEditor/toolbar/FontSizeSelect";
 import FormatToggles from "@/components/richTextEditor/toolbar/FormatToggles";
 import HeadingSelect from "@/components/richTextEditor/toolbar/HeadingSelect";
 import HistoryControls from "@/components/richTextEditor/toolbar/HistoryControls";
+import ImageUploader from "@/components/richTextEditor/toolbar/ImageUploader";
 import ToolbarGroupContainer from "@/components/richTextEditor/toolbar/ToolbarGroupContainer";
 
 export default function Toolbar() {
@@ -15,6 +16,7 @@ export default function Toolbar() {
       </ToolbarGroupContainer>
       <HeadingSelect className="ms-auto" />
       <FontSizeSelect />
+      <ImageUploader />
     </div>
   );
 }
