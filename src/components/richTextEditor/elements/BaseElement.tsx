@@ -1,5 +1,6 @@
 import CodeElement from "@/components/richTextEditor/elements/CodeElement";
 import HeadingElement from "@/components/richTextEditor/elements/HeadingElement";
+import ImageElement from "@/components/richTextEditor/elements/ImageElement";
 import TextElement from "@/components/richTextEditor/elements/TextElement";
 import { RenderElementProps } from "slate-react";
 
@@ -14,6 +15,8 @@ export default function BaseElement(props: RenderElementProps) {
     case "h5":
     case "h6":
       return <HeadingElement {...props} />;
+    case "image":
+      return <ImageElement {...props} />;
     default:
       return <TextElement {...props} />;
   }

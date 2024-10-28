@@ -18,24 +18,24 @@ export default function FormatToggles() {
   return (
     <ToggleGroup type="multiple" value={activeMarks} onValueChange={handleChange}>
       <ToolbarTooltip title={hotKeys.toggleBold.title} hotkey={hotKeys.toggleBold.hotkey}>
-          <ToggleGroupItem value="bold">
-            <BoldIcon />
-          </ToggleGroupItem>
+        <ToggleGroupItem value="bold">
+          <BoldIcon />
+        </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleItalic.title} hotkey={hotKeys.toggleItalic.hotkey}>
-          <ToggleGroupItem value="italic">
-            <ItalicIcon />
-          </ToggleGroupItem>
+        <ToggleGroupItem value="italic">
+          <ItalicIcon />
+        </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleUnderline.title} hotkey={hotKeys.toggleUnderline.hotkey}>
-          <ToggleGroupItem value="underline">
-            <UnderlineIcon />
-          </ToggleGroupItem>
+        <ToggleGroupItem value="underline">
+          <UnderlineIcon />
+        </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleStrikethrough.title} hotkey={hotKeys.toggleStrikethrough.hotkey}>
-      <ToggleGroupItem value="strikethrough">
-        <StrikethroughIcon />
-      </ToggleGroupItem>
+        <ToggleGroupItem value="strikethrough">
+          <StrikethroughIcon />
+        </ToggleGroupItem>
       </ToolbarTooltip>
     </ToggleGroup>
   );
