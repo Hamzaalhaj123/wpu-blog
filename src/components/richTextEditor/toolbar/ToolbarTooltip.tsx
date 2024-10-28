@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 type ToolbarTooltipProps = {
   children: ReactNode;
   title: string;
-  hotkey: string;
+  hotkey?: string;
 };
 
 export default function ToolbarTooltip({ children, title, hotkey }: ToolbarTooltipProps) {
@@ -16,7 +16,7 @@ export default function ToolbarTooltip({ children, title, hotkey }: ToolbarToolt
         </TooltipTrigger>
         <TooltipContent side="bottom" className="font-bold">
           <div>{title}</div>
-          <div className="font-semibold text-muted-foreground">({hotkey})</div>
+          {hotkey ? <div className="font-semibold text-muted-foreground">({hotkey})</div> : null}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

@@ -16,25 +16,25 @@ export default function FormatToggles() {
   }, []);
 
   return (
-    <ToggleGroup type="multiple" value={activeMarks} onValueChange={handleChange}>
+    <ToggleGroup size="sm" type="multiple" value={activeMarks} onValueChange={handleChange}>
       <ToolbarTooltip title={hotKeys.toggleBold.title} hotkey={hotKeys.toggleBold.hotkey}>
-        <ToggleGroupItem value="bold">
-          <BoldIcon />
+        <ToggleGroupItem className="aspect-square p-0" value="bold">
+          <BoldIcon size={16} />
         </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleItalic.title} hotkey={hotKeys.toggleItalic.hotkey}>
-        <ToggleGroupItem value="italic">
-          <ItalicIcon />
+        <ToggleGroupItem className="aspect-square p-0" value="italic">
+          <ItalicIcon size={16} />
         </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleUnderline.title} hotkey={hotKeys.toggleUnderline.hotkey}>
-        <ToggleGroupItem value="underline">
-          <UnderlineIcon />
+        <ToggleGroupItem className="aspect-square p-0" value="underline">
+          <UnderlineIcon size={16} />
         </ToggleGroupItem>
       </ToolbarTooltip>
       <ToolbarTooltip title={hotKeys.toggleStrikethrough.title} hotkey={hotKeys.toggleStrikethrough.hotkey}>
-        <ToggleGroupItem value="strikethrough">
-          <StrikethroughIcon />
+        <ToggleGroupItem className="aspect-square p-0" value="strikethrough">
+          <StrikethroughIcon size={16} />
         </ToggleGroupItem>
       </ToolbarTooltip>
     </ToggleGroup>

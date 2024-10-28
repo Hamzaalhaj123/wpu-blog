@@ -6,7 +6,7 @@ export function asCustomElement<T extends ElementType>(element: CustomElement<T>
 
 export type FontSize = "xs" | "sm" | "md" | "lg" | "xl";
 
-export type TextColor = "default" | "primary" | "secondary" | "destructive" | "success" | "warning" | "accent";
+export type Color = "default" | "primary" | "secondary" | "destructive" | "success" | "warning" | "accent";
 
 export type Format = "bold" | "italic" | "underline" | "strikethrough";
 
@@ -14,13 +14,12 @@ export type Heading = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export type ElementType = "paragraph" | "code" | "image" | Heading;
 
+export type CustomText = { text: string; formats?: Format[]; textColor?: Color; highlightColor?: Color };
 export type CustomElement<T extends ElementType> = {
   type: T;
   children: CustomText[];
   fontSize?: FontSize;
 } & CustomElementProps<T>;
-
-export type CustomText = { text: string; formats?: Format[]; color?: TextColor };
 
 export type CustomElementProps<T extends ElementType> = T extends "paragraph"
   ? { fontSize?: FontSize }

@@ -23,6 +23,12 @@ const initialValue: Descendant[] = [
   }),
   { type: "paragraph", fontSize: "sm", children: [{ text: "Hello world", formats: ["bold"], color: "accent" }] },
   { type: "paragraph", fontSize: "md", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
+  {
+    type: "paragraph",
+    fontSize: "sm",
+    children: [{ text: "Hello world", formats: ["bold"], textColor: "primary", highlightColor: "secondary" }],
+  },
+  { type: "paragraph", fontSize: "md", children: [{ text: "Hello world", formats: ["bold", "italic"], textColor: "warning" }] },
   { type: "paragraph", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
   { type: "h1", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
   { type: "h2", fontSize: "lg", children: [{ text: "Hello world", formats: ["bold", "italic"] }] },
@@ -47,6 +53,7 @@ export default function RichTextEditor() {
         renderLeaf={handleRenderLeaf}
         onKeyDown={handleKeydown}
         placeholder="Start typing here"
+        className="selection:bg-primary-foreground/40"
       />
     </Slate>
   );
