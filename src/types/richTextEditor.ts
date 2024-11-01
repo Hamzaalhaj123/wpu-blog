@@ -18,6 +18,7 @@ export type ElementType = "paragraph" | "code" | "image" | Heading | List;
 
 export type CustomText = { text: string; formats?: Format[]; textColor?: Color; highlightColor?: Color };
 
+// export type CustomElement = { type: ElementType; children: CustomText[]; fontSize?: FontSize };
 export type CustomElement<T extends ElementType> = {
   type: T;
   children: CustomText[];
