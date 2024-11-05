@@ -7,9 +7,10 @@ type RichTextEditorConfig = {
   headings: Record<Heading, string>;
   fontSizes: Record<FontSize, string>;
   lists: {
-    ul: string,
-    ol: string
-  }
+    ul: string;
+    ol: string;
+  };
+  languages: string[];
 };
 
 const richTextEditor: RichTextEditorConfig = {
@@ -56,6 +57,7 @@ const richTextEditor: RichTextEditorConfig = {
     lg: "text-lg",
     xl: "text-xl",
   },
+  languages: ["html", "css", "javascript", "typescript"],
 };
 
 export default richTextEditor;

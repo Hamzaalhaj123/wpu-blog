@@ -1,6 +1,6 @@
+import { getCurrentSession } from "@/actions/auth/getCurrentSession";
 import Header from "@/components/header/Header";
 import { Toaster } from "@/components/shared/Toaster";
-import { getCurrentSession } from "@/actions/auth/getCurrentSession";
 import RadixDirectionProvider from "@/components/wrappers/RadixDirectionProvider";
 import SessionProvider from "@/components/wrappers/SessionProvider";
 import getTheme from "@/utils/getTheme";
@@ -41,7 +41,7 @@ export default async function RootLayout({ children, params: { locale } }: RootL
               <SessionProvider value={session}>
                 <Header />
                 <div className="overflow-auto scrollbar-thin scrollbar-thumb-primary scrollbar-thumb-rounded-md">
-                  <main className="md:container mx-auto py-10 px-4">{children}</main>
+                  <main className="mx-auto px-4 py-10 md:container">{children}</main>
                 </div>
                 <Toaster />
               </SessionProvider>

@@ -1,9 +1,9 @@
-import { CustomElement } from "@/types/richTextEditor";
+import { type ImageElement } from "@/types/richTextEditor";
 import Image from "next/image";
 import { RenderElementProps } from "slate-react";
 
 export default function ImageElement({ element, attributes, children }: RenderElementProps) {
-  const { alt, src, height, width } = element as CustomElement<"image">;
+  const { alt, src, height, width } = element as ImageElement;
 
   return (
     <div {...attributes} className={``}>

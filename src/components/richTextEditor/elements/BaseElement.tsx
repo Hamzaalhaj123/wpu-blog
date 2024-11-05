@@ -1,4 +1,4 @@
-import CodeElement from "@/components/richTextEditor/elements/CodeElement";
+import CodeBlockElement from "@/components/richTextEditor/elements/CodeBlockElement";
 import HeadingElement from "@/components/richTextEditor/elements/HeadingElement";
 import ListElement from "@/components/richTextEditor/elements/ListElement";
 import ImageElement from "@/components/richTextEditor/elements/ImageElement";
@@ -8,8 +8,8 @@ import { RenderElementProps } from "slate-react";
 
 export default function BaseElement(props: RenderElementProps) {
   switch (props.element.type) {
-    case "code":
-      return <CodeElement {...props} />;
+    case "code-block":
+      return <CodeBlockElement {...props} />;
     case "h1":
     case "h2":
     case "h3":

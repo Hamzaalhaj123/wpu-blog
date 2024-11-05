@@ -1,4 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/shared/Select";
+import { FontSize, ParagraphElement } from "@/types/richTextEditor";
 import { SelectTriggerProps } from "@radix-ui/react-select";
 import { useCallback } from "react";
 import { Editor, Element, Transforms } from "slate";
@@ -8,9 +9,14 @@ export default function FontSizeSelect(props: SelectTriggerProps) {
   const editor = useSlate();
 
   const [match] = Editor.nodes(editor, { match: (node) => Element.isElement(node) });
-  const matchedFontSize = match?.[0].fontSize ?? "md";
+  const matchedElement = match?.[0];
+  let matchedFontSize;
+  if (matchedElement?.type === "paragraph") {
+    const { fontSize } = matchedElement as ParagraphElement;
+    matchedFontSize = fontSize ?? "md";
+  }
 
-  const handleChange = useCallback((value: NonNullable<Element["fontSize"]>) => {
+  const handleChange = useCallback((value: FontSize) => {
     Transforms.setNodes(editor, { fontSize: value }, { match: (node) => Element.isElement(node) });
   }, []);
 
