@@ -1,11 +1,55 @@
 {
-  "id": "75b25180-58dd-4aca-a1a7-a477b2c7f07f",
+  "id": "48432a7f-54e5-49ee-8914-9ee21732294e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
-    "public.sessions": {
-      "name": "sessions",
+    "public.role_table": {
+      "name": "role_table",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "role_table_user_id_user_table_id_fk": {
+          "name": "role_table_user_id_user_table_id_fk",
+          "tableFrom": "role_table",
+          "tableTo": "user_table",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "pk_role": {
+          "name": "pk_role",
+          "columns": [
+            "user_id",
+            "role"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.session_table": {
+      "name": "session_table",
       "schema": "",
       "columns": {
         "id": {
@@ -29,10 +73,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "sessions_user_id_users_id_fk": {
-          "name": "sessions_user_id_users_id_fk",
-          "tableFrom": "sessions",
-          "tableTo": "users",
+        "session_table_user_id_user_table_id_fk": {
+          "name": "session_table_user_id_user_table_id_fk",
+          "tableFrom": "session_table",
+          "tableTo": "user_table",
           "columnsFrom": [
             "user_id"
           ],
@@ -46,8 +90,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.users": {
-      "name": "users",
+    "public.user_table": {
+      "name": "user_table",
       "schema": "",
       "columns": {
         "id": {
@@ -100,8 +144,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.verification_codes": {
-      "name": "verification_codes",
+    "public.verification_code_table": {
+      "name": "verification_code_table",
       "schema": "",
       "columns": {
         "id": {
@@ -115,22 +159,22 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "default": "'f223780f-b067-4c1a-8107-5c8be8b8e46b'"
+          "default": "'18ffaaf8-8b28-4d8e-97d1-610f0ab89b4e'"
         },
         "expires_at": {
           "name": "expires_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true,
-          "default": "'2024-10-10T19:48:09.102Z'"
+          "default": "'2024-11-01T19:19:30.354Z'"
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "verification_codes_id_users_id_fk": {
-          "name": "verification_codes_id_users_id_fk",
-          "tableFrom": "verification_codes",
-          "tableTo": "users",
+        "verification_code_table_id_user_table_id_fk": {
+          "name": "verification_code_table_id_user_table_id_fk",
+          "tableFrom": "verification_code_table",
+          "tableTo": "user_table",
           "columnsFrom": [
             "id"
           ],

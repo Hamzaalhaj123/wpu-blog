@@ -4,7 +4,7 @@ import { addMinutes } from "date-fns";
 import { InferSelectModel } from "drizzle-orm";
 import { integer, pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
-export const verificationCodeTable = pgTable("verification_code", {
+export const verificationCodeTable = pgTable("verification_code_table", {
   id: integer("id")
     .primaryKey()
     .references(() => userTable.id),

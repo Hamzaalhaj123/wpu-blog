@@ -1,7 +1,7 @@
 import { InferSelectModel } from "drizzle-orm";
 import { boolean, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
-export const userTable = pgTable("user", {
+export const userTable = pgTable("user_table", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull(),
@@ -11,3 +11,5 @@ export const userTable = pgTable("user", {
   isVerified: boolean("is_verified").default(false).notNull(),
 });
 export type User = InferSelectModel<typeof userTable>;
+
+//  <Review />
