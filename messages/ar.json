@@ -25,7 +25,8 @@
     "select_preffered_theme": "اختر الثيم المفضل"
   },
   "NOT_FOUND": {
-    "title": "الصفحة غير موجودة"
+    "title": "الصفحة غير موجودة",
+    "return_to_homepage": "العودة إلى الصفحة الرئيسية"
   },
   "AUTH": {
     "username_or_email_already_exists": "اسم المستخدم أو البريد الإلكتروني مسجل بالفعل",

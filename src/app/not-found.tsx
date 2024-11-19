@@ -1,12 +1,13 @@
 "use client";
 
-import Error from "next/error";
+import NotFound from "@/components/notFound/NotFound";
+// import Error from "next/error";
 
-export default function NotFound() {
+export default function NotFoundPage() {
   return (
     <html lang="en">
-      <body>
-        <Error statusCode={404} />
+      <body className="bg-background-darker text-foreground h-screen">
+        <NotFound title="page not found" label="Return to homepage" />
       </body>
     </html>
   );
