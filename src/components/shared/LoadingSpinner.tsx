@@ -6,16 +6,12 @@ type LoadingSpinnerProps = {
   isLoading: boolean;
 } & ComponentPropsWithoutRef<"div">;
 
-export default function LoadingSpinner({
-  isLoading,
-  className,
-  ...rest
-}: LoadingSpinnerProps) {
+export default function LoadingSpinner({ isLoading, className, ...rest }: LoadingSpinnerProps) {
   return (
     <div
       style={{ borderRadius: "inherit" }}
       className={cn(
-        "pointer-events-none visible absolute inset-0 grid place-items-center rounded-inherit bg-inherit opacity-0",
+        "pointer-events-none visible absolute inset-0 grid place-items-center rounded-inherit bg-inherit opacity-0 transition-opacity",
         { "opacity-100": isLoading },
         className,
       )}

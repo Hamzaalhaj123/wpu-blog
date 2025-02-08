@@ -7,6 +7,10 @@ export default function MdNavigation() {
       {navigation.map(({ title, href }) => (
         <ActiveLink key={title} className="py-4" href={href}>
           {title}
+          <div
+            aria-hidden
+            className="absolute bottom-0 start-0 h-0.5 w-full scale-x-0 bg-primary transition-transform origin-end group-hover:scale-x-100 group-hover:origin-start group-data-[active=true]:scale-x-100"
+          />
         </ActiveLink>
       ))}
     </nav>

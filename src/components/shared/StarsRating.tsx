@@ -24,59 +24,34 @@ export default function StarsRating({
   const ratingFraction = rating - flooredRating; // 0.5
   const stars = [];
 
-  for (let i = 0; i < flooredRating; i++)
-    stars.push(<FullStar key={`full-${i}`} {...emptyStarProps} />);
+  for (let i = 0; i < flooredRating; i++) stars.push(<FullStar key={`full-${i}`} {...emptyStarProps} />);
   if (ratingFraction) {
     if (ratingFraction >= 0.75) {
       stars.push(<FullStar key={`full-${flooredRating}`} {...fullStarProps} />);
     } else if (ratingFraction >= 0.25) {
       stars.push(<HalfStar key="half" {...halfStarProps} />);
     } else {
-      stars.push(<EmptyStar {...emptyStarProps} />);
+      stars.push(<EmptyStar key="empty" {...emptyStarProps} />);
     }
   }
-  for (let i = 0; i < maximumRating - ceiledRating; i++)
-    stars.push(<EmptyStar key={`empty-${i}`} {...fullStarProps} />);
+  for (let i = 0; i < maximumRating - ceiledRating; i++) stars.push(<EmptyStar key={`empty-${i}`} {...fullStarProps} />);
 
   return <div className="flex gap-2">{stars}</div>;
 }
 
 function FullStar({ className, ...props }: LucideProps) {
-  return (
-    <StarIcon
-      size={16}
-      className={cn("fill-secondary stroke-secondary", className)}
-      {...props}
-    />
-  );
+  return <StarIcon size={16} className={cn("fill-secondary stroke-secondary", className)} {...props} />;
 }
 
 function HalfStar({ className, ...props }: LucideProps) {
   return (
     <div className="relative rtl:-scale-x-100">
-      <StarHalfIcon
-        size={16}
-        className={cn("fill-secondary stroke-secondary", className)}
-        {...props}
-      />
-      <StarHalfIcon
-        size={16}
-        className={cn(
-          "absolute top-0 -scale-x-100 stroke-secondary",
-          className,
-        )}
-        {...props}
-      />
+      <StarHalfIcon size={16} className={cn("fill-secondary stroke-secondary", className)} {...props} />
+      <StarHalfIcon size={16} className={cn("absolute top-0 -scale-x-100 stroke-secondary", className)} {...props} />
     </div>
   );
 }
 
 function EmptyStar({ className, ...props }: LucideProps) {
-  return (
-    <StarIcon
-      size={16}
-      className={cn("stroke-secondary", className)}
-      {...props}
-    />
-  );
+  return <StarIcon size={16} className={cn("stroke-secondary", className)} {...props} />;
 }

@@ -9,7 +9,9 @@ import cn from "@/utils/cn";
 
 export const variants = {
   variant: {
-    plain: "bg-opacity-0 text-foreground  ",
+    plain: "bg-opacity-0 text-foreground",
+    muted:
+      "bg-muted hover:bg-opacity-80 active:bg-opacity-90 border-border data-[outline=true]:text-muted-foreground data-[icon=true]:text-muted-foreground data-[smooth=true]:text-muted-foreground data-[link=true]:text-muted-foreground",
     primary:
       "bg-primary hover:bg-opacity-80 active:bg-opacity-90 border-primary data-[outline=true]:text-primary-foreground data-[icon=true]:text-primary-foreground data-[smooth=true]:text-primary-foreground data-[link=true]:text-primary-foreground",
     secondary:
@@ -21,6 +23,7 @@ export const variants = {
   },
   size: {
     none: "px-0 py-0 text-base",
+    extraSmall: "px-2 py-1 text-xs",
     small: "px-3 py-1.5 text-xs",
     medium: "px-4 py-2 text-sm",
     large: "px-5 py-2.5 text-base",
@@ -97,8 +100,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({
             className,
             variant,
-            size,
             icon,
+            size,
             outline,
             smooth,
             pill,
@@ -115,13 +118,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {},
             <>
               {children.props.children}
-              <LoadingSpinner isLoading={isLoading} />
+              <LoadingSpinner className="pointer-events-auto" isLoading={isLoading} />
             </>,
           )
         ) : (
           <>
             {children}
-            <LoadingSpinner isLoading={isLoading} />
+            <LoadingSpinner className="pointer-events-auto" isLoading={isLoading} />
           </>
         )}
       </Comp>

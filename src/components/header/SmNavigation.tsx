@@ -9,7 +9,7 @@ export default function SmNavigation() {
       <DropdownMenuTrigger className="md:hidden">
         <MenuIcon />
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="z-50">
         {navigation.map(({ title, href }) => (
           <DropdownMenuItem key={title}>
             <Link href={href}>{title}</Link>

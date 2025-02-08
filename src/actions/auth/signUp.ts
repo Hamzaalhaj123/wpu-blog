@@ -1,9 +1,7 @@
 "use server";
-import { hash } from "@node-rs/argon2";
-
 import { createSession } from "@/actions/auth/createSession";
 import { generateSessionToken } from "@/actions/auth/generateSessionToken";
-import sendEmail from "@/actions/auth/sendEmail";
+// import sendEmail from "@/actions/auth/sendEmail";
 import { setSessionTokenCookie } from "@/actions/auth/setSessionTokenCookie";
 import routes from "@/config/routes";
 import { db } from "@/db/db";
@@ -11,6 +9,7 @@ import { userTable } from "@/db/schemas/userTable";
 import { verificationCodeTable } from "@/db/schemas/verificationCodeTable";
 import { redirect } from "@/lib/next-intl/navigation";
 import { signUpSchema, SignUpValues } from "@/validators/authValidator";
+import { hash } from "@node-rs/argon2";
 import { eq, or } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { isRedirectError } from "next/dist/client/components/redirect";
@@ -36,8 +35,7 @@ export async function signUp(credentials: SignUpValues) {
 
     console.log("existing user", existingUser);
 
-    if (existingUser.length)
-      throw new Error(t("username_or_email_already_exists"));
+    if (existingUser.length) throw new Error(t("username_or_email_already_exists"));
     const insertedUser = await db
       .insert(userTable)
       .values({
@@ -56,7 +54,7 @@ export async function signUp(credentials: SignUpValues) {
         id: insertedUser.id,
       })
       .returning();
-    await sendEmail(insertedUser, verificationCode[0].code);
+    // await sendEmail(insertedUser, verificationCode[0].code);
     const sessionToken = generateSessionToken();
     const session = await createSession(sessionToken, insertedUser.id);
     setSessionTokenCookie(sessionToken, session.expiresAt);

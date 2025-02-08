@@ -1,3 +1,4 @@
+import env from "@/lib/env";
 import { defineConfig } from "drizzle-kit";
 
 export default defineConfig({
@@ -5,6 +6,6 @@ export default defineConfig({
   schema: "./src/db/schemas/*",
   out: "./src/db/generated",
   dbCredentials: {
-    url: process.env.DATABASE_URL as string,
+    url: env.DATABASE_URL,
   },
 });

@@ -1,0 +1,2 @@
+ALTER TABLE "verification_code" ALTER COLUMN "code" SET DEFAULT '6070a85f-9072-4509-a403-26758436883c';--> statement-breakpoint
+ALTER TABLE "verification_code" ALTER COLUMN "expires_at" SET DEFAULT '2025-01-31T15:26:58.589Z';

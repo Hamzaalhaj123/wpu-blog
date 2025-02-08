@@ -1,27 +1,32 @@
 "use client";
 
+import { variants } from "@/components/shared/Button";
 import cn from "@/utils/cn";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
 import { cva, type VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 const toggleVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=off]:bg-opacity-0",
   {
     variants: {
       variant: {
-        default: "bg-transparent",
-        outline: "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
+        muted: "border-muted bg-muted",
+        primary: "border-primary bg-primary",
+        secondary: "border-secondary bg-secondary",
+        error: "border-destructive bg-destructive",
+        success: "border-success bg-success",
       },
-      size: {
-        default: "h-10 px-3",
-        sm: "h-9 px-2.5",
-        lg: "h-11 px-5",
+      size: variants.size,
+      outline: {
+        true: "border data-[state=off]:hover:bg-opacity-20 data-[state=on]:bg-opacity-50",
+        false: " data-[state=off]:hover:bg-opacity-40",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "muted",
+      size: "medium",
+      outline: false,
     },
   },
 );
@@ -29,8 +34,8 @@ const toggleVariants = cva(
 const Toggle = React.forwardRef<
   React.ElementRef<typeof TogglePrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>
->(({ className, variant, size, ...props }, ref) => (
-  <TogglePrimitive.Root ref={ref} className={cn(toggleVariants({ variant, size, className }))} {...props} />
+>(({ className, variant, size, outline, ...props }, ref) => (
+  <TogglePrimitive.Root ref={ref} className={cn(toggleVariants({ variant, size, className, outline }))} {...props} />
 ));
 
 Toggle.displayName = TogglePrimitive.Root.displayName;

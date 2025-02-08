@@ -45,5 +45,5 @@ export default function useSetSearchParams() {
     [router, pathname, searchParams],
   );
 
-  return { setSearchParams, pending };
+  return { searchParams, setSearchParams, pending };
 }

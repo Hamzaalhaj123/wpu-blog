@@ -5,7 +5,7 @@
       "description": "Homepage of the WPU blog website"
     },
     "blog": {
-      "title": "Blog"
+      "title": "{title} - WPU blog"
     },
     "not_found": {
       "title": "Page not found"
@@ -15,8 +15,21 @@
       "description": "Homepage of the WPU blog website"
     }
   },
+  "GENERAL": {
+    "report": "Report",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "reason": "Reason",
+    "confirm": "Confirm",
+    "please_wait": "Please wait...",
+    "are_you_sure": "Are you sure ?",
+    "minute": "{count, plural, one {one minute} other {# minutes}}"
+  },
   "HOMEPAGE": {
     "title": "Homepage"
+  },
+  "BLOG": {
+    "table_of_content": "Table of contents"
   },
   "THEMESWITCHER": {
     "dark": "Dark",
@@ -34,5 +47,10 @@
   "LANGUAGE_SWITCHER": {
     "ar": "Arabic",
     "en": "English"
+  },
+  "COMMENT_REPORT": {
+    "title": "Report Comment",
+    "description": "Please provide a reason for reporting this content. Our team will review it to ensure it follows our guidelines",
+    "reason_placeholder": "Describe the issue… (e.g., spam, harassment, inappropriate content)"
   }
 }

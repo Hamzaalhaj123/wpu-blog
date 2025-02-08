@@ -44,7 +44,7 @@ CardDescription.displayName = "CardDescription";
 const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & { asChild?: boolean }>(
   ({ className, asChild, ...props }, ref) => {
     const Comp = asChild ? Slot : "div";
-    return <Comp ref={ref} className={cn("p-4 pt-0", className)} {...props} />;
+    return <Comp ref={ref} className={cn("p-4", className)} {...props} />;
   },
 );
 CardContent.displayName = "CardContent";

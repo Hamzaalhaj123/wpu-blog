@@ -2,26 +2,18 @@
 
 import { signUp } from "@/actions/auth/signUp";
 import Button from "@/components/shared/Button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/shared/Form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/shared/Form";
 import { Input } from "@/components/shared/Input";
 import { PasswordInput } from "@/components/shared/PasswordInput";
 import routes from "@/config/routes";
+import useServerAction from "@/hooks/utils/useServerAction";
 import { Link } from "@/lib/next-intl/navigation";
 import { signUpSchema, SignUpValues } from "@/validators/authValidator";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 
 export default function SignUpForm() {
-  const [error, setError] = useState<string | null>(null);
-
+  const [runSignUp, isPending] = useServerAction(signUp);
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -31,24 +23,14 @@ export default function SignUpForm() {
     },
   });
 
-  const [isLoading, startTransition] = useTransition();
   async function onSubmit(values: SignUpValues) {
-    startTransition(async () => {
-      setError(null);
-      try {
-        await signUp(values);
-      } catch (error) {
-        setError((error as Error).message || "An unexpected error occurred");
-        console.error(error);
-      }
-    });
+    await runSignUp(values);
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
         <FormField
-          control={form.control}
           name="username"
           render={({ field }) => (
             <FormItem>
@@ -61,7 +43,6 @@ export default function SignUpForm() {
           )}
         />
         <FormField
-          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
@@ -74,7 +55,6 @@ export default function SignUpForm() {
           )}
         />
         <FormField
-          control={form.control}
           name="password"
           render={({ field }) => (
             <FormItem>
@@ -86,9 +66,7 @@ export default function SignUpForm() {
             </FormItem>
           )}
         />
-        {error && <p className="text-error">{error}</p>}
-
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isPending}>
           Create account
         </Button>
         <p>

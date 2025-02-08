@@ -15,12 +15,12 @@ const SelectValue = SelectPrimitive.Value;
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & ButtonVariants
->(({ className, children, link, size, icon, smooth, outline = true, pill, ...props }, ref) => (
+>(({ className, children, link, size, icon, variant = "muted", smooth, outline = true, pill, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "group flex h-10 w-full items-center justify-between gap-2 rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
-      buttonVariants({ link, size, icon, smooth, outline, pill }),
+      "group flex w-full items-center justify-between gap-2 rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+      buttonVariants({ link, size, icon, variant, smooth, outline, pill }),
       className,
     )}
     {...props}
@@ -108,7 +108,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-sm outline-none transition first:rounded-t-sm last:rounded-b-sm data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-accent focus:text-accent-foreground",
+      "relative flex w-full cursor-pointer select-none items-center py-1.5 pl-8 pr-2 text-sm outline-none transition first:rounded-t-sm last:rounded-b-sm data-[disabled]:pointer-events-none data-[disabled]:opacity-50 focus:bg-accent/50 focus:text-accent-foreground",
       className,
     )}
     {...props}

@@ -1,6 +1,5 @@
-import Header from "@/components/header/Header";
-import { Toaster } from "@/components/shared/Toaster";
 import { getCurrentSession } from "@/actions/auth/getCurrentSession";
+import { Toaster } from "@/components/shared/sonner";
 import RadixDirectionProvider from "@/components/wrappers/RadixDirectionProvider";
 import SessionProvider from "@/components/wrappers/SessionProvider";
 import getTheme from "@/utils/getTheme";
@@ -34,16 +33,13 @@ export default async function RootLayout({ children, params: { locale } }: RootL
 
   return (
     <html dir={dir} lang={locale} className={theme ?? ""}>
-      <body className="grid h-screen grid-rows-[auto,1fr] bg-background text-foreground">
+      <body className="h-screen bg-background text-foreground scrollbar-thumb-muted scrollbar-thumb-rounded-md">
         <RadixDirectionProvider dir={dir}>
           <NextIntlClientProvider messages={messages}>
             <CookiesProvider>
               <SessionProvider value={session}>
-                <Header />
-                <div className="overflow-auto scrollbar-thin scrollbar-thumb-primary scrollbar-thumb-rounded-md">
-                  <main className="md:container mx-auto py-10 px-4">{children}</main>
-                </div>
-                <Toaster />
+                {children}
+                <Toaster position={dir === "ltr" ? "top-right" : "top-left"} />
               </SessionProvider>
             </CookiesProvider>
           </NextIntlClientProvider>

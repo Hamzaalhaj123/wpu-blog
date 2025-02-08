@@ -1,16 +1,12 @@
 import { db } from "@/db/db";
 import { Session, sessionTable } from "@/db/schemas/sessionTable";
-import { User, userTable } from "@/db/schemas/userTable";
+import { SelectUserModel, userTable } from "@/db/schemas/userTable";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeHexLowerCase } from "@oslojs/encoding";
 import { eq } from "drizzle-orm";
 
-export type SessionValidationResult =
-  | { session: Session; user: User }
-  | { session: null; user: null };
-export async function validateSessionToken(
-  token: string,
-): Promise<SessionValidationResult> {
+export type SessionValidationResult = { session: Session; user: SelectUserModel } | { session: null; user: null };
+export async function validateSessionToken(token: string): Promise<SessionValidationResult> {
   const sessionId = encodeHexLowerCase(sha256(new TextEncoder().encode(token)));
   const result = await db
     .select({ user: userTable, session: sessionTable })

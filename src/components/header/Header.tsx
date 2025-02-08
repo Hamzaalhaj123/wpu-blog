@@ -7,7 +7,7 @@ import { Link } from "@/lib/next-intl/navigation";
 
 export default function Header() {
   return (
-    <header className="w-full border-b border-border bg-background">
+    <header className="border-b border-border bg-background z-50 relative">
       <div className="flex items-center justify-between gap-4 md:container max-md:p-4">
         <Link href={routes.index} className="text-xl font-bold text-primary-foreground">
           Wpu Blog
