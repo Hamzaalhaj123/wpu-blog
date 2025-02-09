@@ -13,7 +13,7 @@ export async function generateMetadata() {
 }
 
 export default async function Home({ searchParams }: PageProps) {
-  const { data } = parseSearchParams(searchParams, paginationValidator);
+  const data = parseSearchParams(searchParams, paginationValidator);
   const currentPage = data?.page ?? 1;
   const { data: blogs, metaData } = await getPaginatedBlogs(currentPage, 12);
 

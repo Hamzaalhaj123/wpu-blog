@@ -1,8 +1,8 @@
 import parseSearchParams from "@/utils/parseSearchParams";
 import { useSearchParams } from "next/navigation";
-import { SafeParseReturnType, ZodSchema } from "zod";
+import { ZodSchema } from "zod";
 
-export default function useParsedSearchParams<T extends ZodSchema>(validator: T): SafeParseReturnType<T["_input"], T["_output"]> {
+export default function useParsedSearchParams<T extends ZodSchema>(validator: T): ReturnType<typeof parseSearchParams> {
   const searchParams = useSearchParams();
   const searchParamsObj = Object.fromEntries(searchParams.entries());
   return parseSearchParams(searchParamsObj, validator);

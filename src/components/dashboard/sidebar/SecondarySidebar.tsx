@@ -9,7 +9,7 @@ import { dashboardSearchParamsValidator } from "@/validators/dashboardSearchPara
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function SecondarySidebar() {
-  const { data } = useParsedSearchParams(dashboardSearchParamsValidator);
+  const data = useParsedSearchParams(dashboardSearchParamsValidator);
   const pathname = usePathname();
   const expanded = data?.dashboardSidebarExpanded ?? false;
 

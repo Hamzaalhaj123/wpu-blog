@@ -13,7 +13,7 @@ import { ChevronRightIcon } from "lucide-react";
 import { useCallback } from "react";
 
 export default function PrimarySidebar() {
-  const { data } = useParsedSearchParams(dashboardSearchParamsValidator);
+  const data = useParsedSearchParams(dashboardSearchParamsValidator);
   const { setSearchParams } = useSetSearchParams();
   const expanded = data?.dashboardSidebarExpanded ?? false;
   const activePrimaryItem = data?.activePrimaryItem ?? "home";

@@ -6,7 +6,8 @@ import { paginationValidator } from "@/validators/util/paginationValidator";
 type PageProps = { searchParams: Record<string, string> };
 
 export default async function Page({ searchParams }: PageProps) {
-  const { data } = parseSearchParams(searchParams, paginationValidator);
+  const data = parseSearchParams(searchParams, paginationValidator);
+
   const page = data?.page ?? 1;
   const paginatedRequest = await getPaginatedUsers(page);
 

@@ -18,7 +18,7 @@ type BlogTableOfContentProps = {
 
 export default function BlogTableOfContent({ tableOfContents }: BlogTableOfContentProps) {
   const { setSearchParams } = useSetSearchParams();
-  const { data } = useParsedSearchParams(blogSearchParamsValidator);
+  const data = useParsedSearchParams(blogSearchParamsValidator);
   const t = useTranslations("BLOG");
 
   const expanded = data?.blogSidebarExpanded ?? false;
