@@ -7,12 +7,11 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious, 
+  PaginationPrevious,
 } from "@/components/shared/Pagination";
 import { useSearchParams } from "next/navigation";
 
 type PaginationGroupProps = {
-  
   currentPage: number;
   pageCount: number;
 };

@@ -1,12 +1,12 @@
 "use client";
 
-import ActiveLink from "@/components/shared/ActiveLink";
 import { primarySidebar, secondarySidebar } from "@/config/dashboardSidebar";
 import useParsedSearchParams from "@/hooks/utils/useParsedSearchParams";
-import { usePathname } from "@/lib/next-intl/navigation";
+import { Link, usePathname } from "@/lib/next-intl/navigation";
 import cn from "@/utils/cn";
 import { dashboardSearchParamsValidator } from "@/validators/dashboardSearchParamsValidator";
 import { AnimatePresence, motion } from "framer-motion";
+import { useCallback } from "react";
 
 export default function SecondarySidebar() {
   const data = useParsedSearchParams(dashboardSearchParamsValidator);
@@ -15,6 +15,15 @@ export default function SecondarySidebar() {
 
   const activePrimarySidebar = primarySidebar.find((item) => item.name === (data?.activePrimaryItem ?? "home"))!;
   const activeSecondarySidebar = secondarySidebar[activePrimarySidebar.name];
+
+  const getHref = useCallback(
+    (href: string) => {
+      return href.concat(
+        `?${new URLSearchParams({ dashboardSidebarExpanded: "true", activePrimaryItem: activePrimarySidebar.name }).toString()}`,
+      );
+    },
+    [activePrimarySidebar],
+  );
 
   // const regex = new RegExp(`${routes.dashboard.index}/([^/]+)`);
   // const match = pathname.match(regex);
@@ -39,8 +48,9 @@ export default function SecondarySidebar() {
             >
               {activeSecondarySidebar.map(({ name, Icon, href }) => (
                 <li key={name}>
-                  <ActiveLink
-                    href={href}
+                  <Link
+                    keepSearchParams={false}
+                    href={getHref(href)}
                     className={cn(
                       "flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-md p-2 text-muted-foreground transition data-[active=true]:bg-primary data-[active=true]:text-foreground hover:text-foreground data-[active=false]:hover:bg-primary/50",
                       // { "bg-primary text-foreground": name === firstSegment },
@@ -48,7 +58,7 @@ export default function SecondarySidebar() {
                   >
                     <Icon className="shrink-0" />
                     <span>{name}</span>
-                  </ActiveLink>
+                  </Link>
                 </li>
               ))}
             </motion.ul>

@@ -1,5 +1,5 @@
-import getPaginatedQuery from "@/actions/utils/getPaginatedQuery";
+import dbQuery from "@/actions/utils/dbQuery";
 
-export default async function getPaginatedUsers(page: number, perPage = 10) {
-  return getPaginatedQuery("userTable", page, perPage, {});
+export default async function getPaginatedUsers(page: number, perPage = 10, sort?: Record<string, string>) {
+  return dbQuery({ table: "userTable", pagination: { page, perPage }, sort });
 }

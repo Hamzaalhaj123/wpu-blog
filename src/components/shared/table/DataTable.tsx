@@ -1,8 +1,13 @@
 "use client";
 
-import { PaginatedQueryResult } from "@/actions/utils/getPaginatedQuery";
+import { DbQueryResult, PaginationOptions } from "@/actions/utils/dbQuery";
 import PaginationGroup from "@/components/shared/PaginationGroup";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/shared/table";
+import DataTableHeader from "@/components/shared/table/DataTableHeader";
+import { Table, TableBody, TableCell, TableHeader, TableRow } from "@/components/shared/table/Table";
+import useSetSearchParams from "@/hooks/shared/useSetSearchParams";
+import useIsMounted from "@/hooks/utils/useIsMounted";
+import useParsedSearchParams from "@/hooks/utils/useParsedSearchParams";
+import { sortingValidator } from "@/validators/util/sortingValidator";
 import {
   ColumnDef,
   flexRender,
@@ -12,16 +17,26 @@ import {
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type DataTableProps<TData, TValue> = {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  paginationMetadata?: PaginatedQueryResult<unknown>["metaData"];
+  paginationMetadata?: DbQueryResult<unknown, PaginationOptions>["metaData"];
 };
 
 export default function DataTable<TData, TValue>({ columns, data, paginationMetadata }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const isMounted = useIsMounted();
+  const { setSearchParams } = useSetSearchParams();
+  const sortData = useParsedSearchParams(sortingValidator);
+  const initialSortArr = Object.entries(sortData.sort ?? {}).map(([key, value]) => ({ id: key, desc: value === "desc" }));
+  const [sorting, setSorting] = useState<SortingState>(initialSortArr);
+
+  useEffect(() => {
+    if (!isMounted()) return;
+    const sortString = sorting.map(({ id, desc }) => `${id} ${desc ? "desc" : "asc"}`).join(",");
+    setSearchParams((prev) => ({ ...prev, sort: sortString }), "replace");
+  }, [isMounted, setSearchParams, sorting]);
 
   const table = useReactTable({
     data,
@@ -31,6 +46,8 @@ export default function DataTable<TData, TValue>({ columns, data, paginationMeta
     getSortedRowModel: getSortedRowModel(),
     manualPagination: !!paginationMetadata,
     manualSorting: true,
+    enableSortingRemoval: true,
+    enableMultiSort: true,
     rowCount: paginationMetadata?.totalCount,
     pageCount: paginationMetadata?.pageCount,
     onSortingChange: setSorting,
@@ -47,9 +64,7 @@ export default function DataTable<TData, TValue>({ columns, data, paginationMeta
             {table.getHeaderGroups().map((group) => (
               <TableRow key={group.id}>
                 {group.headers.map((header) => (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                  </TableHead>
+                  <DataTableHeader key={header.id} header={header} />
                 ))}
               </TableRow>
             ))}

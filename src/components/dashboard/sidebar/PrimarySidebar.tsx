@@ -31,7 +31,6 @@ export default function PrimarySidebar() {
 
   const setActivePrimarySidebar = useCallback(
     (primarySidebar: string) => {
-      const newSearchParams = {};
       if (primarySidebar) {
         setSearchParams(
           (prev) => ({
